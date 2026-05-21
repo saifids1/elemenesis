@@ -144,7 +144,7 @@ export default function HeroSlider() {
           </div>
 
           {/* Main Title - White with shadow for contrast */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white drop-shadow-lg">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-[#00bec1] drop-shadow-lg">
             {slide.title}
           </h1>
 

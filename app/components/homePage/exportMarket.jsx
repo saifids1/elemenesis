@@ -188,7 +188,7 @@ export default function ExportMarketPage() {
           />
 
           <p
-            className={`max-w-2xl mx-auto mt-6 text-gray-500 text-lg transition-all duration-700 delay-400 ${
+            className={`max-w-2xl mx-auto mt-6 text-white text-lg transition-all duration-700 delay-400 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
