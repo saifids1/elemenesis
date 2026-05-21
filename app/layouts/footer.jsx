@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { 
-  MapPin, Phone, Mail, Clock, Globe, 
-  Users, X, UserPlus, Instagram, 
-  ChevronRight, Shield, Truck, Heart, 
+import Image from "next/image"; // Imported for standard Next.js image handling
+import {
+  MapPin, Phone, Mail, Clock, Globe,
+  Users, X, UserPlus,
+  ChevronRight, Shield, Truck, Heart,
   Award, Leaf, ArrowUp, Camera
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,8 +16,13 @@ export default function Footer() {
   const [hoveredLink, setHoveredLink] = useState(null);
   const currentYear = new Date().getFullYear();
 
-  // Unified Elemensis Brand Gradient Setup
+  // Premium Brand Gradient
   const brandGradient = "linear-gradient(135deg, rgb(0, 204, 170) 0%, rgb(0, 185, 204) 100%)";
+  const gradientTextStyle = {
+    backgroundImage: brandGradient,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
+  };
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 300);
@@ -62,28 +68,23 @@ export default function Footer() {
   ];
 
   return (
-    <footer 
-      className="relative text-white overflow-hidden"
-      style={{ background: brandGradient }}
-    >
+    <footer className="relative text-gray-300 overflow-hidden bg-[#0a0a0a] border-t border-white/5">
       <TrendyDivider />
-      
+
       {/* Premium Constellation Grid SVG Background Animation Layer */}
-      <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden mix-blend-overlay">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.15] overflow-hidden mix-blend-screen">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 w-full h-full">
           <defs>
-            {/* Soft grid system backdrop */}
             <pattern id="constellation-grid" width="80" height="80" patternUnits="userSpaceOnUse">
-              <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1" />
-              <circle cx="80" cy="0" r="1" fill="rgba(255, 255, 255, 0.4)" />
-              <circle cx="0" cy="80" r="1" fill="rgba(255, 255, 255, 0.4)" />
+              <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="1" />
+              <circle cx="80" cy="0" r="1" fill="rgba(255, 255, 255, 0.3)" />
+              <circle cx="0" cy="80" r="1" fill="rgba(255, 255, 255, 0.3)" />
             </pattern>
           </defs>
-          
+
           <rect width="100%" height="100%" fill="url(#constellation-grid)" />
 
-          {/* Subtly pulse individual nodal clusters rhythmically */}
-          <g fill="white" opacity="0.8">
+          <g fill="white" opacity="0.6">
             <circle cx="160" cy="80" r="2.5" className="animate-node-pulse-fast" />
             <circle cx="480" cy="240" r="3" className="animate-node-pulse-slow" />
             <circle cx="800" cy="160" r="2" className="animate-node-pulse-normal" />
@@ -92,8 +93,7 @@ export default function Footer() {
             <circle cx="640" cy="480" r="2" className="animate-node-pulse-normal" />
           </g>
 
-          {/* Isometric diagonal scanning paths mapping across coordinates */}
-          <g stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="15 140" fill="none" opacity="0.5">
+          <g stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="15 140" fill="none" opacity="0.3">
             <line x1="-100" y1="-100" x2="1800" y2="1800" className="animate-diagonal-flow-slow" />
             <line x1="400" y1="-100" x2="2300" y2="1800" className="animate-diagonal-flow-fast" />
             <line x1="-500" y1="-100" x2="1400" y2="1800" className="animate-diagonal-flow-normal" />
@@ -102,35 +102,50 @@ export default function Footer() {
       </div>
 
       {/* Decorative Blur Contrast Accent Orbs */}
-      <div className="absolute inset-0 bg-black/5 mix-blend-multiply pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl pointer-events-none -mr-40 -mt-40" />
+      <div
+        className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full blur-3xl pointer-events-none -mr-40 -mt-40 opacity-10"
+        style={{ background: brandGradient }}
+      />
 
       <div className="relative container mx-auto px-6 max-w-7xl pt-16 pb-8 z-10">
-        <div className="grid lg:grid-cols-4 gap-12 mb-16">
-          
+        {/* Responsive Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
           {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6 group cursor-pointer">
-              <div className="relative">
-                <div className="w-4 h-4 rounded-full bg-white shadow-md transform transition-transform group-hover:scale-110" />
-                <div className="absolute inset-0 w-4 h-4 rounded-full blur-sm bg-white/60 animate-ping pointer-events-none" />
-              </div>
-              <span className="text-2xl font-black tracking-[0.25em] text-white drop-shadow-sm">
+          <div className="flex flex-col items-start">
+            <div className="flex items-center gap-2 mb-6 group cursor-pointer">
+              <Image
+                src="/Images/slider/elemenisis--E-logo.png"
+                alt="Elemensis Logo"
+                width={80}
+                height={47}
+                className="w-[60px] h-[35px] md:w-[80px] md:h-[47px] object-contain transform transition-transform duration-300 group-hover:scale-110"
+              />
+              <span
+                className="text-xl md:text-2xl font-black tracking-[0.25em] drop-shadow-sm select-none"
+                style={gradientTextStyle}
+              >
                 ELEMENSIS
               </span>
             </div>
-            
-            <p className="text-white/80 text-sm leading-relaxed mb-6 font-medium">
+
+            <p 
+              className="text-sm leading-relaxed mb-6 font-medium bg-clip-text text-transparent opacity-85"
+              style={gradientTextStyle}
+            >
               Your trusted global partner for premium products and exceptional service across B2B & B2C markets worldwide.
             </p>
 
             <div className="flex flex-col gap-3">
               {certifications.map((cert, idx) => (
                 <div key={idx} className="flex items-center gap-2.5 group w-fit">
-                  <div className="p-1.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/10 group-hover:bg-white/20 transition-all">
-                    <cert.icon className="w-4 h-4 text-white" />
+                  <div className="p-1.5 rounded-lg bg-white/5 border border-white/15 group-hover:bg-white/10 transition-all">
+                    <cert.icon className="w-4 h-4 text-teal-400 group-hover:text-white transition-colors" />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-white/90 transition-colors">
+                  <span 
+                    className="text-xs font-bold uppercase tracking-widest bg-clip-text text-transparent opacity-80 group-hover:opacity-100 transition-opacity"
+                    style={gradientTextStyle}
+                  >
                     {cert.text}
                   </span>
                 </div>
@@ -139,28 +154,39 @@ export default function Footer() {
           </div>
 
           {/* Quick Links Column */}
-          <div>
-            <h3 className="text-white font-black text-sm uppercase tracking-widest mb-6 relative inline-block">
+          <div className="ml-[0px] md:ml-[90px]">
+            <h3
+              className="font-black text-sm uppercase tracking-widest mb-6 relative inline-block"
+              style={gradientTextStyle}
+            >
               Navigation
-              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-white/60 rounded-full" />
+              <div
+                className="absolute -bottom-2 left-0 w-12 h-0.5 rounded-full"
+                style={{ background: brandGradient }}
+              />
             </h3>
             <ul className="space-y-3.5">
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
                   <Link
                     href={link.href}
-                    className="group flex items-center gap-2 text-white/80 hover:text-white transition-all duration-300 text-sm font-semibold"
+                    className="group flex items-center gap-2 transition-all duration-300 text-sm font-semibold w-fit"
                     onMouseEnter={() => setHoveredLink(link.name)}
                     onMouseLeave={() => setHoveredLink(null)}
                   >
-                    <ChevronRight 
-                      className={`w-4 h-4 transition-all duration-300 transform text-white ${
-                        hoveredLink === link.name ? "translate-x-1 opacity-100 scale-110" : "opacity-50"
-                      }`} 
+                    <ChevronRight
+                      className={`w-4 h-4 transition-all duration-300 transform ${hoveredLink === link.name ? "translate-x-1 scale-110 opacity-100" : "opacity-40"}`}
+                      style={{ color: 'rgb(0, 204, 170)' }}
                     />
-                    <span className="relative">
+                    <span 
+                      className="relative bg-clip-text text-transparent opacity-85 group-hover:opacity-100 transition-opacity"
+                      style={gradientTextStyle}
+                    >
                       {link.name}
-                      <span className={`absolute bottom-0 left-0 w-full h-px bg-white transition-transform duration-300 origin-left ${hoveredLink === link.name ? "scale-x-100" : "scale-x-0"}`} />
+                      <span
+                        className={`absolute bottom-0 left-0 w-full h-px transition-transform duration-300 origin-left ${hoveredLink === link.name ? "scale-x-100" : "scale-x-0"}`}
+                        style={{ background: brandGradient }}
+                      />
                     </span>
                   </Link>
                 </li>
@@ -169,20 +195,31 @@ export default function Footer() {
           </div>
 
           {/* Divisions Column */}
-          <div>
-            <h3 className="text-white font-black text-sm uppercase tracking-widest mb-6 relative inline-block">
+          <div className="md:ml-8 ml-[0px] md:ml-[50px]">
+            <h3
+              className="font-black text-sm uppercase tracking-widest mb-6 relative inline-block"
+              style={gradientTextStyle}
+            >
               Divisions
-              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-white/60 rounded-full" />
+              <div
+                className="absolute -bottom-2 left-0 w-12 h-0.5 rounded-full"
+                style={{ background: brandGradient }}
+              />
             </h3>
             <ul className="space-y-3.5">
               {ourDivisions.map((division, idx) => (
                 <li key={idx}>
                   <Link
                     href={division.href}
-                    className="group flex items-center gap-2 text-white/80 hover:text-white transition-all duration-300 text-sm font-semibold"
+                    className="group flex items-center gap-2 transition-all duration-300 text-sm font-semibold w-fit"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/40 group-hover:bg-white group-hover:scale-150 transition-all duration-300" />
-                    <span>{division.name}</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-teal-400 group-hover:scale-150 transition-all duration-300 field-dot" />
+                    <span 
+                      className="group-hover:translate-x-1 transition-transform duration-300 bg-clip-text text-transparent opacity-85 group-hover:opacity-100"
+                      style={gradientTextStyle}
+                    >
+                      {division.name}
+                    </span>
                   </Link>
                 </li>
               ))}
@@ -191,21 +228,32 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h3 className="text-white font-black text-sm uppercase tracking-widest mb-6 relative inline-block">
+            <h3
+              className="font-black text-sm uppercase tracking-widest mb-6 relative inline-block"
+              style={gradientTextStyle}
+            >
               Connect
-              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-white/60 rounded-full" />
+              <div
+                className="absolute -bottom-2 left-0 w-12 h-0.5 rounded-full"
+                style={{ background: brandGradient }}
+              />
             </h3>
             <ul className="space-y-4">
               {contactInfo.map((info, idx) => (
                 <li key={idx}>
                   <a
                     href={info.href || "#"}
-                    className="group flex items-start gap-3 text-white/80 hover:text-white transition-colors duration-300"
+                    className="group flex items-center gap-3 transition-colors duration-300 w-fit"
                   >
-                    <div className="p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 group-hover:bg-white/20 group-hover:border-white/30 transition-all shadow-sm">
-                      <info.icon className="w-4 h-4 text-white transition-transform group-hover:scale-110" />
+                    <div className="p-2 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-sm flex-shrink-0">
+                      <info.icon className="w-4 h-4 text-teal-400 transition-transform group-hover:scale-110" />
                     </div>
-                    <span className="text-sm pt-1.5 font-semibold leading-none">{info.text}</span>
+                    <span 
+                      className="text-sm font-semibold bg-clip-text text-transparent opacity-85 group-hover:opacity-100"
+                      style={gradientTextStyle}
+                    >
+                      {info.text}
+                    </span>
                   </a>
                 </li>
               ))}
@@ -215,10 +263,13 @@ export default function Footer() {
             <div className="mt-8 flex gap-3.5">
               {socialLinks.map((social, idx) => (
                 <a key={idx} href={social.href} className="group relative" aria-label={social.label}>
-                  <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 border border-white/10 group-hover:bg-white group-hover:border-white shadow-sm">
-                    <social.icon className="w-4 h-4 text-white group-hover:text-cyan-600 transition-colors duration-300" />
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 border border-white/10 group-hover:border-white/20 shadow-sm overflow-hidden relative">
+                    <social.icon className="w-4 h-4 text-teal-400 group-hover:text-gray-900 z-10 transition-colors duration-300" />
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: brandGradient }}
+                    />
                   </div>
-                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md bg-white" />
                 </a>
               ))}
             </div>
@@ -226,33 +277,52 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar Segment */}
-        <div className="pt-8 border-t border-white/15">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
             <div className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-white animate-pulse" fill="white" />
-              <p className="text-white/70 text-xs font-bold uppercase tracking-wider">
+              <Heart className="w-4 h-4 animate-pulse text-teal-400" fill="currentColor" />
+              <p 
+                className="text-xs font-bold uppercase tracking-wider bg-clip-text text-transparent"
+                style={gradientTextStyle}
+              >
                 © {currentYear} Elemensis. All rights reserved.
               </p>
             </div>
-            
-            <div className="flex items-center gap-6 text-[11px] font-extrabold uppercase tracking-widest text-white/80">
-              <Link href="/privacy" className="hover:text-white transition-colors relative group">
-                Privacy
-                <span className="absolute bottom-0 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+
+            <div className="flex flex-wrap justify-center items-center gap-6 text-[11px] font-extrabold uppercase tracking-widest">
+              <Link href="/privacy" className="relative group">
+                <span style={gradientTextStyle}>Privacy</span>
+                <span
+                  className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
+                  style={{ background: brandGradient }}
+                />
               </Link>
-              <Link href="/terms" className="hover:text-white transition-colors relative group">
-                Terms
-                <span className="absolute bottom-0 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              <Link href="/terms" className="relative group">
+                <span style={gradientTextStyle}>Terms</span>
+                <span
+                  className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
+                  style={{ background: brandGradient }}
+                />
               </Link>
-              <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 shadow-xs">
-                <Globe className="w-3 h-3 text-white" />
-                <span className="text-white text-[10px] font-bold tracking-widest uppercase">Global Network</span>
+              <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1 rounded-full border border-white/10 shadow-xs">
+                <Globe className="w-3 h-3 text-teal-400" />
+                <span 
+                  className="text-[10px] font-bold tracking-widest uppercase bg-clip-text text-transparent"
+                  style={gradientTextStyle}
+                >
+                  Global Network
+                </span>
               </div>
             </div>
 
             <div className="flex items-center gap-2 opacity-90 bg-white/5 px-3 py-1.5 rounded-xl border border-white/5">
-              <Truck className="w-4 h-4 text-white" />
-              <span className="text-white text-[10px] font-black uppercase tracking-wider">Worldwide Shipping</span>
+              <Truck className="w-4 h-4 text-teal-400" />
+              <span 
+                className="text-[10px] font-black uppercase tracking-wider bg-clip-text text-transparent"
+                style={gradientTextStyle}
+              >
+                Worldwide Shipping
+              </span>
             </div>
           </div>
         </div>
@@ -267,9 +337,13 @@ export default function Footer() {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-2xl bg-white text-cyan-600 shadow-xl border border-white/40 hover:bg-gray-50 transition-all duration-300 flex items-center justify-center group active:scale-95"
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#141414] shadow-2xl border border-white/10 transition-all duration-300 flex items-center justify-center group active:scale-95 overflow-hidden"
           >
-            <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-300 text-gray-900" />
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ background: brandGradient }}
+            />
+            <ArrowUp className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-y-1 transition-transform duration-300 text-white group-hover:text-gray-900 z-10" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -280,8 +354,8 @@ export default function Footer() {
           100% { stroke-dashoffset: -620; }
         }
         @keyframes subtleNodePulse {
-          0%, 100% { transform: scale(1); opacity: 0.4; }
-          50% { transform: scale(1.4); opacity: 0.9; }
+          0%, 100% { transform: scale(1); opacity: 0.3; }
+          50% { transform: scale(1.4); opacity: 0.7; }
         }
         .animate-diagonal-flow-fast {
           animation: diagonalMove 16s linear infinite;
@@ -303,6 +377,9 @@ export default function Footer() {
         .animate-node-pulse-slow {
           animation: subtleNodePulse 9s ease-in-out infinite;
           transform-origin: center;
+        }
+        .group:hover .field-dot {
+          background: ${brandGradient};
         }
       `}</style>
     </footer>

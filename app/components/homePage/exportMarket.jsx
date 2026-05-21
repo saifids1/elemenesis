@@ -530,7 +530,7 @@ export default function ExportMarketPage() {
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
             Expand Your Reach With Elemensis
           </h3>
-          <p className="text-gray-500 max-w-md mx-auto mb-8">
+          <p className="text-white max-w-md mx-auto mb-8">
             Partner with us to access global markets and grow your business
             internationally
           </p>
