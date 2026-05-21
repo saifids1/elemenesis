@@ -171,7 +171,7 @@ export default function GlobalNetworkPage() {
           <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-gray-100/80 group">
             <div className="relative w-full overflow-hidden">
               <Image
-                src="/Images/slider/GlobalNetwork.jfif"
+                src="/Images/GlobalNetwork.webp"
                 alt="Elemensis Global Network Map"
                 width={1200}
                 height={600}
