@@ -9,7 +9,6 @@ import {
   Globe,
   CheckCircle,
   ChevronRight,
-  Sparkles,
   Layers,
 } from "lucide-react";
 import TrendyDivider from "../MagneticDivider";
@@ -43,8 +42,8 @@ export default function MissionVisionPage() {
       icon: Shield,
       glow: "from-orange-500/20 to-amber-500/5",
       solidColor: "text-orange-500",
-      bgLight: "bg-orange-500/5",
-      borderGlow: "group-hover:border-orange-500/30",
+      bgLight: "bg-orange-500/10",
+      cardBgActive: "bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-white border-orange-500/30 shadow-[0_12px_24px_-8px_rgba(249,115,22,0.2)] scale-[1.01]",
     },
     {
       num: "02",
@@ -54,8 +53,8 @@ export default function MissionVisionPage() {
       icon: CheckCircle,
       glow: "from-teal-500/20 to-emerald-500/5",
       solidColor: "text-teal-500",
-      bgLight: "bg-teal-500/5",
-      borderGlow: "group-hover:border-teal-500/30",
+      bgLight: "bg-teal-500/10",
+      cardBgActive: "bg-gradient-to-br from-teal-500/10 via-emerald-500/5 to-white border-teal-500/30 shadow-[0_12px_24px_-8px_rgba(20,184,166,0.2)] scale-[1.01]",
     },
     {
       num: "03",
@@ -65,8 +64,8 @@ export default function MissionVisionPage() {
       icon: Award,
       glow: "from-cyan-500/20 to-blue-500/5",
       solidColor: "text-cyan-500",
-      bgLight: "bg-cyan-500/5",
-      borderGlow: "group-hover:border-cyan-500/30",
+      bgLight: "bg-cyan-500/10",
+      cardBgActive: "bg-gradient-to-br from-cyan-500/10 via-blue-500/5 to-white border-cyan-500/30 shadow-[0_12px_24px_-8px_rgba(6,182,212,0.2)] scale-[1.01]",
     },
     {
       num: "04",
@@ -76,8 +75,8 @@ export default function MissionVisionPage() {
       icon: Globe,
       glow: "from-indigo-500/20 to-purple-500/5",
       solidColor: "text-indigo-500",
-      bgLight: "bg-indigo-500/5",
-      borderGlow: "group-hover:border-indigo-500/30",
+      bgLight: "bg-indigo-500/10",
+      cardBgActive: "bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-white border-indigo-500/30 shadow-[0_12px_24px_-8px_rgba(99,102,241,0.2)] scale-[1.01]",
     },
   ];
 
@@ -92,22 +91,19 @@ export default function MissionVisionPage() {
 
       <div className="container mx-auto px-6 max-w-7xl pt-20 pb-32 relative z-10">
 
-        {/* --- BLOCK 1: BRAND MATCHED HEADER SECTION (MISSION & VISION) --- */}
+        {/* --- BLOCK 1: BRAND MATCHED HEADER SECTION --- */}
         <div className="text-center mb-24 flex flex-col items-center">
-          {/* Custom Brand Badge with Glow */}
           <div className="mb-6">
             <span className="px-7 py-2.5 rounded-full bg-[#00CCAA] text-white text-sm font-bold shadow-[0_8px_20px_rgba(0,204,170,0.4)] tracking-wide">
               Who We Are
             </span>
           </div>
 
-          {/* Core Corporate Heading Styles */}
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-[#111827] tracking-tight leading-[1.15] max-w-4xl mx-auto">
             Unveiling <span className="text-[#00CCAA]">Elemensis</span> <br />
             <span className="font-bold">Our Mission, Vision & Operations</span>
           </h2>
 
-          {/* Custom Brand Gradient Underline */}
           <div className="w-24 h-[3px] bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] mx-auto mt-6 rounded-full" />
 
           <p className="text-slate-500 font-medium text-base md:text-lg max-w-3xl mx-auto mt-8 leading-relaxed">
@@ -218,7 +214,6 @@ export default function MissionVisionPage() {
         {/* --- BLOCK 3: BRAND MATCHED VALUE ECOSYSTEM SECTION --- */}
         <div className="mb-15 mt-48 px-4 max-w-7xl mx-auto">
 
-          {/* Custom Matches Brand Headline Pattern For Values */}
           <div className="text-center mb-16 flex flex-col items-center">
             <div className="mb-6">
               <span className="px-7 py-2.5 rounded-full bg-[#00CCAA] text-white text-sm font-bold shadow-[0_8px_20px_rgba(0,204,170,0.4)] tracking-wide">
@@ -230,7 +225,6 @@ export default function MissionVisionPage() {
               Our Values <span className="text-[#00CCAA]">Ecosystem</span>
             </h2>
 
-            {/* Custom Matching Underline */}
             <div className="w-24 h-[3px] bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] mx-auto mt-6 rounded-full" />
           </div>
 
@@ -242,13 +236,15 @@ export default function MissionVisionPage() {
                 <div
                   key={idx}
                   onClick={() => setActiveValue(idx)}
-                  className={`group relative p-6 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-5 ${activeValue === idx
-                      ? `${val.cardBgActive} scale-[1.01]`
-                      : "bg-gradient-to-br from-white/60 to-slate-50/40 border-slate-100 hover:from-white hover:to-slate-50 hover:border-slate-200/80 hover:shadow-md"
-                    }`}
+                  className={`group relative p-6 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-5 ${
+                    activeValue === idx
+                      ? val.cardBgActive
+                      : "bg-gradient-to-br from-white/60 to-slate-50/40 border-slate-100 shadow-md hover:from-white hover:to-slate-50 hover:border-slate-200/80 hover:shadow-lg"
+                  }`}
                 >
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-105 ${activeValue === idx ? val.bgLight : "bg-slate-100/70 text-slate-400"
-                    }`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-105 ${
+                    activeValue === idx ? val.bgLight : "bg-slate-100/70 text-slate-400"
+                  }`}>
                     <val.icon className={`w-5 h-5 ${activeValue === idx ? val.solidColor : "text-slate-400 group-hover:text-slate-600 transition-colors"}`} />
                   </div>
                   <div className="flex-1">
@@ -256,7 +252,7 @@ export default function MissionVisionPage() {
                       <h4 className="text-base font-bold text-[#111827] tracking-tight">{val.title}</h4>
                       <span className={`text-xs font-mono font-bold transition-colors ${activeValue === idx ? val.solidColor : "text-slate-300 group-hover:text-slate-400"}`}>{val.num}</span>
                     </div>
-                    <span className="text-xs font-medium text-slate-400">{val.tagline}</span>
+                    <span className="text-xs font-medium text-slate-400"> {val.tagline}</span>
                   </div>
                 </div>
               ))}
@@ -300,33 +296,15 @@ export default function MissionVisionPage() {
         </div>
 
         {/* --- BLOCK 4: FLOATING CONCENTRIC GEOMETRY FRAME --- */}
-        {/* Increased vertical padding (py-44) to ensure the 650px circles are completely uncut and visible */}
         <div className="mt-20 relative flex flex-col items-center justify-center py-44 px-6 overflow-visible">
-
-          {/* ================= BACKGROUND ANIMATED RINGS & COLOR WAVES ================= */}
-
-          {/* 1. Outer Continuously Spinning Teal Dotted Ring (Full Circle) */}
           <div className="absolute w-[660px] h-[660px] rounded-full border border-dotted border-[#00CCAA]/40 pointer-events-none animate-[spin_60s_linear_infinite]" />
-
-          {/* 2. Mid-Outer Teal Dotted Ring */}
           <div className="absolute w-[560px] h-[560px] rounded-full border border-dotted border-[#00CCAA]/30 pointer-events-none animate-[spin_45s_linear_infinite_reverse]" />
-
-          {/* 3. Mid-Inner Teal Dotted Ring */}
           <div className="absolute w-[460px] h-[460px] rounded-full border border-dotted border-[#00CCAA]/50 pointer-events-none animate-[spin_30s_linear_infinite]" />
-
-          {/* 4. Inner Fine Dotted Ring */}
           <div className="absolute w-[360px] h-[360px] rounded-full border border-dotted border-[#00CCAA]/40 pointer-events-none animate-[spin_20s_linear_infinite_reverse]" />
-
-          {/* 5. Core Solid White Background Circle to hold shadow depth */}
           <div className="absolute w-[280px] h-[280px] rounded-full bg-white border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] pointer-events-none" />
-
-          {/* 6. Glowing Vibrant Color Waves (Pulse & Aura Expansion) */}
           <div className="absolute w-[380px] h-[380px] bg-gradient-to-tr from-[#00CCAA]/20 via-[#00BCD2]/15 to-transparent rounded-full filter blur-2xl opacity-80 animate-pulse pointer-events-none" />
           <div className="absolute w-[500px] h-[500px] bg-[#00CCAA]/5 rounded-full filter blur-3xl opacity-40 animate-[ping_5s_ease-in-out_infinite] pointer-events-none" />
 
-          {/* =========================================================================== */}
-
-          {/* Floating Minimalist Metric Tags on Left and Right */}
           <div className="hidden lg:flex absolute left-12 xl:left-32 top-1/2 -translate-y-1/2 items-center gap-4 bg-white/90 backdrop-blur-md border border-slate-100 p-5 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.02)] z-10">
             <div className="w-2.5 h-2.5 rounded-full bg-[#00CCAA] relative">
               <div className="absolute inset-0 rounded-full bg-[#00CCAA] animate-ping opacity-75" />
@@ -347,9 +325,7 @@ export default function MissionVisionPage() {
             </div>
           </div>
 
-          {/* Core Sign-off Content Elements Layered Smoothly in Center */}
           <div className="relative z-10 text-center max-w-lg mx-auto flex flex-col items-center">
-
             <span className="text-[10px] font-mono font-black uppercase tracking-[0.25em] text-[#00A388] mb-5 bg-[#00CCAA]/10 px-4 py-1.5 rounded-full border border-[#00CCAA]/20 backdrop-blur-sm">
               Ecosystem Launchpad
             </span>
@@ -359,9 +335,7 @@ export default function MissionVisionPage() {
               Your Global Footprint?
             </h3>
 
-            {/* The Image-Matched Core Action Pill */}
             <div className="relative group">
-              {/* Vibrant Expanding Focus Ring behind the button on hover */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] rounded-full blur-xl opacity-40 group-hover:opacity-70 group-hover:scale-110 transition-all duration-500" />
 
               <button className="relative inline-flex items-center gap-3 px-12 py-4.5 bg-gradient-to-r from-[#00CCAA] via-[#00BCD2] to-[#00B9CC] text-white rounded-full text-lg font-bold shadow-[0_12px_35px_rgba(0,204,170,0.3)] transform group-hover:-translate-y-0.5 transition-all duration-300">
@@ -370,11 +344,9 @@ export default function MissionVisionPage() {
               </button>
             </div>
 
-            {/* Image Text Content Match */}
             <p className="text-[#9CA3AF] text-sm font-medium tracking-wide mt-10">
               Join our growing family of satisfied clients worldwide
             </p>
-
           </div>
         </div>
 
