@@ -391,8 +391,7 @@ export default function DivisionsPage() {
             Partner with us for excellence across all divisions
           </p>
         </div>
-      </div>
-
+      </div> 
       <style jsx>{`
         @keyframes blob {
           0% {

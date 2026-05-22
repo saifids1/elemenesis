@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function TopNavigation() {
   const [activeMenu, setActiveMenu] = useState("home");
@@ -19,11 +20,11 @@ export default function TopNavigation() {
   }, []);
 
   const menuItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "services", label: "Services" },
-    { id: "solutions", label: "Solutions" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: "Home", link: "/" },
+    { id: "about", label: "About", link: "/about" },
+    { id: "services", label: "Services", link: "/services" },
+    { id: "solutions", label: "Solutions", link: "/solutions" },
+    { id: "contact", label: "Contact", link: "/contact" },
   ];
 
   return (
@@ -81,8 +82,9 @@ export default function TopNavigation() {
             }`}
           >
             {menuItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
+                href={item.link}
                 onMouseEnter={() => setHoveredMenu(item.id)}
                 onMouseLeave={() => setHoveredMenu(null)}
                 onClick={() => setActiveMenu(item.id)}
@@ -117,7 +119,7 @@ export default function TopNavigation() {
                 </AnimatePresence>
 
                 <span className="relative z-10">{item.label}</span>
-              </button>
+              </Link>
             ))}
           </div>
 
