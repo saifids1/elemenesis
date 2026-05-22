@@ -142,7 +142,7 @@ export default function DivisionsPage() {
           />
 
           <p
-            className={`max-w-2xl mx-auto mt-6 text-gray-500 text-lg transition-all duration-700 delay-400 ${
+            className={`max-w-2xl mx-auto mt-6 text-white text-lg transition-all duration-700 delay-400 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
@@ -387,7 +387,7 @@ export default function DivisionsPage() {
             <span>Explore All Divisions</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-          <p className="text-xs text-gray-400 mt-4">
+          <p className="text-xs text-white mt-4">
             Partner with us for excellence across all divisions
           </p>
         </div>
