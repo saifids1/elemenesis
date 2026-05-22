@@ -121,12 +121,12 @@ export default function Footer() {
                 height={47}
                 className="w-[60px] h-[35px] md:w-[80px] md:h-[47px] object-contain transform transition-transform duration-300 group-hover:scale-110"
               />
-              <span
-                className="text-xl md:text-2xl font-black tracking-[0.25em] drop-shadow-sm select-none"
-                style={gradientTextStyle}
-              >
-                ELEMENSIS
-              </span>
+             <span
+  className="text-[18px] font-black tracking-[3px] drop-shadow-sm select-none"
+  style={gradientTextStyle}
+>
+  ELEMENSIS
+</span>
             </div>
 
             <p 
