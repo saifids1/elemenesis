@@ -16,14 +16,16 @@ const floatAnimation = (duration: number, delay: number, xDelta: number, yDelta:
       duration: duration,
       delay: delay,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: "easeInOut" as any,
     },
   },
 });
 
+const cubicBezierEase = [0.16, 1, 0.3, 1] as any;
+
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: cubicBezierEase } },
 };
 
 const staggerContainer = {
@@ -329,7 +331,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: cubicBezierEase }}
             className="w-full rounded-[32px] overflow-hidden border border-neutral-200/60 bg-gradient-to-br from-white to-[#FAF8F5] p-2.5 shadow-[0_30px_60px_-15px_rgba(13,35,29,0.05),0_10px_20px_-10px_rgba(13,35,29,0.02)] h-[480px] relative"
           >
             <iframe 
