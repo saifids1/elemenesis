@@ -157,64 +157,61 @@ export default function AboutSectionHomepage() {
           }`}
         >
           {quickStats.map((stat, idx) => (
-           <div
-  className="group relative cursor-pointer"
-  key={idx}
->
-  {/* Background Gradient */}
-  <div
-    className="absolute inset-0 rounded-[28px] opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-700"
-    style={{
-      background: `radial-gradient(circle at top right, ${stat.color}55, transparent 70%)`,
-    }}
-  />
+            <div className="group relative cursor-pointer" key={idx}>
+              {/* Background Gradient */}
+              <div
+                className="absolute inset-0 rounded-[28px] opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-700"
+                style={{
+                  background: `radial-gradient(circle at top right, ${stat.color}55, transparent 70%)`,
+                }}
+              />
 
-  {/* Main Card */}
-  <div
-    className="relative overflow-hidden rounded-[28px] p-7 bg-white border border-gray-100 shadow-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl"
-    style={{
-      background: `linear-gradient(145deg, #ffffff, ${stat.color}08)`,
-    }}
-  >
-    {/* Decorative Gradient Blob */}
-    <div
-      className="absolute -top-16 -right-16 w-40 h-40 rounded-full blur-3xl opacity-20"
-      style={{
-        background: stat.color,
-      }}
-    />
+              {/* Main Card */}
+              <div
+                className="relative overflow-hidden rounded-[28px] p-7 bg-white border border-gray-100 shadow-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl"
+                style={{
+                  background: `linear-gradient(145deg, #ffffff, ${stat.color}08)`,
+                }}
+              >
+                {/* Decorative Gradient Blob */}
+                <div
+                  className="absolute -top-16 -right-16 w-40 h-40 rounded-full blur-3xl opacity-20"
+                  style={{
+                    background: stat.color,
+                  }}
+                />
 
-    {/* Icon Box */}
-    <div
-      className="relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
-      style={{
-        background: `linear-gradient(135deg, ${stat.color}, ${stat.color}bb)`,
-        boxShadow: `0 10px 30px ${stat.color}40`,
-      }}
-    >
-      <stat.icon className="w-8 h-8 text-white" />
-    </div>
+                {/* Icon Box */}
+                <div
+                  className="relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                  style={{
+                    background: `linear-gradient(135deg, ${stat.color}, ${stat.color}bb)`,
+                    boxShadow: `0 10px 30px ${stat.color}40`,
+                  }}
+                >
+                  <stat.icon className="w-8 h-8 text-white" />
+                </div>
 
-    {/* Content */}
-    <div className="relative z-10">
-      <h2 className="text-4xl font-black text-gray-900 leading-none mb-2">
-        {stat.value}
-      </h2>
+                {/* Content */}
+                <div className="relative z-10">
+                  <h2 className="text-4xl font-black text-gray-900 leading-none mb-2">
+                    {stat.value}
+                  </h2>
 
-      <p className="text-sm font-semibold tracking-widest uppercase text-gray-500">
-        {stat.label}
-      </p>
-    </div>
+                  <p className="text-sm font-semibold tracking-widest uppercase text-gray-500">
+                    {stat.label}
+                  </p>
+                </div>
 
-    {/* Hover Line */}
-    <div
-      className="absolute bottom-0 left-0 h-1 w-0 rounded-full transition-all duration-500 group-hover:w-full"
-      style={{
-        background: `linear-gradient(to right, ${stat.color}, transparent)`,
-      }}
-    />
-  </div>
-</div>
+                {/* Hover Line */}
+                <div
+                  className="absolute bottom-0 left-0 h-1 w-0 rounded-full transition-all duration-500 group-hover:w-full"
+                  style={{
+                    background: `linear-gradient(to right, ${stat.color}, transparent)`,
+                  }}
+                />
+              </div>
+            </div>
           ))}
         </div>
 

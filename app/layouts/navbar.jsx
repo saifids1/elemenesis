@@ -1,10 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function TopNavigation() {
-  const [activeMenu, setActiveMenu] = useState("home");
+  // const [activeMenu, setActiveMenu] = useState("home");
+  const pathname = usePathname();
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [scrolled, setScrolled] = useState(false);
 
@@ -19,11 +22,11 @@ export default function TopNavigation() {
   }, []);
 
   const menuItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "services", label: "Services" },
-    { id: "solutions", label: "Solutions" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: "Home", link: "/" },
+    { id: "about", label: "About", link: "/about-us" },
+    { id: "why-us", label: "Why Us", link: "/why-us" },
+    { id: "solutions", label: "Solutions", link: "/solutions" },
+    { id: "contact", label: "Contact", link: "/contact-us" },
   ];
 
   return (
@@ -59,13 +62,13 @@ export default function TopNavigation() {
                   </div>
                   <div className="flex items-center">
                     <Image
-                    src="/Images/slider/elemenisis--E-logo.png"
-                    height={80}
-                    width={80}
-                    alt="Logo"
-                    className="relative z-10 group-hover:animate-skew brightness-150 contrast-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
-                  />
-                  <span>ELEMENSIS</span>
+                      src="/Images/slider/elemenisis--E-logo.png"
+                      height={80}
+                      width={80}
+                      alt="Logo"
+                      className="relative z-10 group-hover:animate-skew brightness-150 contrast-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                    />
+                    <span>ELEMENSIS</span>
                   </div>
                 </motion.span>
               )}
@@ -81,43 +84,42 @@ export default function TopNavigation() {
             }`}
           >
             {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onMouseEnter={() => setHoveredMenu(item.id)}
-                onMouseLeave={() => setHoveredMenu(null)}
-                onClick={() => setActiveMenu(item.id)}
-                className={`relative px-5 py-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
-                  activeMenu === item.id
-                    ? "text-white"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                {activeMenu === item.id && (
-                  <motion.div
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-md"
-                    style={{
-                      background: gradient,
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                    }}
-                    transition={{ type: "spring", bounce: 0.25, duration: 0.6 }}
-                  />
-                )}
-
-                <AnimatePresence>
-                  {hoveredMenu === item.id && activeMenu !== item.id && (
+              <Link key={item.id} href={item.link}>
+                <button
+                  onMouseEnter={() => setHoveredMenu(item.id)}
+                  onMouseLeave={() => setHoveredMenu(null)}
+                  className={`relative px-5 py-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer ${
+                    pathname === item.link
+                      ? "text-white"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  {pathname === item.link && (
                     <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0 }}
-                      className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
-                      style={{ background: gradient }}
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-md"
+                      style={{
+                        background: gradient,
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                      }}
                     />
                   )}
-                </AnimatePresence>
 
-                <span className="relative z-10">{item.label}</span>
-              </button>
+                  <AnimatePresence>
+                    {hoveredMenu === item.id && pathname !== item.link && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0 }}
+                        className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
+                        style={{ background: gradient }}
+                      />
+                    )}
+                  </AnimatePresence>
+
+                  <span className="relative z-10">{item.label}</span>
+                </button>
+              </Link>
             ))}
           </div>
 
