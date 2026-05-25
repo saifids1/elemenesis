@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Compass, Globe, ShieldCheck, Star, Users, Leaf, ArrowRight } from "lucide-react";
 import Footer from "../layouts/footer";
 import Navbar from "../layouts/navbar";
-import Image from "next/image";
 
 
 // Animation Variants
@@ -29,24 +28,6 @@ export default function AboutPage() {
     <>
       <Navbar />
       <div className="min-h-screen bg-[#F9F6F0] text-[#1E1E1E] font-sans antialiased selection:bg-[#00BCD4] selection:text-white">
-
-        <div className="absolute top-10 left-28 z-50 group">
-          {/* Glitch Layers */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className="absolute inset-0 translate-x-1 animate-pulse bg-red-500/20 mix-blend-screen" />
-            <div className="absolute inset-0 -translate-x-1 animate-pulse bg-blue-500/20 mix-blend-screen" />
-          </div>
-
-          <div className="flex items-center">
-            <Image
-              src="/Images/slider/elemenisis--E-logo.png"
-              height={80}
-              width={80}
-              alt="Logo"
-            />
-          <span className="text-white font-bold tracking-widest">ELEMENSIS</span>
-          </div>
-        </div>
 
         {/* 1. CUSTOM BREADCRUMB & HERO SECTION */}
         <section className="relative h-[65vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">

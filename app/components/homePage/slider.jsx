@@ -94,8 +94,8 @@ export default function HeroSlider() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      <div className="absolute top-10 left-28 z-50 group">
-                {/* Glitch Layers */}
+      {/* <div className="absolute top-10 left-28 z-50 group">
+              
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="absolute inset-0 translate-x-1 animate-pulse bg-red-500/20 mix-blend-screen" />
                   <div className="absolute inset-0 -translate-x-1 animate-pulse bg-blue-500/20 mix-blend-screen" />
@@ -110,7 +110,7 @@ export default function HeroSlider() {
                   />
                 <span className="text-white font-bold tracking-widest">ELEMENSIS</span>
                 </div>
-              </div>
+              </div> */}
 
       {/* Background Image - Brighter by removing dark overlays */}
       <div className="absolute inset-0 w-full h-full">

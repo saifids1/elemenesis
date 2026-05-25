@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Leaf, MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import Footer from "../layouts/footer";
 import Navbar from "../layouts/navbar";
-import Image from "next/image";
 
 // Framer Motion Variant Engine for Fluid Floating Ecosystem
 const floatAnimation = (duration: number, delay: number, xDelta: number, yDelta: number) => ({
@@ -143,24 +142,6 @@ export default function ContactPage() {
           <div className="absolute bottom-[5%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-br from-[#D4AF37]/10 to-[#00cba9]/5 blur-[140px] animate-[pulse_12s_ease-in-out_infinite_1s]" />
           <div className="absolute top-[30%] right-[15%] w-[40vw] h-[40vw] rounded-full bg-[#00cba9]/6 blur-[100px] animate-[pulse_15s_ease-in-out_infinite_2s]" />
         </div>
-
-        <div className="absolute top-10 left-28 z-50 group">
-                  {/* Glitch Layers */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute inset-0 translate-x-1 animate-pulse bg-red-500/20 mix-blend-screen" />
-                    <div className="absolute inset-0 -translate-x-1 animate-pulse bg-blue-500/20 mix-blend-screen" />
-                  </div>
-        
-                  <div className="flex items-center">
-                    <Image
-                      src="/Images/slider/elemenisis--E-logo.png"
-                      height={80}
-                      width={80}
-                      alt="Logo"
-                    />
-                  <span className="text-white font-bold tracking-widest">ELEMENSIS</span>
-                  </div>
-                </div>
 
         {/* 1. CUSTOM BREADCRUMB & HERO SECTION */}
         <section className="relative h-[55vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6 z-10 shadow-[0_20px_40px_rgba(13,35,29,0.05)]">

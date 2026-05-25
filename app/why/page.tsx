@@ -9,7 +9,6 @@ import {
 
 import Footer from "../layouts/footer";
 import Navbar from "../layouts/navbar";
-import Image from "next/image";
 
 // mock Framer Motion fallback primitives configured with high-performance CSS sequence matrices
 const motion = {
@@ -169,18 +168,6 @@ export default function WhyElemensisPage() {
         {/* PULSATING SHIMMERING GLOW FIELD */}
         <div className="absolute top-1/4 right-1/4 w-[800px] h-[800px] bg-gradient-to-tr from-[#00CC99]/10 to-transparent rounded-full pointer-events-none mix-blend-multiply animate-shimmer" />
         
-        <div className="absolute top-10 left-28 z-50 group">
-          <div className="flex items-center">
-            <Image
-              src="/Images/slider/elemenisis--E-logo.png"
-              height={80}
-              width={80}
-              alt="Logo"
-            />
-            <span className="text-white font-bold tracking-widest">ELEMENSIS</span>
-          </div>
-        </div>
-
         {/* 1. CUSTOM BREADCRUMB & HERO SECTION */}
         <section className="relative h-[65vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
           <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity transform scale-105 animate-[pulse_8s_ease-in-out_infinite]">
