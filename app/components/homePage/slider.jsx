@@ -94,21 +94,23 @@ export default function HeroSlider() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      <div className="absolute top-8 left-28 z-50 group">
-        {/* Glitch Layers */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="absolute inset-0 translate-x-1 animate-pulse bg-red-500/20 mix-blend-screen" />
-          <div className="absolute inset-0 -translate-x-1 animate-pulse bg-blue-500/20 mix-blend-screen" />
-        </div>
-
-        <Image
-          src="/Images/slider/elemenisis-logo-1.png"
-          height={100}
-          width={100}
-          alt="Logo"
-          className="relative z-10 group-hover:animate-skew brightness-150 contrast-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
-        />
-      </div>
+      <div className="absolute top-10 left-28 z-50 group">
+                {/* Glitch Layers */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute inset-0 translate-x-1 animate-pulse bg-red-500/20 mix-blend-screen" />
+                  <div className="absolute inset-0 -translate-x-1 animate-pulse bg-blue-500/20 mix-blend-screen" />
+                </div>
+      
+                <div className="flex items-center">
+                  <Image
+                    src="/Images/slider/elemenisis--E-logo.png"
+                    height={80}
+                    width={80}
+                    alt="Logo"
+                  />
+                <span className="text-white font-bold tracking-widest">ELEMENSIS</span>
+                </div>
+              </div>
 
       {/* Background Image - Brighter by removing dark overlays */}
       <div className="absolute inset-0 w-full h-full">
