@@ -52,7 +52,7 @@ export default function TopNavigation() {
       label: "Divisions",
       link: "#",
       dropdown: [
-        { label: "Food Divisions", link: "/divisions/food" },
+        { label: "Food ", link: "/divisions/food" },
         { label: "Chemicals", link: "/divisions/chemicals" },
         { label: "Ecommerce", link: "/divisions/ecommerce" },
       ],
@@ -146,13 +146,13 @@ export default function TopNavigation() {
             ))}
           </div>
 
-          {/* CTA Button - Always visible now */}
-          <button
-            className="hidden md:block text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-xl text-white transition-transform hover:scale-105 duration-200"
-            style={{ background: gradient }}
-          >
-            Get in touch
-          </button>
+        <a
+  href="/contact"
+  className="hidden md:inline-flex text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-xl text-white transition-transform hover:scale-105 duration-200"
+  style={{ background: gradient }}
+>
+  Get in touch
+</a>
 
           {/* MOBILE TOGGLE */}
           <button className="md:hidden p-2 text-slate-900">

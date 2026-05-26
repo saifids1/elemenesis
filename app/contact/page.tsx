@@ -146,17 +146,16 @@ export default function ContactPage() {
         </div>
 
         {/* 1. CUSTOM BREADCRUMB & HERO SECTION */}
-        <section className="relative h-[55vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6 z-10 shadow-[0_20px_40px_rgba(13,35,29,0.05)]">
+           <section className="relative h-[65vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
           {/* Subtle Background Texture Layer */}
-          <div className="absolute inset-0 z-0 opacity-15 mix-blend-luminosity transform scale-105 pointer-events-none">
-            <div 
+          <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity transform scale-105 animate-[pulse_8s_ease-in-out_infinite]">
+            <div
               className="w-full h-full bg-cover bg-center"
-              style={{ 
-                backgroundImage: `url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop')` 
+              style={{
+                backgroundImage: `url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop')`,
               }}
             />
           </div>
-          
           <div className="absolute inset-0 bg-gradient-to-t from-[#0D231D] via-transparent to-transparent z-10" />
       
           {/* Interactive Hero Content */}
@@ -168,19 +167,18 @@ export default function ContactPage() {
           >
             {/* Custom Floating Breadcrumb */}
             <motion.nav variants={fadeIn} className="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 mb-8 text-sm tracking-widest text-[#D4AF37] uppercase shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
-              <span>Home</span>
+              <span className="text-[#00CCAA]">Home</span>
               <span className="text-white/30">•</span>
-              <Leaf className="w-3.5 h-3.5 text-[#00cba9] animate-[spin_16s_linear_infinite]" />
+              <Leaf className="w-3.5 h-3.5 text-[#00cba9] " />
               <span className="text-white/30">•</span>
               <span className="text-white">Contact Us</span>
             </motion.nav>
       
             <motion.h1 
-              variants={fadeIn}
-              className="text-5xl md:text-6xl font-serif font-light tracking-tight text-[#ECE9E2] leading-tight"
-              style={{ fontFamily: "Cormorant Garamond, serif" }}
+               variants={fadeIn}
+              className="text-5xl md:text-7xl  font-light tracking-tight text-[#ECE9E2] leading-tight"
             >
-              Contact <span className="italic font-normal text-[#D4AF37]">Elemensis</span>
+              Contact{" "}<span className=" bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">Elemensis</span>
             </motion.h1>
           </motion.div>
         </section>
@@ -202,12 +200,19 @@ export default function ContactPage() {
               <div className="space-y-10">
                 <div>
                   <div className="flex items-center space-x-2 text-[#00cba9] mb-4">
-                    <span className="h-[1px] w-8 bg-[#00cba9]"></span>
-                    <span className="text-xs uppercase tracking-widest font-bold text-[#00cba9]">Connect</span>
+                    {/* <span className="h-[1px] w-8 bg-[#00cba9]"></span> */}
+              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white text-sm font-bold shadow-lg shadow-teal-200/50">Connect</span>
                   </div>
-                  <h2 className="text-4xl font-serif font-medium text-[#0D231D] tracking-tight leading-tight">
+                  
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 mt-5 text-gray-900 transition-all duration-700 delay-200 ">
+                     Let's start a <br />
+                <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+                  conversation</span>
+              </h2>
+
+                  {/* <h2 className="text-4xl font-serif font-medium text-[#0D231D] tracking-tight leading-tight">
                     Let's start a <br /><span className="italic text-[#00cba9]">conversation</span>
-                  </h2>
+                  </h2> */}
                 </div>
                 
                 <div className="space-y-6">
