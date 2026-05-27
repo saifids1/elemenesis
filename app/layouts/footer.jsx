@@ -69,7 +69,7 @@ export default function Footer() {
 
   return (
     <footer className="relative text-gray-300 overflow-hidden bg-[#0a0a0a] border-t border-white/5">
-      <TrendyDivider />
+      {/* <TrendyDivider /> */}
 
       {/* Premium Constellation Grid SVG Background Animation Layer */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.15] overflow-hidden mix-blend-screen">

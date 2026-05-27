@@ -1,51 +1,75 @@
 "use client";
+import { Sparkles } from "lucide-react";
 
 const SidebarContent = ({ activeItem }) => {
+  const isShortText = (text) => text.trim().split(/\s+/).length <= 10;
+
   return (
-    <div className="rounded-3xl border border-white/70 bg-white/80 p-8 pt-0 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl">
-      <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#0D231D]">
-        OUR{" "}
-        <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
-          PRODUCTS
-        </span>
-      </h2>
+    <div className="rounded-3xl bg-white shadow-xl">
+     <div className="px-8 pt-6 pb-4">
+  <div className="flex items-center gap-4">
+    
+    <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00CCAA]/15 to-[#00B9CC]/15 text-[#00A88C] shadow-sm">
+      <activeItem.icon size={28} strokeWidth={2.2} />
+    </span>
 
-      <div className="h-[2px] w-45 bg-gradient-to-r from-[#00CCAA] to-[#00B9CC]" />
-
-      <h3 className="mt-8 text-3xl font-semibold text-[#0D231D]">
+    <div>
+      <h3 className="text-3xl md:text-3xl font-semibold tracking-wide text-[#0D231D]">
         {activeItem.name}
       </h3>
 
-      {Array.isArray(activeItem.content) ? (
-        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {activeItem.content.map((section, index) => (
-            <div
-              key={index}
-              className="rounded-2xl border border-[#00CCAA]/15 bg-white/70 p-5 shadow-sm"
-            >
-              <h4 className="mb-3 text-lg font-semibold text-[#0D231D]">
-                {section.title}
-              </h4>
+      <div className="mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-[#00CCAA] via-[#00B9CC] to-[#0099FF]" />
+    </div>
 
-              <ul className="space-y-2">
-                {section.items.map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex gap-2 text-sm leading-6 text-gray-600"
+  </div>
+</div>
+
+      <div className="rounded-3xl px-5 pt-1 pb-10">
+        {Array.isArray(activeItem.content) ? (
+          <div className="grid gap-4 md:grid-cols-2">
+            {activeItem.content.map((section, index) => {
+              const allShort = section.items.every(isShortText);
+
+              return (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-gray-100 bg-[#F8FFFD] p-4"
+                >
+                <div className="mb-3 flex items-center gap-2">
+  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00CCAA]/10 text-[#00A88C]">
+    <Sparkles size={16} />
+  </span>
+
+  <h4 className="text-base font-medium leading-5 text-[#0D231D]">
+    {section.title}
+  </h4>
+</div>
+
+                  <ul
+                    className={`grid gap-x-4 gap-y-2 ${
+                      allShort ? "grid-cols-2" : "grid-cols-1"
+                    }`}
                   >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p className="mt-4 max-w-3xl text-base leading-7 text-gray-600">
-          {activeItem.content}
-        </p>
-      )}
+                    {section.items.map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex gap-2 text-sm leading-6 text-gray-600"
+                      >
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00CCAA]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="text-sm leading-7 text-gray-600">
+            {activeItem.content}
+          </p>
+        )}
+      </div>
     </div>
   );
 };

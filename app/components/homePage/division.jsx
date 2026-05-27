@@ -303,7 +303,7 @@ export default function DivisionsPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> 
           ))}
         </div>
 

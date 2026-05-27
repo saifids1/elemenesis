@@ -256,9 +256,8 @@ export default function WhyElemensisPage() {
         }}
       />
 
+      <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-[#FAFBFA] via-[#FCFDFD] to-[#F5F8F7] text-[#1E2925] font-sans antialiased selection:bg-[#00CC99]/20 selection:text-[#0D231D] overflow-hidden relative">
-        <Navbar />
-
         {/* Background Mesh */}
         <div
           className="absolute inset-0 z-0 opacity-[0.12] pointer-events-none mix-blend-overlay"
@@ -362,13 +361,12 @@ export default function WhyElemensisPage() {
           </div>
         </section>
 
-       {/* 2 Section Time line Cards*/ }
-        <section className="relative z-20 pb-5 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-
+        {/* 2 Section Time line Cards*/}
+        <section className="relative z-20 pb-5 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
           <div className="fixed inset-0 pointer-events-none z-0 opacity-30">
-            <div className="absolute top-20 left-[5%] w-96 h-96 rounded-full bg-gradient-to-r from-[#00CC99]/10 to-[#D4AF37]/5 blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 right-[5%] w-80 h-80 rounded-full bg-gradient-to-r from-[#00B9CC]/10 to-[#00CC99]/5 blur-3xl animate-float-medium" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#D4AF37]/5 blur-3xl animate-float-fast" />
+            <div className="absolute top-20 left-[5%] w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-r from-[#00CC99]/10 to-[#D4AF37]/5 blur-3xl animate-float-slow" />
+            <div className="absolute bottom-20 right-[5%] w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-[#00B9CC]/10 to-[#00CC99]/5 blur-3xl animate-float-medium" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] rounded-full bg-[#D4AF37]/5 blur-3xl animate-float-fast" />
 
             {/* Lofi Geometric Patterns */}
             <svg
@@ -418,8 +416,11 @@ export default function WhyElemensisPage() {
             <div className="absolute top-[30%] left-[75%] w-2.5 h-2.5 rounded-full bg-[#00CC99] animate-orb-4" />
           </div>
 
-          {/* Main Container - Expanded to 1400px */}
-          <div className="relative mx-auto" style={{ maxWidth: "1400px" }}>
+          {/* Main Container - Responsive max-width */}
+          <div
+            className="relative mx-auto w-full"
+            style={{ maxWidth: "1400px" }}
+          >
             <div className="relative border-t border-[#00CC99]/50 mb-15" />
 
             {/* Timeline Line */}
@@ -434,23 +435,23 @@ export default function WhyElemensisPage() {
             </div>
 
             <div className="space-y-8 relative pb-5">
-              {/* Pillar 01: INNOVATION with Hover Details */}
+              {/* Pillar 01: INNOVATION */}
               <div className="relative flex flex-col md:flex-row items-center md:justify-start group">
                 <div className="absolute left-4 md:left-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-[#00CC99] shadow-[0_0_10px_rgba(0,204,153,0.4)] transform -translate-x-1.5 md:-translate-x-1/2 top-6 z-30 group-hover:scale-150 transition-transform duration-300" />
 
-                {/* Card Pillar */}
-                <div className=" relative left-[15%] w-full md:w-[30%] ml-8 md:ml-0 uiverse-card-root p-6 border border-black/[0.03] z-20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group/pillar">
+                {/* Card - responsive positioning */}
+                <div className="relative md:left-[18%] lg:left-[20%] xl:left-[1%] w-full md:w-[40%] ml-8 md:ml-0 uiverse-card-root p-5 sm:p-6 border border-black/[0.03] z-20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group/pillar">
                   <div className="uiverse-bg-layer profile-innovation" />
-                  <div className="uiverse-content-wrap space-y-4">
+                  <div className="uiverse-content-wrap space-y-3 sm:space-y-4">
                     <div className="flex justify-between items-center">
-                      <div className="w-10 h-10 rounded-xl bg-[#00CC99]/5 border border-black/[0.03] flex items-center justify-center text-[#008866] icon-box-custom transition-all duration-400 group-hover/pillar:scale-110 group-hover/pillar:bg-[#00CC99]/10">
-                        <Compass className="w-4.5 h-4.5 stroke-[1.25]" />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#00CC99]/5 border border-black/[0.03] flex items-center justify-center text-[#008866] icon-box-custom transition-all duration-400 group-hover/pillar:scale-110 group-hover/pillar:bg-[#00CC99]/10">
+                        <Compass className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.25]" />
                       </div>
                       <span className="font-mono text-[9px] tracking-widest text-black/40 uppercase bg-black/[0.03] px-2 py-0.5 rounded">
                         Pillar 01
                       </span>
                     </div>
-                    <div className="w-full h-32 rounded-xl overflow-hidden relative border border-black/[0.03]">
+                    <div className="w-full h-28 sm:h-32 rounded-xl overflow-hidden relative border border-black/[0.03]">
                       <img
                         src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop"
                         alt="Innovation"
@@ -458,11 +459,11 @@ export default function WhyElemensisPage() {
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium tracking-wide flex items-center gap-1.5">
+                      <h3 className="text-base sm:text-lg font-medium tracking-wide flex items-center gap-1.5">
                         Innovation{" "}
                         <ArrowUpRight className="w-3.5 h-3.5 text-black/30 group-hover/pillar:translate-x-1 group-hover/pillar:-translate-y-1 transition-transform" />
                       </h3>
-                      <p className="text-sm text-black/60 font-light leading-relaxed mt-1">
+                      <p className="text-xs sm:text-sm text-black/60 font-light leading-relaxed mt-1">
                         Elemensis is a pioneering company that continually
                         introduces cutting-edge solutions.
                       </p>
@@ -470,52 +471,88 @@ export default function WhyElemensisPage() {
                   </div>
                 </div>
 
-                {/* Floating Elements */}
-                <div className="hidden md:block absolute right-0 inset-y-0 w-[50%] pointer-events-none">
-                  <div className="relative w-full h-full min-h-[320px]">
-                    <div className="absolute top-4 right-[15%] animate-spatial-1">
+                {/* Floating Elements - hidden on mobile */}
+                <div className="hidden lg:flex absolute right-0 inset-y-0 w-[42%] items-center">
+                  <div className="relative w-full max-w-md space-y-6 pl-10 pt-6">
+                    <div className="space-y-3">
+                      <span className="inline-flex items-center rounded-full border border-[#00CC99]/20 bg-[#00CC99]/5 px-4 py-1 text-xs font-medium tracking-[0.2em] text-[#008866] uppercase">
+                        Core Value
+                      </span>
+
+                      <h2 className="text-4xl font-semibold leading-tight text-[#111827]">
+                          Transforming Everyday Life Through Innovation
+                      </h2>
+
+                      <p className="text-[15px] leading-8 text-black/60 font-light">
+                        Elemensis is a pioneering company that continually
+                        introduces cutting-edge goods and solutions that
+                        transform the market and improve your daily experiences.
+                      </p>
+                    </div>
+
+                    {/* FLOATING ICONS */}
+                    <div className="absolute top-0 right-0 animate-spatial-1">
                       <Atom className="w-16 h-16 text-[#00CC99]/20 stroke-[0.75]" />
                     </div>
-                    <div className="absolute top-1/2 left-[25%] -translate-y-1/2 animate-spatial-2">
+
+                    <div className="absolute top-1/2 left-[15%] -translate-y-1/2 animate-spatial-2">
                       <Cpu className="w-14 h-14 text-[#00CC99]/25 stroke-[0.85]" />
                     </div>
-                    <div className="absolute bottom-6 right-[20%] animate-spatial-3">
+
+                    <div className="absolute bottom-0 right-[10%] animate-spatial-3">
                       <Sparkles className="w-12 h-12 text-[#D4AF37]/25" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Pillar 02: CUSTOMER CENTRICITY with Hover Details */}
-              <div className="relative flex flex-col md:flex-row items-center md:justify-end group" >
+              {/* Pillar 02: CUSTOMER CENTRICITY */}
+              <div className="relative flex flex-col md:flex-row items-center md:justify-end group">
                 <div className="absolute left-4 md:left-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.4)] transform -translate-x-1.5 md:-translate-x-1/2 top-6 z-30 group-hover:scale-150 transition-transform duration-300" />
 
-                <div className="hidden md:block absolute left-0 inset-y-0 w-[50%] pointer-events-none" >
-                  <div className="relative w-full h-full min-h-[320px]">
-                    <div className="absolute top-6 left-[15%] animate-spatial-2">
+                <div className="hidden lg:flex absolute left-0 inset-y-0 w-[42%] items-center">
+                  <div className="relative w-full max-w-md space-y-6 pr-10 pt-11">
+                    <div className="space-y-3">
+                      <span className="inline-flex items-center rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/5 px-4 py-1 text-xs font-medium tracking-[0.2em] text-[#B58926] uppercase">
+                        Customer First
+                      </span>
+
+                      <h2 className="text-4xl font-semibold leading-tight text-[#111827]">
+                         Creating Exceptional Experiences Through Customer Care
+                      </h2>
+
+                      <p className="text-[15px] leading-8 text-black/60 font-light">
+                     The core of our ideology is that of our customers. We pay close attention to what they need, what they like, and what they say so that every connection is unique and extraordinary and leaves them feeling valued and cared for.
+                      </p>
+                    </div>
+
+                    {/* FLOATING ICONS */}
+                    <div className="absolute top-0 left-[10%] animate-spatial-2">
                       <ShieldCheck className="w-16 h-16 text-[#D4AF37]/20" />
                     </div>
-                    <div className="absolute top-1/2 right-[20%] -translate-y-1/2 animate-spatial-1">
+
+                    <div className="absolute top-1/2 right-[15%] -translate-y-1/2 animate-spatial-1">
                       <HeartHandshake className="w-14 h-14 text-[#D4AF37]/25" />
                     </div>
-                    <div className="absolute bottom-8 left-[25%] animate-spatial-3">
+
+                    <div className="absolute bottom-0 left-[20%] animate-spatial-3">
                       <Activity className="w-12 h-12 text-[#00CC99]/20" />
                     </div>
                   </div>
                 </div>
 
-                <div className=" relative left-[-14%]  w-full md:w-[30%] ml-8 md:ml-0 uiverse-card-root p-6 border border-black/[0.03] z-20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group/pillar">
+                <div className="relative md:right-[18%] lg:right-[20%] xl:right-[1%] w-full md:w-[40%] ml-8 md:ml-0 uiverse-card-root p-5 sm:p-6 border border-black/[0.03] z-20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group/pillar">
                   <div className="uiverse-bg-layer profile-customer" />
-                  <div className="uiverse-content-wrap space-y-4">
+                  <div className="uiverse-content-wrap space-y-3 sm:space-y-4">
                     <div className="flex justify-between items-center">
-                      <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/5 border border-black/[0.03] flex items-center justify-center text-[#B58926] icon-box-custom group-hover/pillar:scale-110 transition-all duration-400">
-                        <ShieldCheck className="w-4.5 h-4.5 stroke-[1.25]" />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#D4AF37]/5 border border-black/[0.03] flex items-center justify-center text-[#B58926] icon-box-custom group-hover/pillar:scale-110 transition-all duration-400">
+                        <ShieldCheck className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.25]" />
                       </div>
                       <span className="font-mono text-[9px] tracking-widest text-black/40 uppercase bg-black/[0.03] px-2 py-0.5 rounded">
                         Pillar 02
                       </span>
                     </div>
-                    <div className="w-full h-32 rounded-xl overflow-hidden relative border border-black/[0.03]">
+                    <div className="w-full h-28 sm:h-32 rounded-xl overflow-hidden relative border border-black/[0.03]">
                       <img
                         src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop"
                         alt="Customer Centricity"
@@ -523,10 +560,10 @@ export default function WhyElemensisPage() {
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium tracking-wide">
+                      <h3 className="text-base sm:text-lg font-medium tracking-wide">
                         Customer Centricity
                       </h3>
-                      <p className="text-sm text-black/60 font-light leading-relaxed mt-1">
+                      <p className="text-xs sm:text-sm text-black/60 font-light leading-relaxed mt-1">
                         The core of our ideology is centered around our
                         customers' experience.
                       </p>
@@ -535,22 +572,22 @@ export default function WhyElemensisPage() {
                 </div>
               </div>
 
-              {/* Pillar 03: DIVERSITY with Hover Details */}
+              {/* Pillar 03: DIVERSITY */}
               <div className="relative flex flex-col md:flex-row items-center md:justify-start group">
                 <div className="absolute left-4 md:left-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-[#3A4D46] shadow-[0_0_10px_rgba(58,77,70,0.3)] transform -translate-x-1.5 md:-translate-x-1/2 top-6 z-30 group-hover:scale-150 transition-transform duration-300" />
 
-                <div className=" relative left-[14%] w-full md:w-[31%] ml-8 md:ml-0 uiverse-card-root p-6 border border-black/[0.03] z-20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group/pillar">
+                <div className="relative md:left-[18%] lg:left-[20%] xl:left-[1%] w-full md:w-[40%] ml-8 md:ml-0 uiverse-card-root p-5 sm:p-6 border border-black/[0.03] z-20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group/pillar">
                   <div className="uiverse-bg-layer profile-diversity" />
-                  <div className="uiverse-content-wrap space-y-4">
+                  <div className="uiverse-content-wrap space-y-3 sm:space-y-4">
                     <div className="flex justify-between items-center">
-                      <div className="w-10 h-10 rounded-xl bg-[#3A4D46]/5 border border-black/[0.03] flex items-center justify-center text-[#3A4D46] icon-box-custom group-hover/pillar:scale-110 transition-all duration-400">
-                        <Users className="w-4.5 h-4.5 stroke-[1.25]" />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#3A4D46]/5 border border-black/[0.03] flex items-center justify-center text-[#3A4D46] icon-box-custom group-hover/pillar:scale-110 transition-all duration-400">
+                        <Users className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.25]" />
                       </div>
                       <span className="font-mono text-[9px] tracking-widest text-black/40 uppercase bg-black/[0.03] px-2 py-0.5 rounded">
                         Pillar 03
                       </span>
                     </div>
-                    <div className="w-full h-32 rounded-xl overflow-hidden relative border border-black/[0.03]">
+                    <div className="w-full h-28 sm:h-32 rounded-xl overflow-hidden relative border border-black/[0.03]">
                       <img
                         src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=1000&auto=format&fit=crop"
                         alt="Diversity"
@@ -558,10 +595,10 @@ export default function WhyElemensisPage() {
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium tracking-wide">
+                      <h3 className="text-base sm:text-lg font-medium tracking-wide">
                         Diversity
                       </h3>
-                      <p className="text-sm text-black/60 font-light leading-relaxed mt-1">
+                      <p className="text-xs sm:text-sm text-black/60 font-light leading-relaxed mt-1">
                         Diversity improves our global culture and fuels
                         groundbreaking innovation.
                       </p>
@@ -569,51 +606,85 @@ export default function WhyElemensisPage() {
                   </div>
                 </div>
 
-                <div className="hidden md:block absolute right-0 inset-y-0 w-[50%] pointer-events-none">
-                  <div className="relative w-full h-full min-h-[320px]">
-                    <div className="absolute top-4 right-[20%] animate-spatial-3">
+                <div className="hidden lg:flex absolute right-0 inset-y-0 w-[42%] items-center">
+                  <div className="relative w-full max-w-md space-y-6 pl-10 pt-6">
+                    <div className="space-y-3">
+                      <span className="inline-flex items-center rounded-full border border-[#3A4D46]/20 bg-[#3A4D46]/5 px-4 py-1 text-xs font-medium tracking-[0.2em] text-[#3A4D46] uppercase">
+                        Global Culture
+                      </span>
+
+                      <h2 className="text-4xl font-semibold leading-tight text-[#111827]">
+                        Empowering Innovation Through Diverse Perspectives
+                      </h2>
+
+                      <p className="text-[15px] leading-8 text-black/60 font-light">
+                       Diversity improves our culture, inspires innovation, and develops a collaborative atmosphere where diverse viewpoints and skills come together to produce ground-breaking solutions suited for a variety of audiences.
+                      </p>
+                    </div>
+
+                    {/* FLOATING ICONS */}
+                    <div className="absolute top-0 right-[10%] animate-spatial-3">
                       <Globe className="w-16 h-16 text-[#3A4D46]/20" />
                     </div>
-                    <div className="absolute top-1/2 left-[20%] -translate-y-1/2 animate-spatial-1">
+
+                    <div className="absolute top-1/2 left-[15%] -translate-y-1/2 animate-spatial-1">
                       <Network className="w-14 h-14 text-[#3A4D46]/25" />
                     </div>
-                    <div className="absolute bottom-6 right-[15%] animate-spatial-2">
+
+                    <div className="absolute bottom-0 right-[20%] animate-spatial-2">
                       <Fingerprint className="w-12 h-12 text-[#D4AF37]/20" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Pillar 04: SUSTAINABILITY with Hover Details */}
-              <div className="relative flex flex-col md:flex-row items-center md:justify-end group pb-2">
+              {/* Pillar 04: SUSTAINABILITY */}
+              <div className="relative flex flex-col md:flex-row items-center md:justify-end group pb-10  ">
                 <div className="absolute left-4 md:left-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-[#00CC99] shadow-[0_0_10px_rgba(0,204,153,0.4)] transform -translate-x-1.5 md:-translate-x-1/2 top-6 z-30 group-hover:scale-150 transition-transform duration-300" />
 
-                <div className="hidden md:block absolute left-0 inset-y-0 w-[50%] pointer-events-none">
-                  <div className="relative w-full h-full min-h-[320px]">
-                    <div className="absolute top-6 left-[25%] animate-spatial-1">
+                <div className="hidden lg:block absolute left-0 inset-y-0 w-[50%] pointer-events-none">
+                  <div className="relative w-full max-w-md space-y-6 pr-10 pt-8">
+                    <div className="space-y-3">
+                      <span className="inline-flex items-center rounded-full border border-[#00CC99]/20 bg-[#00CC99]/5 px-4 py-1 text-xs font-medium tracking-[0.2em] text-[#008866] uppercase">
+                        Green Future
+                      </span>
+
+                      <h2 className="text-4xl font-semibold leading-tight text-[#111827]">
+                         Protecting The Planet Through Sustainable Innovation
+                      </h2>
+
+                      <p className="text-[15px] leading-8 text-black/60 font-light">
+                     We are committed to protecting the environment for future generations, thus sustainability is more than simply a catchphrase to us. We work to reduce our environmental impact and advocate for a greener future through eco-friendly sourcing, responsible production, and eco-friendly packaging.
+                      </p>
+                    </div>
+
+                    {/* FLOATING ICONS */}
+                    <div className="absolute top-0 left-[18%] animate-spatial-1">
                       <Sprout className="w-16 h-16 text-[#00CC99]/25" />
                     </div>
-                    <div className="absolute top-1/2 right-[15%] -translate-y-1/2 animate-spatial-3">
+
+                    <div className="absolute top-1/2 right-[12%] -translate-y-1/2 animate-spatial-3">
                       <Sun className="w-14 h-14 text-[#D4AF37]/25" />
                     </div>
-                    <div className="absolute bottom-4 left-[15%] animate-spatial-2">
+
+                    <div className="absolute bottom-0 left-[10%] animate-spatial-2">
                       <Wind className="w-12 h-12 text-[#00CC99]/20" />
                     </div>
                   </div>
                 </div>
 
-                <div className="  relative left-[-14%] w-full md:w-[30%] ml-8 md:ml-0 uiverse-card-root p-6 border border-black/[0.03] z-20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group/pillar">
+                <div className="relative md:right-[18%] lg:right-[20%] xl:right-[1%] w-full md:w-[40%] mt-10 ml-8 md:ml-0 uiverse-card-root p-5 sm:p-6 border border-black/[0.03] z-20 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer group/pillar">
                   <div className="uiverse-bg-layer profile-sustainability" />
-                  <div className="uiverse-content-wrap space-y-4">
+                  <div className="uiverse-content-wrap space-y-3 sm:space-y-4 " >
                     <div className="flex justify-between items-center">
-                      <div className="w-10 h-10 rounded-xl bg-[#00CC99]/5 border border-black/[0.03] flex items-center justify-center text-[#008866] icon-box-custom group-hover/pillar:scale-110 transition-all duration-400">
-                        <Globe className="w-4.5 h-4.5 stroke-[1.25]" />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#00CC99]/5 border border-black/[0.03] flex items-center justify-center text-[#008866] icon-box-custom group-hover/pillar:scale-110 transition-all duration-400">
+                        <Globe className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[1.25]" />
                       </div>
                       <span className="font-mono text-[9px] tracking-widest text-black/40 uppercase bg-black/[0.03] px-2 py-0.5 rounded">
                         Pillar 04
                       </span>
                     </div>
-                    <div className="w-full h-32 rounded-xl overflow-hidden relative border border-black/[0.03]">
+                    <div className="w-full h-28 sm:h-32 rounded-xl overflow-hidden relative border border-black/[0.03]">
                       <img
                         src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop"
                         alt="Sustainability"
@@ -621,10 +692,10 @@ export default function WhyElemensisPage() {
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium tracking-wide">
+                      <h3 className="text-base sm:text-lg font-medium tracking-wide">
                         Sustainability
                       </h3>
-                      <p className="text-sm text-black/60 font-light leading-relaxed mt-1">
+                      <p className="text-xs sm:text-sm text-black/60 font-light leading-relaxed mt-1">
                         We are strictly committed to protecting and managing
                         environments for future generations.
                       </p>
@@ -633,15 +704,12 @@ export default function WhyElemensisPage() {
                 </div>
               </div>
             </div>
-                  <div className="relative left-1/2 w-[1400px] max-w-[90vw] -translate-x-1/2 border-t border-[#00CC99]/50 mt-10" />
-     
-          </div>
-  
-        </section>
 
+            <div className="relative left-1/2 w-[1400px] max-w-[90vw] -translate-x-1/2 border-t border-[#00CC99]/50 mt-10" />
+          </div>
+        </section>
         {/* NEW: Stats Section - Compact Impact */}
         <section className="relative z-20 pb-15  px-6 md:px-12 max-w-6xl mx-auto">
-  
           <div className="grid grid-cols-2 md:grid-cols-4 pt-10 gap-6 pt-4 ">
             {[
               { value: "15+", label: "Premium Brands", icon: Award },

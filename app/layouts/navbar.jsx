@@ -155,10 +155,106 @@ export default function TopNavigation() {
 </a>
 
           {/* MOBILE TOGGLE */}
-          <button className="md:hidden p-2 text-slate-900">
+          {/* <button className="md:hidden p-2 text-slate-900">
             <div className="w-6 h-0.5 bg-current mb-1.5" />
             <div className="w-6 h-0.5 bg-current opacity-50" />
-          </button>
+          </button> */}
+
+
+{/* MOBILE MENU */}
+
+
+{/* ====================== MOBILE MENU ====================== */}
+<div className="relative md:hidden">
+  {/* TOGGLE INPUT */}
+  <input type="checkbox" id="mobile-menu" className="peer hidden" />
+
+  {/* BURGER BUTTON */}
+  <label
+    htmlFor="mobile-menu"
+    className="burger relative z-[120]"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  {/* OVERLAY */}
+  <label
+    htmlFor="mobile-menu"
+    className="fixed inset-0 z-[105] hidden bg-black/40 backdrop-blur-sm peer-checked:block"
+  />
+
+  {/* SIDE MENU */}
+  <div className="fixed right-0 top-0 z-[110] h-screen w-[80%] max-w-[340px] translate-x-full bg-white shadow-2xl transition-transform duration-500 peer-checked:translate-x-0">
+    
+    {/* HEADER */}
+     <div className="flex items-center justify-between border-b border-gray-100 px-6 py-5">
+            <div className="flex items-center">
+              <Image
+                src="/Images/slider/elemenisis--E-logo.png"
+                height={40} // Optimized height alignment
+                width={40}
+                alt="Logo"
+                className="object-contain"
+              />
+              <span className="text-sm md:text-base font-black tracking-[0.2em] text-slate-900 ml-2">
+                ELEMENSIS
+              </span>
+            </div>
+          </div>
+
+    {/*<div className="flex items-center justify-between border-b border-gray-100 px-6 py-5">
+      <h4 className="text-lg font-bold tracking-widest text-[#0D231D]">
+        MENU
+      </h4>
+
+       <label
+        htmlFor="mobile-menu"
+        className="cursor-pointer rounded-lg bg-gray-100 px-3 py-1 text-xl font-bold text-slate-700 transition hover:bg-gray-200"
+      >
+        ×
+      </label> 
+    </div>*/}
+
+    {/* MENU ITEMS */}
+    <div className="flex flex-col px-6 py-2">
+      {menuItems.map((item) => (
+        <div key={item.id} className="border-b border-gray-100 py-2">
+          <Link
+            href={item.link}
+            className="block  font-semibold uppercase tracking-wider text-slate-800 transition hover:text-[#00B9CC]"
+          >
+            {item.label}
+          </Link>
+
+          {item.dropdown && (
+            <div className="mt-3 ml-3 flex flex-col gap-3 text-base">
+              {item.dropdown.map((subItem) => (
+                <Link
+                  key={subItem.label}
+                  href={subItem.link}
+                  className="text-sm text-slate-600 transition hover:text-[#00B9CC]"
+                >
+                  {subItem.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* BUTTON */}
+      <Link
+        href="/contact"
+        className="mt-6 rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] px-5 py-3 text-center text-sm font-bold uppercase tracking-wider text-white transition hover:scale-[1.02]"
+      >
+        Get In Touch
+      </Link>
+    </div>
+  </div>
+
+</div>
         </div>
       </div>
     </nav>

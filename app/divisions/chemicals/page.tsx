@@ -16,7 +16,7 @@ import {
     Leaf,
   Wind,
 } from "lucide-react";
-
+import Link from "next/link";
 import Footer from "../../layouts/footer";
 import Navbar from "../../layouts/navbar";
 
@@ -82,21 +82,21 @@ const featureCards = [
 ];
 
 const industries = [
-  { title: "Plastic And Cables", icon: Cpu, image: "/Images/plastic.jpg" },
-  { title: "Oil And Gas", icon: Activity, image: "/Images/oil-gas.jpg" },
-  { title: "Textile & Carpet", icon: Wind, image: "/Images/textile.jpg" },
-  { title: "Rubber & Tyre", icon: ShieldCheck, image: "/Images/rubber.jpg" },
-  { title: "Coatings and Ink", icon: Sparkles, image: "/Images/coating.jpg" },
-  { title: "Polymer Emulsion", icon: Atom, image: "/Images/polymer.jpg" },
-  { title: "Composites", icon: Network, image: "/Images/composites.jpg" },
-  { title: "Adhesive", icon: Fingerprint, image: "/Images/adhesive.jpg" },
-  { title: "Construction", icon: Globe, image: "/Images/construction.jpg" },
+  { title: "Plastic And Cables", icon: Cpu, image: "/Images/chemical/Plastic-and-Cables.webp",link: "/PlasticCables", },
+  { title: "Oil And Gas", icon: Activity, image: "/Images/chemical/Oil-and-Gas.webp",link: "/plastic-cables", },
+  { title: "Textile & Carpet", icon: Wind, image: "/Images/chemical/Textile-Carpet.webp",link: "/plastic-cables", },
+  { title: "Rubber & Tyre", icon: ShieldCheck, image: "/Images/chemical/Rubber-Tyre.webp",link: "/plastic-cables", },
+  { title: "Coatings and Ink", icon: Sparkles, image: "/Images/chemical/Coatings-and-Ink.webp",link: "/plastic-cables", },
+  { title: "Polymer Emulsion", icon: Atom, image: "/Images/chemical/Polymer-Emulsion.webp",link: "/plastic-cables", },
+  { title: "Composites", icon: Network, image: "/Images/chemical/Composites.webp",link: "/plastic-cables", },
+  { title: "Adhesive", icon: Fingerprint, image: "/Images/chemical/Adhesive.webp",link: "/plastic-cables", },
+  { title: "Construction", icon: Globe, image: "/Images/chemical/Construction.webp",link: "/plastic-cables", },
   {
     title: "Detergents / Cosmetics",
     icon: HeartHandshake,
-    image: "/Images/cosmetics.jpg",
+    image: "/Images/chemical/Detergents_-Cosmetics.webp",link: "/plastic-cables",
   },
-  { title: "Polyurethane", icon: Sprout, image: "/Images/polyurethane.jpg" },
+  { title: "Polyurethane", icon: Sprout, image: "/Images/chemical/polyurethane-rolls-small.jpg",link: "/plastic-cables", },
 ];
 
 export default function WhyElemensisPage() {
@@ -104,8 +104,8 @@ export default function WhyElemensisPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: styleCSS }} />
 
-      <div className="min-h-screen bg-gradient-to-br from-[#FAFBFA] via-[#FCFDFD] to-[#F5F8F7] text-[#1E2925] font-sans antialiased selection:bg-[#00CC99]/20 selection:text-[#0D231D] overflow-hidden relative">
         <Navbar />
+      <div className="min-h-screen bg-gradient-to-br from-[#FAFBFA] via-[#FCFDFD] to-[#F5F8F7] text-[#1E2925] font-sans antialiased selection:bg-[#00CC99]/20 selection:text-[#0D231D] overflow-hidden relative">
 
         <section className="relative h-[65vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
           <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity transform scale-105 animate-[pulse_8s_ease-in-out_infinite]">
@@ -126,30 +126,35 @@ export default function WhyElemensisPage() {
               <span className="text-white/30">•</span>
               <Leaf className="w-3.5 h-3.5 text-[#00cba9] " />
               <span className="text-white/30">•</span>
-              <span className="text-white">Contact Us</span>
+              <span className="text-white">Chemical</span>
             </nav>
 
             <motion.h1 className="text-5xl md:text-7xl font-light tracking-tight text-[#ECE9E2] leading-tight">
-              Division{" "}
+              {" "}
               <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
                 Chemical
-              </span>
+              </span>{" "}
+              
+              Division
             </motion.h1>
+           <p className="text-[18px] leading-[1.9] text-[#82929d] font-normal tracking-[0.5px] max-w-[850px] mx-auto mt-5 text-center">
+  Pioneering high-quality chemical solutions for healthcare, agriculture, manufacturing, and technology industries worldwide.
+</p>
           </div>
         </section>
 
-        <section className="relative z-10 px-6 py-20 bg-[#F9F6F0] overflow-hidden">
+        <section className="relative z-10 px-6 pb-20 pt-9 bg-[#F9F6F0] overflow-hidden">
           <div className="absolute left-10 top-20 h-72 w-72 rounded-full bg-[#00CCAA]/20 blur-3xl" />
           <div className="absolute right-10 bottom-10 h-72 w-72 rounded-full bg-[#00B9CC]/20 blur-3xl" />
 
           <div className="relative z-10 mx-auto max-w-7xl">
             <div className="text-center mb-14">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-[#00CCAA]/30 animate-bounce">
+              {/* <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-[#00CCAA]/30 animate-bounce">
                 <Atom className="text-white" size={32} />
-              </div>
+              </div> */}
 
               <h2 className="text-4xl md:text-5xl font-semibold text-[#0D231D]">
-                Chemicals{" "}
+                Our{" "}
                 <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
                   Products
                 </span>
@@ -233,7 +238,7 @@ export default function WhyElemensisPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {industries.map(({ title, icon: Icon, image }, index) => (
+               {industries.map(({ title, icon: Icon, image, link }, index) => (
                   <div
                     key={index}
                     className="group relative h-[320px] overflow-hidden rounded-[24px] bg-white p-2 shadow-[0px_1px_13px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-2"
@@ -271,10 +276,13 @@ export default function WhyElemensisPage() {
 
                       {/* Button */}
                       <div className="absolute left-0 bottom-[-60px] flex h-[55px] w-full items-center bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] px-5 text-white transition-all duration-300 group-hover:bottom-0">
-                        <button className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide">
-                          Know More
-                          <ArrowUpRight size={18} />
-                        </button>
+                        <Link
+  href={link}
+  className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide"
+>
+  Know More
+  <ArrowUpRight size={18} />
+</Link>
                       </div>
                     </div>
                   </div>

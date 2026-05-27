@@ -12,6 +12,7 @@ export const productItems = [
  {
   id: 1,
   name: "DAIRY",
+    image: "/Images/food/images.jpg",
   icon: Milk,
   content: [
     {
@@ -195,39 +196,357 @@ export const productItems = [
     },
   ],
 },
+ {
+  id: 3,
+  name: "MEAT POULTRY & SEAFOOD",
+  image: "/images/meat-seafood.jpg",
+  icon: Beef,
+  content: [
+    {
+      title: "Blends & Texturizing Agents",
+      items: [
+        "Carrageenan",
+        "Phosphate Blends",
+        "STPP FG",
+        "Transglutaminase",
+      ],
+    },
+
+    {
+      title: "Milk Powders & Starches",
+      items: [
+        "Potato Starch",
+        "Dextrose",
+        "Modified Starches",
+      ],
+    },
+
+    {
+      title: "Fiber & Protein Replacement",
+      items: [
+        "Collagens",
+        "Texturized Vegetable Protein (TVP)",
+        "Soya Proteins",
+      ],
+    },
+
+    {
+      title: "Gelling & Water Absorption",
+      items: [
+        "Carrageenan",
+        "Xanthan & Guar Gum",
+      ],
+    },
+
+    {
+      title: "Flavors & Spices",
+      items: [
+        "Natural & Synthetic Flavors",
+        "Oleoresins",
+        "Aquaresins",
+        "Blends of Spices",
+      ],
+    },
+
+    {
+      title: "Colors",
+      items: [
+        "Natural & Synthetic Colors",
+        "Food Colors",
+        "Caramel Colors",
+      ],
+    },
+
+    {
+      title: "Antioxidants & Preservatives",
+      items: [
+        "Vitamin C",
+        "Tocopherols",
+        "Ascorbic Acid",
+        "Niacin",
+        "Riboflavin",
+        "Thiamine",
+      ],
+    },
+  ],
+},
   {
-    id: 3,
-    name: "MEAT POULTRY & SEAFOOD",
-    icon: Beef,
-    content:
-      "Advanced ingredient systems crafted for meat, poultry, and seafood applications.",
-  },
-  {
-    id: 4,
-    name: "BAKING",
-    icon: Wheat,
-    content:
-      "High-quality baking ingredients for breads, cakes, pastries, and bakery products.",
-  },
-  {
-    id: 5,
-    name: "MARGARINES, FATS & OILS",
-    icon: Droplets,
-    content:
-      "Functional fats and oil solutions optimized for industrial food production.",
-  },
-  {
-    id: 6,
-    name: "SAVOURY",
-    icon: Soup,
-    content:
-      "Flavor-rich savoury ingredient solutions for snacks, sauces, and ready meals.",
-  },
-  {
-    id: 7,
-    name: "HEALTH & FUNCTIONAL INGREDIENTS",
-    icon: HeartPulse,
-    content:
-      "Nutritional and functional ingredients supporting healthy food innovation.",
-  },
+  id: 4,
+  name: "BAKING",
+  image: "/images/baking.jpg",
+  icon: Wheat,
+  content: [
+    {
+      title: "Enzymes",
+      items: [
+        "Amylases",
+        "Xylanases",
+        "Lipases",
+        "Proteases",
+        "Oxidases",
+        "Transglutaminases",
+      ],
+    },
+
+    {
+      title: "Texturizing",
+      items: [
+        "Starches",
+        "Gluten",
+      ],
+    },
+
+    {
+      title: "Leavening Agents",
+      items: [
+        "Sodium Acid Pyrophosphate SAPP 28",
+        "Sodium Acid Pyrophosphate SAPP 40",
+        "MSP",
+        "Baking Powders",
+        "Sodium Bicarbonate",
+      ],
+    },
+
+    {
+      title: "Emulsifiers & Egg Products",
+      items: [
+        "Di & Mono Glycerides of Fatty Acids",
+        "Lecithin",
+        "Egg Powder",
+        "Egg Liquid",
+      ],
+    },
+
+    {
+      title: "Yeast",
+      items: [
+        "Instant Dry Yeast",
+      ],
+    },
+
+    {
+      title: "Anti-caking & Raising Agents",
+      items: [
+        "Tri Calcium Phosphate – TCP",
+        "Silica",
+        "Single & Blends of Food Phosphates",
+      ],
+    },
+
+    {
+      title: "Flavors",
+      items: [
+        "Food Natural & Synthetic Flavors",
+        "Butter Flavor",
+        "Yeast Extract – Flavor Enhancer",
+      ],
+    },
+
+    {
+      title: "Vitamin Premixes",
+      items: [
+        "Vitamins & Its Blends",
+      ],
+    },
+
+    {
+      title: "Malt Flours & Flakes",
+      items: [
+        "Malt Flours",
+        "Malt Extracts",
+      ],
+    },
+
+    {
+      title: "Vegetable Fat & Dairy Solutions",
+      items: [
+        "Spray Dried Vegetable Fat on a Dairy Carrier",
+        "Whey Based Milk Replacers",
+      ],
+    },
+
+    {
+      title: "Wholegrain, Oats & Cereals",
+      items: [
+        "Oat Flakes",
+        "Grains",
+      ],
+    },
+
+    {
+      title: "Fruit Granulates & Paste",
+      items: [
+        "Bake-Stable Fruit Inclusions",
+        "High Brix – Low aW Bake Stable Paste",
+      ],
+    },
+  ],
+},
+ {
+  id: 5,
+  name: "MARGARINES, FATS & OILS",
+  image: "/images/fats-oils.jpg",
+  icon: Droplets,
+  content: [
+    {
+      title: "Antioxidants",
+      items: [
+        "TBHQ",
+        "BHA",
+        "BHT",
+        "Liquid Blends",
+        "Tocopherol",
+        "Rosemary Extract",
+      ],
+    },
+
+    {
+      title: "Refining & Bleaching",
+      items: [
+        "Bleaching Earth",
+        "Filter Aids",
+      ],
+    },
+
+    {
+      title: "Color Removal",
+      items: [
+        "Activated Carbon",
+      ],
+    },
+
+    {
+      title: "Food Colorants",
+      items: [
+        "Beta-Carotene",
+      ],
+    },
+
+    {
+      title: "Vitamin Premixes",
+      items: [
+        "Vitamin Blends",
+      ],
+    },
+  ],
+},
+
+{
+  id: 6,
+  name: "SAVOURY",
+  image: "/images/savoury.jpg",
+  icon: Soup,
+  content: [
+    {
+      title: "Thickeners & Gelling Agents",
+      items: [
+        "Xanthan Gum",
+        "Carrageenan",
+        "Potato Starch",
+      ],
+    },
+
+    {
+      title: "Emulsifiers",
+      items: [
+        "Di & Mono Glycerides of Fatty Acids",
+        "Lecithin",
+      ],
+    },
+
+    {
+      title: "Preservatives",
+      items: [
+        "Citric Acid",
+        "Ascorbic Acid",
+        "Sodium Citrate",
+        "Lactic Acid",
+      ],
+    },
+
+    {
+      title: "Flavors & Phosphates",
+      items: [
+        "Natural & Synthetic Flavors",
+        "Di Potassium Phosphate",
+        "Tetra Potassium Phosphates",
+      ],
+    },
+
+    {
+      title: "Spices & Colors",
+      items: [
+        "Blends of Spices",
+        "Natural & Synthetic Colours",
+      ],
+    },
+
+    {
+      title: "Flavor Enhancers",
+      items: [
+        "Yeast Extract",
+        "Monosodium Glutamate",
+        "I+G",
+      ],
+    },
+
+    {
+      title: "Antioxidants",
+      items: [
+        "BHT & BHA",
+        "Tocopherols",
+        "Rosemary Extract",
+      ],
+    },
+  ],
+},
+
+{
+  id: 7,
+  name: "HEALTH & FUNCTIONAL INGREDIENTS",
+  image: "/images/health-functional.jpg",
+  icon: HeartPulse,
+  content: [
+    {
+      title: "DHA & EPA",
+      items: [
+        "Functional Omega Ingredients",
+      ],
+    },
+
+    {
+      title: "Sugar Free Solutions",
+      items: [
+        "Stevia",
+        "Maltitol",
+        "Sorbitol",
+      ],
+    },
+
+    {
+      title: "Protein Products",
+      items: [
+        "Pea Protein",
+        "Whey Protein",
+      ],
+    },
+
+    {
+      title: "Fibres",
+      items: [
+        "Soluble Fibres",
+        "Insoluble Fibres (Oat Origin)",
+      ],
+    },
+
+    {
+      title: "Fruit Granulates & Paste",
+      items: [
+        "High Fibre / Lower Sugar Fruit Inclusions",
+        "High Fibre / Lower Sugar Paste",
+        "No Added Sugar Fortified Fruit Shapes (Food Supplement)",
+      ],
+    },
+  ],
+}
 ];

@@ -65,22 +65,50 @@ export default function Foodpage() {
               <span className="text-white/30">•</span>
               <Leaf className="w-3.5 h-3.5 animate-spin-slow text-[#00CCAA]" />
               <span className="text-white/30">•</span>
-              <span className="text-white">About Food</span>
+              <span className="text-white">Food</span>
             </motion.nav>
 
             <motion.h1
      
               className="text-5xl md:text-7xl font-light tracking-tight text-[#ECE9E2] leading-tight"
             >
-              Division{" "}
-              <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+                 <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
                 Food
-              </span>
+              </span> {" "}
+              Division{" "}
+           
             </motion.h1>
+            <p  className="text-[18px] leading-[1.9] text-[#82929d] font-normal tracking-[0.5px] max-w-[850px] mx-auto mt-5 text-center">
+              Discover culinary perfection with our Food Division. From rare saffron to exquisite pink salt, elevate your dishes with our exceptional ingredients
+            </p>
           </motion.div>
         </section>
+         <div className="text-center mb-1 mt-9">
+              {/* <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-[#00CCAA]/30 animate-bounce">
+                <Atom className="text-white" size={32} />
+              </div> */}
+
+              <h2 className="text-4xl md:text-5xl font-semibold text-[#0D231D]">
+                Our{" "}
+                <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+                  Products
+                </span>
+              </h2>
+
+              <div className="mx-auto mt-4 h-[3px] w-36 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC]" />
+
+              <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-gray-600">
+                Elemensis is dedicated to delivering premium-quality food ingredients and
+  innovative culinary solutions for businesses worldwide. From dairy,
+  confectionery, meat, poultry & seafood to baking, savoury products,
+  margarines, fats & oils, and health & functional ingredients, we provide
+  trusted solutions that enhance taste, quality, and performance across the
+  food industry.
+              </p>
+            </div>
 
         <section className="relative overflow-hidden bg-[#F9F6F0] px-6 py-14">
+
           <div className="absolute left-10 top-10 h-72 w-72 rounded-full bg-[#00CCAA]/20 blur-3xl" />
           <div className="absolute right-10 bottom-10 h-72 w-72 rounded-full bg-[#00B9CC]/20 blur-3xl" />
 

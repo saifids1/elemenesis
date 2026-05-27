@@ -157,32 +157,40 @@ export default function AboutPage() {
               </motion.div>
 
               {/* Vision Block */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeIn}
-                className="space-y-6 bg-white  md:px-8 md:pt-2 md:pb-8  rounded-3xl shadow-sm border border-neutral-100 relative overflow-hidden group"
-              >
-                <div className="absolute top-0 right-0  transform translate-x-4 -translate-y-4 text-neutral-50 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-                  <Compass className="w-64 h-64" />
-                </div>
-                <div className="inline-flex p-3 bg-[#00cba9]/10 text-[#00cba9] rounded-xl">
-                  <Compass className="w-6 h-6 text-[#00cba9]" />
-                </div>
-                <h2 className="text-3xl font-sans font-bold text-[#111827]">
-                  Our Vision
-                </h2>
-                <p className="text-neutral-600 leading-relaxed font-light">
-                  ElEMENSIS is dedicated to delivering superior-quality products
-                  that consistently exceed the expectations of our esteemed
-                  customers. Our unwavering vision is to be the foremost leader
-                  in every endeavor we undertake. Guided by this vision, we make
-                  deliberate and informed choices, ensuring that we remain
-                  steadfast in achieving our objectives and providing
-                  unparalleled service to our valued clientele
-                </p>
-              </motion.div>
+           <motion.div
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-100px" }}
+  variants={fadeIn}
+  className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-neutral-100 bg-white shadow-sm group
+             px-4 py-5
+             sm:px-6 sm:py-6
+             md:px-8 md:pt-5 md:pb-8
+             lg:px-10 lg:py-9
+             space-y-4 sm:space-y-5 md:space-y-6"
+>
+  <div className="absolute top-0 right-0 translate-x-8 -translate-y-8 text-neutral-50 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
+    <Compass className="h-32 w-32 sm:h-44 sm:w-44 md:h-56 md:w-56 lg:h-64 lg:w-64" />
+  </div>
+
+  <div className="inline-flex rounded-xl bg-[#00cba9]/10 p-2.5 sm:p-3 text-[#00cba9]">
+    <Compass className="h-5 w-5 sm:h-6 sm:w-6 text-[#00cba9]" />
+  </div>
+
+<h2 className="font-sans text-2xl sm:text-3xl lg:text-[32px] xl:text-[34px] font-bold text-[#111827]">
+    Our Vision
+  </h2>
+
+  <p className="text-sm sm:text-base lg:text-[15px] xl:text-base leading-7 sm:leading-8 text-neutral-600 font-light">
+    ElEMENSIS is dedicated to delivering superior-quality products
+    that consistently exceed the expectations of our esteemed
+    customers. Our unwavering vision is to be the foremost leader
+    in every endeavor we undertake. Guided by this vision, we make
+    deliberate and informed choices, ensuring that we remain
+    steadfast in achieving our objectives and providing
+    unparalleled service to our valued clientele
+  </p>
+</motion.div>
             </div>
           </div>
         </section>
