@@ -12,7 +12,7 @@ export const productItems = [
  {
   id: 1,
   name: "DAIRY",
-    image: "/Images/food/images.jpg",
+    image: "/Images/food/dairy.jpg",
   icon: Milk,
   content: [
     {
@@ -120,6 +120,8 @@ export const productItems = [
 },
   {
   id: 2,
+   image: "/Images/food/Confectionery2.jpg",
+
   name: "CONFECTIONERY",
   icon: CakeSlice,
   content: [
@@ -199,7 +201,8 @@ export const productItems = [
  {
   id: 3,
   name: "MEAT POULTRY & SEAFOOD",
-  image: "/images/meat-seafood.jpg",
+  image: "/Images/food/Meat1.jpg",
+
   icon: Beef,
   content: [
     {
@@ -273,9 +276,20 @@ export const productItems = [
   {
   id: 4,
   name: "BAKING",
-  image: "/images/baking.jpg",
+  image: "/Images/food/Baking1.jpg",
+  
   icon: Wheat,
   content: [
+     {
+      title: "Leavening Agents",
+      items: [
+        "Sodium Acid Pyrophosphate SAPP 28",
+        "Sodium Acid Pyrophosphate SAPP 40",
+        "MSP",
+        "Baking Powders",
+        "Sodium Bicarbonate",
+      ],
+    },
     {
       title: "Enzymes",
       items: [
@@ -296,16 +310,7 @@ export const productItems = [
       ],
     },
 
-    {
-      title: "Leavening Agents",
-      items: [
-        "Sodium Acid Pyrophosphate SAPP 28",
-        "Sodium Acid Pyrophosphate SAPP 40",
-        "MSP",
-        "Baking Powders",
-        "Sodium Bicarbonate",
-      ],
-    },
+   
 
     {
       title: "Emulsifiers & Egg Products",
@@ -385,7 +390,8 @@ export const productItems = [
  {
   id: 5,
   name: "MARGARINES, FATS & OILS",
-  image: "/images/fats-oils.jpg",
+ image: "/Images/food/Oil2.jpg",
+ 
   icon: Droplets,
   content: [
     {
@@ -434,7 +440,8 @@ export const productItems = [
 {
   id: 6,
   name: "SAVOURY",
-  image: "/images/savoury.jpg",
+  image: "/Images/food/Savory1.jpg",
+  
   icon: Soup,
   content: [
     {
@@ -504,9 +511,17 @@ export const productItems = [
 {
   id: 7,
   name: "HEALTH & FUNCTIONAL INGREDIENTS",
-  image: "/images/health-functional.jpg",
+ image: "/Images/food/Functional-Ingredients.jpg",
   icon: HeartPulse,
   content: [
+     {
+      title: "Fruit Granulates & Paste",
+      items: [
+        "High Fibre / Lower Sugar Fruit Inclusions",
+        "High Fibre / Lower Sugar Paste",
+        "No Added Sugar Fortified Fruit Shapes (Food Supplement)",
+      ],
+    },
     {
       title: "DHA & EPA",
       items: [
@@ -539,14 +554,7 @@ export const productItems = [
       ],
     },
 
-    {
-      title: "Fruit Granulates & Paste",
-      items: [
-        "High Fibre / Lower Sugar Fruit Inclusions",
-        "High Fibre / Lower Sugar Paste",
-        "No Added Sugar Fortified Fruit Shapes (Food Supplement)",
-      ],
-    },
+   
   ],
 }
 ];

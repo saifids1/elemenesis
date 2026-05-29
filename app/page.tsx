@@ -19,7 +19,7 @@ export default function Home() {
       {/* <SectionDividerBrand/> */}
       <AboutSectionHomepage />
       <WhyChooseElemensis />
-      <MissionVisionPage />
+      {/* <MissionVisionPage /> */}
       <DivisionsPage />
       <GlobalNetworkPage />
       <ExportMarketPage />

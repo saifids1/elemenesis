@@ -38,13 +38,13 @@ export default function Foodpage() {
       <Navbar />
 
       <div className="min-h-screen bg-[#F9F6F0] text-[#1E1E1E] font-sans antialiased selection:bg-[#00BCD4] selection:text-white">
-        <section className="relative h-[65vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
-          <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity transform scale-105 animate-[pulse_8s_ease-in-out_infinite]">
+        <section className="relative h-[80vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
+          <div className="absolute inset-0 z-0  ">
             <div
               className="w-full h-full bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop')",
+                  "url('/Images/food/main-food-header-image.jpg')",
               }}
             />
           </div>
@@ -78,7 +78,7 @@ export default function Foodpage() {
               Division{" "}
            
             </motion.h1>
-            <p  className="text-[18px] leading-[1.9] text-[#82929d] font-normal tracking-[0.5px] max-w-[850px] mx-auto mt-5 text-center">
+            <p  className="text-[18px] leading-[1.9] text-gray-200 font-normal tracking-[0.5px] max-w-[850px] mx-auto mt-5 text-center">
               Discover culinary perfection with our Food Division. From rare saffron to exquisite pink salt, elevate your dishes with our exceptional ingredients
             </p>
           </motion.div>

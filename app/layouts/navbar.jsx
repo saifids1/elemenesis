@@ -63,15 +63,15 @@ export default function TopNavigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-700 py-0">
       <div className="w-full">
-        <div className="flex items-center px-6 transition-all duration-500 justify-between w-full py-2 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <div className="flex items-center px-6  transition-all duration-500 justify-between w-full py-2 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
           
           {/* Logo - Always visible now */}
           <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="flex items-center">
+            <div className="flex items-center ml-10">
               <Image
-                src="/Images/slider/elemenisis--E-logo.png"
-                height={80} // Optimized height alignment
-                width={80}
+                src="/Images/elem.png"
+                height={35} // Optimized height alignment
+                width={40}
                 alt="Logo"
                 className="object-contain"
               />
