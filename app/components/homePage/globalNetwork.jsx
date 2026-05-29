@@ -174,187 +174,103 @@ export default function GlobalNetworkPage() {
         </div>
 
         {/* World Map Section with Country Highlights */}
+     {/* World Map Section */}
+<div
+  className={`relative mb-14 max-w-5xl mx-auto transition-all duration-1000 delay-500 ${
+    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
+  <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl border border-gray-100 group">
+    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00CCAA] to-[#00B9CC]" />
+
+    <div className="relative">
+      <Image
+        src="/Images/GlobalNetwork.webp"
+        alt="Elemensis Global Network Map"
+        width={1200}
+        height={600}
+        className="w-full h-[260px] md:h-[360px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+      />
+
+      {mapHighlights.map((country, index) => (
         <div
-          className={`relative mb-24 transition-all duration-1000 delay-500 transform ${
-            isVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-12"
-          }`}
+          key={index}
+          className="absolute group/pin"
+          style={{
+            top: country.top,
+            left: country.left,
+            transform: "translate(-50%, -50%)",
+          }}
         >
-          <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-gray-100/80 group">
-            <div className="relative w-full overflow-hidden">
-              <Image
-                src="/Images/GlobalNetwork.webp"
-                alt="Elemensis Global Network Map"
-                width={1200}
-                height={600}
-                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-[1.01]"
-              />
+          <span className="absolute inline-flex h-3 w-3 rounded-full bg-[#00B9CC] opacity-70 animate-ping" />
+          <span className="relative block h-2.5 w-2.5 rounded-full bg-[#00CCAA] border border-white shadow-md cursor-pointer" />
 
-              {/* Dynamic Country Pin Hotspots overlay */}
-              {mapHighlights.map((country, index) => (
-                <div
-                  key={index}
-                  className="absolute pointer-events-auto group/pin transition-all duration-500"
-                  style={{
-                    top: country.top,
-                    left: country.left,
-                    transform: "translate(-50%, -50%)",
-                  }}
-                >
-                  {/* Ping Animation Effect */}
-                  <span className="absolute inline-flex h-4 w-4 rounded-full bg-cyan-400 opacity-75 animate-ping" />
-                  
-                  {/* Core Pin Point */}
-                  <span className="relative block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] border border-white shadow-md cursor-pointer" />
-                  
-                  {/* Country Name Badge */}
-                  <div className="absolute left-1/2 bottom-full mb-2 -translate-x-1/2 opacity-90 group-hover/pin:opacity-100 scale-90 group-hover/pin:scale-100 pointer-events-none transition-all duration-300 bg-gray-900/90 text-white text-[10px] md:text-xs font-bold py-1 px-2.5 rounded-lg whitespace-nowrap shadow-xl border border-white/10">
-                    {country.name}
-                    {/* Tiny arrow pointing to the pin */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-[4px] border-x-transparent border-t-[4px] border-t-gray-900/90" />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Overlay Stats */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 transition-all duration-500 group-hover:via-black/60">
-              <div className="flex items-center justify-around max-w-2xl mx-auto">
-                <div className="text-center transform transition-transform duration-500 group-hover:-translate-y-1">
-                  <div className="text-white text-2xl md:text-3xl font-extrabold tracking-tight">29+</div>
-                  <div className="text-white/80 text-xs md:text-sm font-medium">Countries</div>
-                </div>
-                <div className="text-center transform transition-transform duration-500 group-hover:-translate-y-1 delay-75">
-                  <div className="text-white text-2xl md:text-3xl font-extrabold tracking-tight">50+</div>
-                  <div className="text-white/80 text-xs md:text-sm font-medium">Partners</div>
-                </div>
-                <div className="text-center transform transition-transform duration-500 group-hover:-translate-y-1 delay-150">
-                  <div className="text-white text-2xl md:text-3xl font-extrabold tracking-tight">4</div>
-                  <div className="text-white/80 text-xs md:text-sm font-medium">Continents</div>
-                </div>
-              </div>
-            </div>
+          <div className="absolute left-1/2 bottom-full mb-2 -translate-x-1/2 opacity-0 group-hover/pin:opacity-100 transition-all duration-300 bg-gray-900 text-white text-[10px] font-semibold px-2 py-1 rounded-md whitespace-nowrap">
+            {country.name}
           </div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
 
-        {/* Key Markets Section */}
-        <div className="mb-24">
-          {/* <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              Our Key Markets
-            </h3>
-            <div className="w-16 h-1 bg-gradient-to-br from-[#00CCAA] to-[#00B9CC] mx-auto rounded-full" />
-          </div> */}
-
-          {/* <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {countries.map((country, idx) => (
-              <div
-                key={country.name}
-                className={`group relative h-[410px] perspective-1000 transition-all duration-1000 transform ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
-                }`}
-                style={{ transitionDelay: `${idx * 150}ms` }}
-              >
-  
-                <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-md hover:shadow-2xl rounded-2xl">
-                
-                  <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] bg-gradient-to-b ${country.gradientFront} rounded-2xl overflow-hidden border border-gray-100/80 flex flex-col`}>
-                    <div className="relative h-44 overflow-hidden shadow-inner">
-                      <Image
-                        src={country.image}
-                        alt={country.name}
-                        width={400}
-                        height={200}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <h4 className="text-white font-bold text-xl drop-shadow-md transform transition-transform duration-500 group-hover:translate-x-1">
-                          {country.name}
-                        </h4>
-                      </div>
-                    </div>
-
-                    <div className="p-5 flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center justify-between mb-3.5">
-                          <span
-                            className="text-xs font-extrabold px-2.5 py-1 rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-105"
-                            style={{
-                              backgroundColor: `${country.color}20`,
-                              color: country.color,
-                            }}
-                          >
-                            {country.code}
-                          </span>
-                          <div className="flex items-center gap-1 bg-white px-2 py-0.5 rounded-md border border-gray-100 shadow-xs">
-                            <Users className="w-3 h-3" style={{ color: country.color }} />
-                            <span className="text-xs font-semibold text-gray-600">
-                              {country.partnerships}+ Partners
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="flex flex-wrap gap-1.5 mb-4">
-                          {country.cities.slice(0, 3).map((city, i) => (
-                            <span
-                              key={i}
-                              className="text-xs px-2.5 py-1 rounded-lg bg-white text-gray-600 font-medium shadow-2xs border border-gray-100/60 transition-colors duration-300 group-hover:bg-gray-50"
-                            >
-                              {city}
-                            </span>
-                          ))}
-                        </div>
-
-                        <p className="text-gray-600 text-xs leading-relaxed line-clamp-3">
-                          {country.description}
-                        </p>
-                      </div>
-
-                      <div className="text-center text-xs font-semibold text-gray-400 mt-2 tracking-wide animate-pulse">
-                        Hover to explore →
-                      </div>
-                    </div>
-                  </div>
-
-                  
-                  <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br ${country.gradientBack} rounded-2xl p-6 flex flex-col text-white`}>
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-white/20 backdrop-blur-md shadow-inner transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12">
-                      <Globe className="w-6 h-6 text-white" />
-                    </div>
-
-                    <h4 className="text-white font-extrabold text-2xl mb-2 drop-shadow-md">
-                      {country.name}
-                    </h4>
-
-                    <div className="space-y-2.5 mb-4 bg-black/15 backdrop-blur-xs p-3 rounded-xl border border-white/10 shadow-sm">
-                      <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
-                        <MapPin className="w-3.5 h-3.5 text-white/80" />
-                        <span>{country.cities.length} Major Operational Cities</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
-                        <Users className="w-3.5 h-3.5 text-white/80" />
-                        <span>{country.partnerships} Enterprise Partnerships</span>
-                      </div>
-                    </div>
-
-                    <p className="text-white/90 text-xs leading-relaxed mb-4 flex-1">
-                      {country.description}
-                    </p>
-
-                    <button className="mt-auto text-sm font-extrabold flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white text-gray-900 shadow-lg hover:bg-gray-50 active:scale-95 transition-all duration-300 group/btn">
-                      <span>Explore Market</span>
-                      <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" style={{ color: country.color }} />
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-            ))}
-          </div> */}
+{/* Network Features */}
+<div className="grid md:grid-cols-3 gap-5 mb-16">
+  {networkFeatures.map((feature, idx) => (
+    <div
+      key={idx}
+      className={`group rounded-2xl bg-white border border-gray-100 p-5 shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+      style={{ transitionDelay: `${idx * 150 + 600}ms` }}
+    >
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#00CCAA]/10 to-[#00B9CC]/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          <feature.icon className="w-6 h-6" style={{ color: feature.color }} />
         </div>
 
+        <div>
+          <h4 className="text-lg font-bold text-gray-900 mb-1">
+            {feature.title}
+          </h4>
+          <p className="text-gray-500 text-sm leading-relaxed">
+            {feature.desc}
+          </p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+{/* CTA Section */}
+<div
+  className={`text-center pb-6 transition-all duration-1000 delay-700 ${
+    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+  }`}
+>
+  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+    Ready to Expand{" "}
+    <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+      Globally?
+    </span>
+  </h3>
+
+  <p className="text-gray-500 max-w-xl mx-auto mb-6">
+    Connect with Elemensis to grow your reach across international markets.
+  </p>
+
+  <Link
+    href="/contact"
+    className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+  >
+    Connect With Us
+    <ChevronRight className="w-4 h-4" />
+  </Link>
+</div>
+
+      
         {/* Global Stats Banner */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        {/* <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {globalStats.map((stat, idx) => (
             <div
               key={idx}
@@ -378,10 +294,10 @@ export default function GlobalNetworkPage() {
               />
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Network Features Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-24">
+        {/* <div className="grid md:grid-cols-3 gap-6 mb-24">
           {networkFeatures.map((feature, idx) => (
             <div
               key={idx}
@@ -406,10 +322,10 @@ export default function GlobalNetworkPage() {
               </p>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* CTA Section */}
-        <div
+        {/* <div
           className={`relative text-center py-4 transition-all duration-1000 delay-700 transform ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
@@ -437,7 +353,7 @@ export default function GlobalNetworkPage() {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <style jsx>{`

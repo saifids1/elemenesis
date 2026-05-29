@@ -1,7 +1,7 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useMemo} from "react";
 import Image from "next/image";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 import {
   Network,
@@ -14,41 +14,44 @@ import {
 } from "lucide-react";
 
 const slides = [
-  {
-    title: "Sustainable Growth",
-    subtitle: "Future-focused approach",
-    description: "Committed to eco-friendly and long-term business practices.",
-    image: "/Images/slider/Growth-1.webp",
-    color: "#9B90B0",
-    tag: "SUSTAINABILITY",
-    icon: Leaf,
-    stats: "Eco-Friendly",
-    textColor: "#FFFFFF",
-  },
-  {
-    title: "Who We Are",
-    subtitle: "Global sourcing & distribution experts",
-    description:
-      "Elemensis is a trusted global partner delivering high-quality products through strong supplier networks.",
-    image: "/Images/slider/AboutUs.png",
-    color: "#67e077",
-    tag: "ABOUT",
-    icon: Globe,
-    stats: "50+ Countries",
-    textColor: "#FFFFFF",
-  },
-  {
-    title: "Reliable Global Network",
-    subtitle: "Strong supply chain",
-    description:
-      "Efficient sourcing, seamless logistics, and global distribution.",
-    image: "/Images/slider/Globe-1.jpg",
-    color: "#d2c322",
-    tag: "NETWORK",
-    icon: Network,
-    stats: "24/7 Support",
-    textColor: "#FFFFFF",
-  },
+ {
+  title: "Unveiling Elemensis",
+  subtitle: "A World Of Fine Products Awaits",
+  description:
+    "Elemensis has become a trustworthy company in the UAE, serving global B2B and B2C markets with premium products and reliable business solutions.",
+  image: "/Images/slider/slider-01.jpg",
+  color: "#67e077",
+  tag: "ABOUT",
+  // icon: Globe,
+  icon: Network,
+  stats: "Trusted Partner",
+  textColor: "#FFFFFF",
+},
+{
+  title: "Global Commerce Excellence",
+  subtitle: "Import, Export & Distribution",
+  description:
+    "Located in the UAE's dynamic commercial hub, Elemensis specializes in the import and distribution of high-quality products for businesses worldwide.",
+  image: "/Images/slider/slider-global.jpg",
+  color: "#d2c322",
+  tag: "GLOBAL NETWORK",
+  
+  icon: Globe,
+  stats: "Worldwide Reach",
+  textColor: "#FFFFFF",
+},
+ {
+  title: "Driven By Quality",
+  subtitle: "Teamwork • Sustainability • Excellence",
+  description:
+    "Our foundation is built on teamwork, sustainability, and uncompromising quality, ensuring long-term value for customers and partners alike.",
+  image: "/Images/slider/sider-sustainanlity02.jpg",
+  color: "#9B90B0",
+  tag: "SUSTAINABILITY",
+  icon: Leaf,
+  stats: "Future Focused",
+  textColor: "#FFFFFF",
+},
 ];
 
 export default function HeroSlider() {
@@ -56,12 +59,27 @@ export default function HeroSlider() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState("next");
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      handleNext();
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [index]);
+  const reducedMotion = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+
+  const SLIDE_DURATION = 7000;
+
+useEffect(() => {
+  const timer = setInterval(() => {
+    setDirection("next");
+    setIsAnimating(true);
+
+    setIndex((prev) => (prev + 1) % slides.length);
+
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
+  },  SLIDE_DURATION);
+
+  return () => clearInterval(timer);
+}, []);
 
   const handleNext = () => {
     setDirection("next");
@@ -93,6 +111,8 @@ export default function HeroSlider() {
     : "scale-100";
 
   return (
+    <>
+    
     <div className="relative w-full h-screen overflow-hidden bg-black">
       {/* <div className="absolute top-10 left-28 z-50 group">
               
@@ -234,18 +254,18 @@ export default function HeroSlider() {
       </div>
 
       {/* Progress Bar  */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-        <div
-          key={index}
-          className="h-full transition-all duration-6000 linear"
-          style={{
-            width: isAnimating ? "0%" : "100%",
-            backgroundColor: slide.color,
-            transition: isAnimating ? "none" : "width 6s linear",
-            boxShadow: `0 0 10px ${slide.color}`,
-          }}
-        />
-      </div>
+    <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-white/20">
+  <div
+    key={index}
+    className="h-full"
+    style={{
+      width: "100%",
+      backgroundColor: slide.color,
+      animation: `progress ${SLIDE_DURATION}ms linear`,
+      boxShadow: `0 0 10px ${slide.color}`,
+    }}
+  />
+</div>
 
       {/* Navigation Arrows - More visible */}
       <button
@@ -261,7 +281,7 @@ export default function HeroSlider() {
         <ChevronRight className="w-5 h-5" />
       </button>
 
-      <div className="absolute bottom-[-30] left-1/2 -translate-x-1/2 z-50">
+      {/* <div className="absolute bottom-[-30] left-1/2 -translate-x-1/2 z-50">
         <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] flex items-center justify-center shadow-lg relative z-10">
           <ChevronDown className="w-1 h-1 text-white" />
         </div>
@@ -271,9 +291,17 @@ export default function HeroSlider() {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           style={{ opacity: 0.3 }}
         />
-      </div>
+      </div> */}
 
       <style jsx>{`
+        @keyframes progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
         @keyframes pulse {
           0%,
           100% {
@@ -289,6 +317,6 @@ export default function HeroSlider() {
         // @keyframes skew { 0% { transform: skew(0deg); } 20% { transform: skew(10deg); } 40% { transform: skew(-10deg); } 100% { transform: skew(0deg); } }
         // .animate-skew { animation: skew 0.2s infinite; }
       `}</style>
-    </div>
+    </div></>
   );
 }

@@ -175,7 +175,7 @@ export default function WhyChooseElemensis() {
                     </p>
 
                     {/* Learn More Button */}
-                    <button
+                    {/* <button
                       className="flex items-center gap-2 font-bold text-sm tracking-widest uppercase transition-all hover:gap-4"
                       style={{ color: feature.color }}
                     >
@@ -184,7 +184,7 @@ export default function WhyChooseElemensis() {
                         className="h-[2px] w-8 transition-all group-hover:w-12"
                         style={{ backgroundColor: feature.color }}
                       />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
 
@@ -303,38 +303,48 @@ export function WhyChooseElemensiss() {
     };
   }, []);
 
-  const features = [
-    {
-      icon: Shield,
-      title: "Authenticity & Quality",
-      description:
-        "Elemensis represents sincerity and unwavering excellence. We meticulously source and develop our products, ensuring you receive nothing but the best. Every product demonstrates our dedication to quality.",
-    },
-    {
-      icon: Globe,
-      title: "Worldwide Reach",
-      description:
-        "Our global network facilitates smooth trade and distribution worldwide. With customized logistics systems tailored to your requirements, we've perfected the art of seamless global trading.",
-    },
-    {
-      icon: Heart,
-      title: "Customer-Centric",
-      description:
-        "Your needs are our priority. We understand individual client requirements and deliver precisely tailored solutions. Every client receives dedicated attention and customized service.",
-    },
-    {
-      icon: Leaf,
-      title: "Sustainability",
-      description:
-        "Committed to eco-friendly practices and sustainable procedures. By utilizing environmentally responsible materials, we ensure a positive impact on our planet for future generations.",
-    },
-    {
-      icon: Truck,
-      title: "On-Time Delivery",
-      description:
-        "Time is business. Our efficient delivery system ensures orders arrive precisely when promised. You can rely on Elemensis for prompt, seamless commercial operations.",
-    },
-  ];
+const features = [
+  {
+    icon: Shield,
+    title: "Authenticity and Quality",
+    color: "#FF6B35",
+    bgGradient: "from-orange-500 to-red-500",
+    description:
+      "Elemensis represents authenticity, trust, and excellence. We carefully source and develop every product to ensure the highest quality standards. Every product reflects our commitment to delivering exceptional value and reliability.",
+  },
+  {
+    icon: Globe,
+    title: "Worldwide Reach",
+    color: "#4ECDC4",
+    bgGradient: "from-teal-400 to-cyan-400",
+    description:
+      "Our extensive global network enables seamless trade and distribution across international markets. With customized logistics and distribution solutions, we make global business operations simple, efficient, and reliable.",
+  },
+  {
+    icon: Heart,
+    title: "Customer-Centric Approach",
+    color: "#FF6B6B",
+    bgGradient: "from-rose-400 to-pink-500",
+    description:
+      "Customers are at the heart of everything we do. We understand that every client has unique requirements and deliver tailored solutions designed to meet their specific business needs and expectations.",
+  },
+  {
+    icon: Leaf,
+    title: "Sustainability",
+    color: "#6BCB77",
+    bgGradient: "from-green-400 to-emerald-500",
+    description:
+      "We are committed to building a sustainable future through environmentally responsible products and practices. Our focus on sustainability helps create a positive impact for businesses, communities, and future generations.",
+  },
+  {
+    icon: Truck,
+    title: "On-time Delivery",
+    color: "#FFD93D",
+    bgGradient: "from-yellow-400 to-orange-500",
+    description:
+      "We understand the importance of punctuality in business. Our efficient delivery system ensures orders arrive on time, allowing customers to rely on Elemensis for smooth, dependable, and uninterrupted operations.",
+  },
+];
 
   return (
     <section ref={sectionRef} className="py-28 bg-white">
