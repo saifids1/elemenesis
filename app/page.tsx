@@ -18,11 +18,11 @@ export default function Home() {
       <HeroSlider />
       {/* <SectionDividerBrand/> */}
       <AboutSectionHomepage />
-      {/* <WhyChooseElemensis /> */}
-      {/* <MissionVisionPage /> */}
+      <WhyChooseElemensis />
+      <MissionVisionPage />
       <DivisionsPage />
       <GlobalNetworkPage />
-      {/* <ExportMarketPage /> */}
+      <ExportMarketPage />
       <Footer />
     </>
   );
