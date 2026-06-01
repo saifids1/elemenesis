@@ -18,7 +18,7 @@ export const productItems = [
     {
       title: "Cultures & Starter",
       items: [
-        "Deep-frozen, highly concentrated cultures in readily soluble form, for direct inoculation",
+        "Deep-frozen, highly concentrated cultures in  soluble form, for direct inoculation",
         "Freeze-dried, highly concentrated cultures in powder form, for direct inoculation",
         "Deep-frozen, concentrated cultures for propagation of bulk starter",
         "Freeze-dried, concentrated cultures in powder form, for propagation of bulk starter",

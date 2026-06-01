@@ -115,7 +115,7 @@ export default function Footer() {
           <div className="flex flex-col items-start">
             <div className="flex items-center gap-2 mb-6 group cursor-pointer">
               <Image
-                src="/Images/slider/elemenisis--E-logo.png"
+                src="/Images/logo/elem.png"
                 alt="Elemensis Logo"
                 width={80}
                 height={47}

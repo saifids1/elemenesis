@@ -1,48 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function TopNavigation() {
-  const [activeMenu, setActiveMenu] = useState("home");
-  const [hoveredMenu, setHoveredMenu] = useState(null);
-  
-  // 1. CHANGE DEFAULT TO TRUE: So the logo, CTA, and styling match the image on initial load
-  const [scrolled, setScrolled] = useState(true);
-
-  const gradient = "linear-gradient(135deg, #00CCAA 0%, #00B9CC 100%)";
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Keeps it locked to the look in your image, or comment this line out completely 
-      // if you never want the layout expanding on scroll up.
-      setScrolled(window.scrollY >= 0); 
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // 2. FIXED ACTIVE MENU PATHWAY DETECTOR
-  useEffect(() => {
-    const path = window.location.pathname;
-    
-    // Checks both main items and nested dropdown paths (e.g., /divisions/food)
-    const current = menuItems.find((item) => {
-      if (item.link === path) return true;
-      if (item.dropdown) {
-        return item.dropdown.some((subItem) => subItem.link === path);
-      }
-      return false;
-    });
-
-    if (current) {
-      setActiveMenu(current.id);
-    }
-  }, []);
-
-  // 3. CORRECTED SPELLING PATHS: Set to match your clean Next.js file architecture
   const menuItems = [
     { id: "home", label: "Home", link: "/" },
     { id: "about", label: "About", link: "/about" },
@@ -52,13 +15,31 @@ export default function TopNavigation() {
       label: "Divisions",
       link: "#",
       dropdown: [
-        { label: "Food ", link: "/divisions/food" },
+        { label: "Food", link: "/divisions/food" },
         { label: "Chemicals", link: "/divisions/chemicals" },
         { label: "Ecommerce", link: "/divisions/ecommerce" },
       ],
     },
     { id: "contact", label: "Contact", link: "/contact" },
   ];
+
+  const [activeMenu, setActiveMenu] = useState(() => {
+    if (typeof window === "undefined") return "home";
+    const currentPath = window.location.pathname;
+    const current = menuItems.find((item) => {
+      if (item.link === currentPath) return true;
+      if (item.dropdown) {
+        return item.dropdown.some((subItem) => subItem.link === currentPath);
+      }
+      return false;
+    });
+
+    return current ? current.id : "home";
+  });
+
+  const [hoveredMenu, setHoveredMenu] = useState(null);
+
+  const gradient = "linear-gradient(135deg, #00CCAA 0%, #00B9CC 100%)";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-700 py-0">
@@ -69,7 +50,7 @@ export default function TopNavigation() {
           <div className="flex items-center gap-3 group cursor-pointer">
             <div className="flex items-center ml-10">
               <Image
-                src="/Images/elem.png"
+                src="/Images/logo/elem.png"
                 height={35} // Optimized height alignment
                 width={40}
                 alt="Logo"

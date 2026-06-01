@@ -19,7 +19,7 @@ const slides = [
   subtitle: "A World Of Fine Products Awaits",
   description:
     "Elemensis has become a trustworthy company in the UAE, serving global B2B and B2C markets with premium products and reliable business solutions.",
-  image: "/Images/slider/slider-01.jpg",
+  image: "/Images/slider/new01.webp",
   color: "#67e077",
   tag: "ABOUT",
   // icon: Globe,
@@ -45,7 +45,7 @@ const slides = [
   subtitle: "Teamwork • Sustainability • Excellence",
   description:
     "Our foundation is built on teamwork, sustainability, and uncompromising quality, ensuring long-term value for customers and partners alike.",
-  image: "/Images/slider/sider-sustainanlity02.jpg",
+  image: "/Images/slider/new02.webp",
   color: "#9B90B0",
   tag: "SUSTAINABILITY",
   icon: Leaf,
@@ -182,13 +182,13 @@ useEffect(() => {
         </div>
 
         {/* RIGHT SIDE - Brand Icon - Enhanced visibility */}
-        <div
+        {/* <div
           className={`hidden lg:block transition-all duration-500 ease-out delay-100 ${
             isAnimating ? "opacity-0 scale-90" : "opacity-100 scale-100"
           }`}
         >
           <div className="relative">
-            {/* Brand Icon Circle  */}
+           
             <div
               className="w-36 h-36 rounded-full flex items-center justify-center backdrop-blur-md border-2 transition-all duration-300 hover:scale-105 shadow-2xl"
               style={{
@@ -206,7 +206,7 @@ useEffect(() => {
               />
             </div>
 
-            {/* Decorative Ring - More visible */}
+            
             <div
               className="absolute inset-0 rounded-full -z-10"
               style={{
@@ -217,7 +217,7 @@ useEffect(() => {
               }}
             />
 
-            {/* Second decorative ring for depth */}
+       
             <div
               className="absolute inset-[-15px] rounded-full -z-20"
               style={{
@@ -227,7 +227,7 @@ useEffect(() => {
               }}
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Navigation Dots */}

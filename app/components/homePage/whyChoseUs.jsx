@@ -9,11 +9,8 @@ import {
   Truck,
   ChevronRight,
   CheckCircle,
-  Award,
-  TrendingUp,
-  Users,
+
 } from "lucide-react";
-import TrendyDivider from "../MagneticDivider";
 
 export default function WhyChooseElemensis() {
   const [isVisible, setIsVisible] = useState(false);
@@ -52,7 +49,8 @@ export default function WhyChooseElemensis() {
       bgGradient: "from-orange-50 to-red-50",
       description:
         "Elemensis represents authenticity, trust, and excellence. We carefully source and develop every product to ensure the highest quality standards. Every product reflects our commitment to delivering exceptional value and reliability.",
-      image: "/images/quality-assurance.jpg",
+      image: "/Images/chemical.webp",
+      
       stats: "100% Quality Guarantee",
     },
     {
@@ -65,7 +63,8 @@ export default function WhyChooseElemensis() {
       bgGradient: "from-teal-50 to-cyan-50",
       description:
         "Our extensive global network enables seamless trade and distribution across international markets. With customized logistics and distribution solutions, we make global business operations simple, efficient, and reliable.",
-      image: "/images/global-network.jpg",
+      image: "/Images/GlobalNetwork.webp",
+      
       stats: "50+ Countries Served",
     },
     {
@@ -78,7 +77,7 @@ export default function WhyChooseElemensis() {
       bgGradient: "from-rose-50 to-pink-50",
       description:
         "Customers are at the heart of everything we do. We understand that every client has unique requirements and deliver tailored solutions designed to meet their specific business needs and expectations.",
-      image: "/images/customer-centric.jpg",
+    image: "/Images/slider/Customer-4.png",
       stats: "24/7 Support",
     },
     {
@@ -91,7 +90,8 @@ export default function WhyChooseElemensis() {
       bgGradient: "from-green-50 to-emerald-50",
       description:
         "We are committed to building a sustainable future through environmentally responsible products and practices. Our focus on sustainability helps create a positive impact for businesses, communities, and future generations.",
-      image: "/images/sustainability.jpg",
+    image: "/Images/slider/Globe-1.jpg",
+
       stats: "Carbon Neutral",
     },
     {
@@ -104,7 +104,8 @@ export default function WhyChooseElemensis() {
       bgGradient: "from-yellow-50 to-orange-50",
       description:
         "We understand the importance of punctuality in business. Our efficient delivery system ensures orders arrive on time, allowing customers to rely on Elemensis for smooth, dependable, and uninterrupted operations.",
-      image: "/images/delivery.jpg",
+      image: "/Images/home page card/Ecommerce.jpg",
+
       stats: "99.9% On-Time",
     },
   ];
@@ -188,23 +189,35 @@ export default function WhyChooseElemensis() {
               }`}>
                 <div className="grid lg:grid-cols-2 gap-0">
                   {/* Image Section */}
-                  <div className="relative h-full min-h-[400px] overflow-hidden">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${activeFeature.gradient} opacity-90 z-10`} />
-                    <div className="relative h-full w-full z-20 flex items-center justify-center p-12">
-                      <div className="text-center text-white">
-                        <div className="w-24 h-24 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
-                          <activeFeature.icon className="w-12 h-12 text-white" />
-                        </div>
-                        <h3 className="text-3xl font-bold mb-2">{activeFeature.title}</h3>
-                        <p className="text-white/90 text-lg">{activeFeature.subtitle}</p>
-                        <div className="mt-6 inline-block px-4 py-2 bg-white/20 rounded-full backdrop-blur-sm">
-                          <span className="text-sm font-semibold">{activeFeature.stats}</span>
-                        </div>
-                      </div>
-                    </div>
-                    {/* Decorative Elements */}
-                    <div className="absolute inset-0 bg-black/20 z-15" />
-                  </div>
+             
+<div className="relative h-full min-h-[400px] overflow-hidden">
+  <Image
+    src={activeFeature.image}
+    alt={activeFeature.title}
+    fill
+    className="object-cover"
+  />
+
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/40 z-10" />
+
+  {/* Content */}
+  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-12 text-white">
+    <h3 className="text-4xl font-bold mb-3">
+      {activeFeature.title}
+    </h3>
+
+    <p className="text-xl text-white/90 mb-6">
+      {activeFeature.subtitle}
+    </p>
+
+    <div className="px-6 py-3 rounded-full bg-white/20 backdrop-blur-md">
+      <span className="font-semibold">
+        {activeFeature.stats}
+      </span>
+    </div>
+  </div>
+</div>
 
                   {/* Content Section */}
                   <div className="p-12">
@@ -241,10 +254,10 @@ export default function WhyChooseElemensis() {
                       </div>
                     </div>
 
-                    <button className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 group">
+                    {/* <button className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 group">
                       <span>Learn More</span>
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>

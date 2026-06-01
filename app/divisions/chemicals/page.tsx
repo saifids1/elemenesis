@@ -13,7 +13,7 @@ import {
   Network,
   Fingerprint,
   Sprout,
-    Leaf,
+  Leaf,
   Wind,
 } from "lucide-react";
 import Link from "next/link";
@@ -82,21 +82,72 @@ const featureCards = [
 ];
 
 const industries = [
-  { title: "Plastic And Cables", icon: Cpu, image: "/Images/chemical/Plastic-and-Cables.webp",link: "/PlasticCables", },
-  { title: "Oil And Gas", icon: Activity, image: "/Images/chemical/Oil-and-Gas.webp",link: "/plastic-cables", },
-  { title: "Textile & Carpet", icon: Wind, image: "/Images/chemical/Textile-Carpet.webp",link: "/plastic-cables", },
-  { title: "Rubber & Tyre", icon: ShieldCheck, image: "/Images/chemical/Rubber-Tyre.webp",link: "/plastic-cables", },
-  { title: "Coatings and Ink", icon: Sparkles, image: "/Images/chemical/Coatings-and-Ink.webp",link: "/plastic-cables", },
-  { title: "Polymer Emulsion", icon: Atom, image: "/Images/chemical/Polymer-Emulsion.webp",link: "/plastic-cables", },
-  { title: "Composites", icon: Network, image: "/Images/chemical/Composites.webp",link: "/plastic-cables", },
-  { title: "Adhesive", icon: Fingerprint, image: "/Images/chemical/Adhesive.webp",link: "/plastic-cables", },
-  { title: "Construction", icon: Globe, image: "/Images/chemical/Construction.webp",link: "/plastic-cables", },
+  {
+    title: "Plastic And Cables",
+    icon: Cpu,
+    image: "/Images/chemical/Plastic-and-Cables.webp",
+    link: "/PlasticCables",
+  },
+  {
+    title: "Oil And Gas",
+    icon: Activity,
+    image: "/Images/chemical/Oil-and-Gas.webp",
+    link: "/plastic-cables",
+  },
+  {
+    title: "Textile & Carpet",
+    icon: Wind,
+    image: "/Images/chemical/Textile-Carpet.webp",
+    link: "/plastic-cables",
+  },
+  {
+    title: "Rubber & Tyre",
+    icon: ShieldCheck,
+    image: "/Images/chemical/Rubber-Tyre.webp",
+    link: "/plastic-cables",
+  },
+  {
+    title: "Coatings and Ink",
+    icon: Sparkles,
+    image: "/Images/chemical/Coatings-and-Ink.webp",
+    link: "/plastic-cables",
+  },
+  {
+    title: "Polymer Emulsion",
+    icon: Atom,
+    image: "/Images/chemical/Polymer-Emulsion.webp",
+    link: "/plastic-cables",
+  },
+  {
+    title: "Composites",
+    icon: Network,
+    image: "/Images/chemical/Composites.webp",
+    link: "/plastic-cables",
+  },
+  {
+    title: "Adhesive",
+    icon: Fingerprint,
+    image: "/Images/chemical/Adhesive.webp",
+    link: "/plastic-cables",
+  },
+  {
+    title: "Construction",
+    icon: Globe,
+    image: "/Images/chemical/Construction.webp",
+    link: "/plastic-cables",
+  },
   {
     title: "Detergents / Cosmetics",
     icon: HeartHandshake,
-    image: "/Images/chemical/Detergents_-Cosmetics.webp",link: "/plastic-cables",
+    image: "/Images/chemical/Detergents_-Cosmetics.webp",
+    link: "/plastic-cables",
   },
-  { title: "Polyurethane", icon: Sprout, image: "/Images/chemical/polyurethane-rolls-small.jpg",link: "/plastic-cables", },
+  {
+    title: "Polyurethane",
+    icon: Sprout,
+    image: "/Images/chemical/polyurethane-rolls-small.jpg",
+    link: "/plastic-cables",
+  },
 ];
 
 export default function WhyElemensisPage() {
@@ -104,24 +155,24 @@ export default function WhyElemensisPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: styleCSS }} />
 
-        <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-[#FAFBFA] via-[#FCFDFD] to-[#F5F8F7] text-[#1E2925] font-sans antialiased selection:bg-[#00CC99]/20 selection:text-[#0D231D] overflow-hidden relative">
-
-        <section className="relative h-[65vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
-          <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity transform scale-105 animate-[pulse_8s_ease-in-out_infinite]">
+      <Navbar />
+       <div className="min-h-screen bg-[#F9F6F0] text-[#1E1E1E] font-sans antialiased selection:bg-[#4A8F3C] selection:text-white">
+        <section className="relative h-[80vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
+          <div className="absolute inset-0 z-0">
             <div
               className="w-full h-full bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop')",
+                  "url('/Images/slider/new01.webp')",
               }}
             />
           </div>
+               <div className="absolute inset-0 bg-black/60 z-10" />
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#0D231D] via-transparent to-transparent z-10" />
 
           <div className="relative z-20 text-center max-w-4xl px-4">
-             <nav className="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 mb-8 text-sm tracking-widest text-[#D4AF37] uppercase shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
+            <nav className="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 mb-8 text-sm tracking-widest text-[#D4AF37] uppercase shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
               <span className="text-[#00CCAA]">Home</span>
               <span className="text-white/30">•</span>
               <Leaf className="w-3.5 h-3.5 text-[#00cba9] " />
@@ -134,12 +185,12 @@ export default function WhyElemensisPage() {
               <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
                 Chemical
               </span>{" "}
-              
               Division
             </motion.h1>
-           <p className="text-[18px] leading-[1.9] text-[#82929d] font-normal tracking-[0.5px] max-w-[850px] mx-auto mt-5 text-center">
-  Pioneering high-quality chemical solutions for healthcare, agriculture, manufacturing, and technology industries worldwide.
-</p>
+            <p className="text-[18px] leading-[1.9] text-[#82929d] font-normal tracking-[0.5px] max-w-[850px] mx-auto mt-5 text-center">
+              Pioneering high-quality chemical solutions for healthcare,
+              agriculture, manufacturing, and technology industries worldwide.
+            </p>
           </div>
         </section>
 
@@ -238,7 +289,7 @@ export default function WhyElemensisPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-               {industries.map(({ title, icon: Icon, image, link }, index) => (
+                {industries.map(({ title, icon: Icon, image, link }, index) => (
                   <div
                     key={index}
                     className="group relative h-[320px] overflow-hidden rounded-[24px] bg-white p-2 shadow-[0px_1px_13px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-2"
@@ -277,12 +328,12 @@ export default function WhyElemensisPage() {
                       {/* Button */}
                       <div className="absolute left-0 bottom-[-60px] flex h-[55px] w-full items-center bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] px-5 text-white transition-all duration-300 group-hover:bottom-0">
                         <Link
-  href={link}
-  className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide"
->
-  Know More
-  <ArrowUpRight size={18} />
-</Link>
+                          href={link}
+                          className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide"
+                        >
+                          Know More
+                          <ArrowUpRight size={18} />
+                        </Link>
                       </div>
                     </div>
                   </div>

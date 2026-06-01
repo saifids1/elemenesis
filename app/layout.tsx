@@ -29,7 +29,7 @@ export const metadata: Metadata = {
  description:
     "Elemensis is a UAE-based global B2B & B2C trading, import, and premium product distribution company delivering high-quality, sustainable, and trusted solutions for businesses and consumers worldwide.",
   icons: {
-    icon: "/Images/elem.png",
+    icon: "/Images/logo/elem.png",
   },
 };
 

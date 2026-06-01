@@ -14,17 +14,17 @@ type Product = {
 const products: Product[] = [
   {
     title: "Mehrab Pink Salt",
-    image: "/Images/mehrab-pink-salt.jpg",
+    image: "/Images/ecommerce/solt.webp",
     desc: "Introducing Mehrab Pink Salt: Nature’s Gift to Your Health. Learn the secrets of Mehrab Pink Salt.",
   },
   {
     title: "Zayb Saffron",
-    image: "/Images/zayb-saffron.jpg",
+   image: "/Images/ecommerce/zaybsaffron.jpg",
     desc: "Introducing Zayb’s Pure Saffron – A Golden Elixir for Health and Wellness. Zayb is your gateway to the finest.",
   },
   {
     title: "Zayb Saffron Syrup",
-    image: "/Images/zayb-saffron-syrup.jpg",
+    image: "/Images/ecommerce/zaybsaffronsyrup.jpg",
     desc: "A premium saffron syrup crafted for rich taste, wellness, and a luxurious everyday experience.",
   },
 ];
@@ -33,17 +33,18 @@ const EcommercePage = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-[#FAFBFA] via-[#FCFDFD] to-[#F5F8F7] text-[#1E2925] font-sans antialiased selection:bg-[#00CC99]/20 selection:text-[#0D231D] overflow-hidden relative">
-        <section className="relative h-[65vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
-          <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity transform scale-105 animate-[pulse_8s_ease-in-out_infinite]">
+     <div className="min-h-screen bg-[#F9F6F0] text-[#1E1E1E] font-sans antialiased selection:bg-[#4A8F3C] selection:text-white">
+        <section className="relative h-[80vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
+          <div className="absolute inset-0 z-0">
             <div
               className="w-full h-full bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop')",
+                  "url('/Images/home page card/Ecommerce.jpg')",
               }}
             />
           </div>
+               <div className="absolute inset-0 bg-black/60 z-10" />
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#0D231D] via-transparent to-transparent z-10" />
 
@@ -62,7 +63,7 @@ const EcommercePage = () => {
               </span>{" "}
               Division
             </h1>
-            <p className="max-w-4xl mx-auto text-center text-lg md:text-xl leading-relaxed text-gray-600 font-light tracking-wide">
+            <p className="max-w-4xl mx-auto text-center text-lg md:text-xl leading-relaxed text-gray-100 font-light tracking-wide">
               Discover the premium essence of Mehrab Pink Salt, Zayb Saffron,
               and Zayb Saffron Syrup — crafted to bring purity, wellness, and
               rich flavor to your everyday lifestyle.
