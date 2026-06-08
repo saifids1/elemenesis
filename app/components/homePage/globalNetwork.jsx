@@ -40,6 +40,17 @@ export default function GlobalNetworkPage() {
     };
   }, []);
 
+  // New list of highlighted countries for the map markers
+  const mapHighlights = [
+    { name: "Egypt", top: "54%", left: "51.5%" },
+    { name: "Syria", top: "45.5%", left: "53.5%" },
+    { name: "Iraq", top: "47%", left: "55.5%" },
+    { name: "Saudi Arabia", top: "56%", left: "55.5%" },
+    { name: "Qatar", top: "53.5%", left: "57.5%" },
+    { name: "Oman", top: "57%", left: "59%" },
+    { name: "India", top: "54%", left: "67.5%" },
+  ];
+
   const countries = [
     {
       name: "India",
@@ -162,7 +173,7 @@ export default function GlobalNetworkPage() {
           </p>
         </div>
 
-        {/* World Map Section */}
+        {/* World Map Section with Country Highlights */}
         <div
           className={`relative mb-24 transition-all duration-1000 delay-500 transform ${
             isVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-12"
@@ -175,8 +186,34 @@ export default function GlobalNetworkPage() {
                 alt="Elemensis Global Network Map"
                 width={1200}
                 height={600}
-                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
+                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-[1.01]"
               />
+
+              {/* Dynamic Country Pin Hotspots overlay */}
+              {mapHighlights.map((country, index) => (
+                <div
+                  key={index}
+                  className="absolute pointer-events-auto group/pin transition-all duration-500"
+                  style={{
+                    top: country.top,
+                    left: country.left,
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  {/* Ping Animation Effect */}
+                  <span className="absolute inline-flex h-4 w-4 rounded-full bg-cyan-400 opacity-75 animate-ping" />
+                  
+                  {/* Core Pin Point */}
+                  <span className="relative block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] border border-white shadow-md cursor-pointer" />
+                  
+                  {/* Country Name Badge */}
+                  <div className="absolute left-1/2 bottom-full mb-2 -translate-x-1/2 opacity-90 group-hover/pin:opacity-100 scale-90 group-hover/pin:scale-100 pointer-events-none transition-all duration-300 bg-gray-900/90 text-white text-[10px] md:text-xs font-bold py-1 px-2.5 rounded-lg whitespace-nowrap shadow-xl border border-white/10">
+                    {country.name}
+                    {/* Tiny arrow pointing to the pin */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-[4px] border-x-transparent border-t-[4px] border-t-gray-900/90" />
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* Overlay Stats */}
@@ -201,14 +238,14 @@ export default function GlobalNetworkPage() {
 
         {/* Key Markets Section */}
         <div className="mb-24">
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               Our Key Markets
             </h3>
             <div className="w-16 h-1 bg-gradient-to-br from-[#00CCAA] to-[#00B9CC] mx-auto rounded-full" />
-          </div>
+          </div> */}
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {/* <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {countries.map((country, idx) => (
               <div
                 key={country.name}
@@ -217,10 +254,9 @@ export default function GlobalNetworkPage() {
                 }`}
                 style={{ transitionDelay: `${idx * 150}ms` }}
               >
-                {/* Card Flip Container */}
+  
                 <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-md hover:shadow-2xl rounded-2xl">
-                  
-                  {/* Front Side */}
+                
                   <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] bg-gradient-to-b ${country.gradientFront} rounded-2xl overflow-hidden border border-gray-100/80 flex flex-col`}>
                     <div className="relative h-44 overflow-hidden shadow-inner">
                       <Image
@@ -280,7 +316,7 @@ export default function GlobalNetworkPage() {
                     </div>
                   </div>
 
-                  {/* Back Side */}
+                  
                   <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br ${country.gradientBack} rounded-2xl p-6 flex flex-col text-white`}>
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-white/20 backdrop-blur-md shadow-inner transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12">
                       <Globe className="w-6 h-6 text-white" />
@@ -314,13 +350,11 @@ export default function GlobalNetworkPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Global Stats Banner */}
-        <div
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"
-        >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {globalStats.map((stat, idx) => (
             <div
               key={idx}

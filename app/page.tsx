@@ -9,15 +9,17 @@ import GlobalNetworkPage from "./components/homePage/globalNetwork";
 import ExportMarketPage from "./components/homePage/exportMarket";
 // import SectionDividerBrand from "./components/homePage/divider"
 import Footer from "./layouts/footer";
+import Navbar from "./layouts/navbar";
 
 export default function Home() {
   return (
     <>
+       <Navbar />
       <HeroSlider />
       {/* <SectionDividerBrand/> */}
       <AboutSectionHomepage />
       <WhyChooseElemensis />
-      <MissionVisionPage />
+      {/* <MissionVisionPage /> */}
       <DivisionsPage />
       <GlobalNetworkPage />
       <ExportMarketPage />

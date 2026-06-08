@@ -1,150 +1,241 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function TopNavigation() {
-  // const [activeMenu, setActiveMenu] = useState("home");
-  const pathname = usePathname();
+  const menuItems = [
+    { id: "home", label: "Home", link: "/" },
+    { id: "about", label: "About", link: "/about" },
+    { id: "why", label: "Why", link: "/why" },
+    {
+      id: "divisions",
+      label: "Divisions",
+      link: "#",
+      dropdown: [
+        { label: "Food", link: "/divisions/food" },
+        { label: "Chemicals", link: "/divisions/chemicals" },
+        { label: "Ecommerce", link: "/divisions/ecommerce" },
+      ],
+    },
+    { id: "contact", label: "Contact", link: "/contact" },
+  ];
+
+  const [activeMenu, setActiveMenu] = useState(() => {
+    if (typeof window === "undefined") return "home";
+    const currentPath = window.location.pathname;
+    const current = menuItems.find((item) => {
+      if (item.link === currentPath) return true;
+      if (item.dropdown) {
+        return item.dropdown.some((subItem) => subItem.link === currentPath);
+      }
+      return false;
+    });
+
+    return current ? current.id : "home";
+  });
+
   const [hoveredMenu, setHoveredMenu] = useState(null);
-  const [scrolled, setScrolled] = useState(false);
 
   const gradient = "linear-gradient(135deg, #00CCAA 0%, #00B9CC 100%)";
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 500);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const menuItems = [
-    { id: "home", label: "Home", link: "/" },
-    { id: "about", label: "About", link: "/about-us" },
-    { id: "why-us", label: "Why Us", link: "/why-us" },
-    { id: "solutions", label: "Solutions", link: "/solutions" },
-    { id: "contact", label: "Contact", link: "/contact-us" },
-  ];
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
-        scrolled ? "py-0" : "py-8"
-      }`}
-    >
-      <div className={`w-full ${scrolled ? "" : "max-w-7xl mx-auto"}`}>
-        <div
-          className={`flex items-center justify-between px-6 transition-all duration-500 ${
-            scrolled
-              ? "w-full py-4 bg-white/80 backdrop-blur-xl border-b border-gray-200"
-              : "py-3 rounded-2xl"
-          }`}
-        >
-          {/* Logo */}
-          <div className="items-center gap-3 group cursor-pointer">
-            {/* Animated Logo*/}
-            <AnimatePresence>
-              {scrolled && (
-                <motion.span
-                  initial={{ opacity: 0, width: 0 }}
-                  animate={{ opacity: 1, width: "auto" }}
-                  exit={{ opacity: 0, width: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="text-sm md:text-base font-black tracking-[0.2em] text-slate-900 group-hover:tracking-[0.3em] transition-all duration-300 overflow-hidden "
-                >
-                  {/* Glitch Layers */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute inset-0 translate-x-1 animate-pulse bg-red-500/20 mix-blend-screen" />
-                    <div className="absolute inset-0 -translate-x-1 animate-pulse bg-blue-500/20 mix-blend-screen" />
-                  </div>
-                  <div className="flex items-center">
-                    <Image
-                      src="/Images/slider/elemenisis--E-logo.png"
-                      height={80}
-                      width={80}
-                      alt="Logo"
-                      className="relative z-10 group-hover:animate-skew brightness-150 contrast-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
-                    />
-                    <span>ELEMENSIS</span>
-                  </div>
-                </motion.span>
-              )}
-            </AnimatePresence>
+    <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-700 py-0">
+      <div className="w-full">
+        <div className="flex items-center px-6  transition-all duration-500 justify-between w-full py-2 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+          
+          {/* Logo - Always visible now */}
+          <div className="flex items-center gap-3 group cursor-pointer">
+            <div className="flex items-center ml-10">
+              <Image
+                src="/Images/logo/elem.png"
+                height={35} // Optimized height alignment
+                width={40}
+                alt="Logo"
+                className="object-contain"
+              />
+              <span className="text-sm md:text-base font-black tracking-[0.2em] text-slate-900 ml-2">
+                ELEMENSIS
+              </span>
+            </div>
           </div>
 
-          {/* Menu */}
-          <div
-            className={`hidden md:flex items-center p-1 transition-all duration-300 ${
-              scrolled
-                ? ""
-                : "bg-white/40 backdrop-blur-md rounded-xl border border-gray-200/40"
-            }`}
-          >
+          {/* MENU */}
+          <div className="hidden md:flex items-center gap-2 p-1 transition-all duration-300">
             {menuItems.map((item) => (
-              <Link key={item.id} href={item.link}>
-                <button
-                  onMouseEnter={() => setHoveredMenu(item.id)}
-                  onMouseLeave={() => setHoveredMenu(null)}
-                  className={`relative px-5 py-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer ${
-                    pathname === item.link
+              <div
+                key={item.id}
+                className="relative"
+                onMouseEnter={() => setHoveredMenu(item.id)}
+                onMouseLeave={() => setHoveredMenu(null)}
+              >
+                <Link
+                  href={item.link}
+                  onClick={() => setActiveMenu(item.id)}
+                  className={`relative flex items-center px-5 py-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-md ${
+                    activeMenu === item.id
                       ? "text-white"
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
-                  {pathname === item.link && (
+                  {activeMenu === item.id && (
                     <motion.div
                       layoutId="nav-pill"
                       className="absolute inset-0 rounded-md"
-                      style={{
-                        background: gradient,
-                        boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                      style={{ background: gradient }}
+                      transition={{
+                        type: "spring",
+                        bounce: 0.25,
+                        duration: 0.6,
                       }}
                     />
                   )}
 
-                  <AnimatePresence>
-                    {hoveredMenu === item.id && pathname !== item.link && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0 }}
-                        className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
-                        style={{ background: gradient }}
-                      />
+                  <span className="relative z-10 flex items-center gap-1">
+                    {item.label}
+                    {item.dropdown && (
+                      <span className="text-[10px] ml-1 opacity-70">▼</span>
                     )}
-                  </AnimatePresence>
+                  </span>
+                </Link>
 
-                  <span className="relative z-10">{item.label}</span>
-                </button>
-              </Link>
+                {/* DROPDOWN */}
+                <AnimatePresence>
+                  {item.dropdown && hoveredMenu === item.id && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50"
+                    >
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          href={subItem.link}
+                          className="block px-5 py-3 text-sm text-slate-700 hover:bg-gray-100 transition"
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <AnimatePresence>
-            {scrolled && (
-              <motion.button
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3 }}
-                className="hidden md:block text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full text-white transition-all hover:opacity-90"
-                style={{ background: gradient }}
-              >
-                Get in touch
-              </motion.button>
-            )}
-          </AnimatePresence>
-          {!scrolled && <div>{""}</div>}
+        <a
+  href="/contact"
+  className="hidden md:inline-flex text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-xl text-white transition-transform hover:scale-105 duration-200"
+  style={{ background: gradient }}
+>
+  Get in touch
+</a>
 
-          {/* Mobile button - shows always */}
-          <button className="md:hidden p-2 text-slate-900">
+          {/* MOBILE TOGGLE */}
+          {/* <button className="md:hidden p-2 text-slate-900">
             <div className="w-6 h-0.5 bg-current mb-1.5" />
             <div className="w-6 h-0.5 bg-current opacity-50" />
-          </button>
+          </button> */}
+
+
+{/* MOBILE MENU */}
+
+
+{/* ====================== MOBILE MENU ====================== */}
+<div className="relative md:hidden">
+  {/* TOGGLE INPUT */}
+  <input type="checkbox" id="mobile-menu" className="peer hidden" />
+
+  {/* BURGER BUTTON */}
+  <label
+    htmlFor="mobile-menu"
+    className="burger relative z-[120]"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  {/* OVERLAY */}
+  <label
+    htmlFor="mobile-menu"
+    className="fixed inset-0 z-[105] hidden bg-black/40 backdrop-blur-sm peer-checked:block"
+  />
+
+  {/* SIDE MENU */}
+  <div className="fixed right-0 top-0 z-[110] h-screen w-[80%] max-w-[340px] translate-x-full bg-white shadow-2xl transition-transform duration-500 peer-checked:translate-x-0">
+    
+    {/* HEADER */}
+     <div className="flex items-center justify-between border-b border-gray-100 px-6 py-5">
+            <div className="flex items-center">
+              <Image
+                src="/Images/slider/elemenisis--E-logo.png"
+                height={40} // Optimized height alignment
+                width={40}
+                alt="Logo"
+                className="object-contain"
+              />
+              <span className="text-sm md:text-base font-black tracking-[0.2em] text-slate-900 ml-2">
+                ELEMENSIS
+              </span>
+            </div>
+          </div>
+
+    {/*<div className="flex items-center justify-between border-b border-gray-100 px-6 py-5">
+      <h4 className="text-lg font-bold tracking-widest text-[#0D231D]">
+        MENU
+      </h4>
+
+       <label
+        htmlFor="mobile-menu"
+        className="cursor-pointer rounded-lg bg-gray-100 px-3 py-1 text-xl font-bold text-slate-700 transition hover:bg-gray-200"
+      >
+        ×
+      </label> 
+    </div>*/}
+
+    {/* MENU ITEMS */}
+    <div className="flex flex-col px-6 py-2">
+      {menuItems.map((item) => (
+        <div key={item.id} className="border-b border-gray-100 py-2">
+          <Link
+            href={item.link}
+            className="block  font-semibold uppercase tracking-wider text-slate-800 transition hover:text-[#00B9CC]"
+          >
+            {item.label}
+          </Link>
+
+          {item.dropdown && (
+            <div className="mt-3 ml-3 flex flex-col gap-3 text-base">
+              {item.dropdown.map((subItem) => (
+                <Link
+                  key={subItem.label}
+                  href={subItem.link}
+                  className="text-sm text-slate-600 transition hover:text-[#00B9CC]"
+                >
+                  {subItem.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* BUTTON */}
+      <Link
+        href="/contact"
+        className="mt-6 rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] px-5 py-3 text-center text-sm font-bold uppercase tracking-wider text-white transition hover:scale-[1.02]"
+      >
+        Get In Touch
+      </Link>
+    </div>
+  </div>
+
+</div>
         </div>
       </div>
     </nav>
