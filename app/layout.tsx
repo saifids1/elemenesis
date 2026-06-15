@@ -1,17 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import BackgroundCrazy from "./components/BackgroundBlobs";
-import BackgroundBento from "./components/BackgroundBlobs";
-import BackgroundGeometric from "./components/BackgroundBlobs";
-import BackgroundMinimalist from "./components/BackgroundBlobs";
-import BackgroundKinetic from "./components/BackgroundBlobs";
-import BackgroundHighVoltage from "./components/BackgroundBlobs";
-import BackgroundAura from "./components/BackgroundBlobs";
-import BackgroundCircuit from "./components/BackgroundBlobs";
-import BackgroundPrism from "./components/BackgroundBlobs";
+
 import BackgroundSpotlight from "./components/BackgroundBlobs";
-import WebsiteLoaderProps from "./loading";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
