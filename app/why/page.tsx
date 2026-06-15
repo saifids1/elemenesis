@@ -29,6 +29,7 @@ import Footer from "../layouts/footer";
 import Navbar from "../layouts/navbar";
 
 
+
 export default function WhyElemensisPage() {
   const fadeIn = {};
   const staggerContainer = {};
