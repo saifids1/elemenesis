@@ -1,4 +1,5 @@
 "use client";
+
 import { useRef } from "react";
 import {
   Leaf,
@@ -31,6 +32,7 @@ export default function WhyElemensisPage() {
   const fadeIn = {};
   const staggerContainer = {};
   const containerRef = useRef<HTMLDivElement | null>(null);
+  
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
