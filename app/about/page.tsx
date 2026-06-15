@@ -42,51 +42,65 @@ export default function AboutPage() {
       <Navbar />
       <div className="min-h-screen bg-[#F9F6F0] text-[#1E1E1E] font-sans antialiased selection:bg-[#00BCD4] selection:text-white">
         {/* 1. CUSTOM BREADCRUMB & HERO SECTION */}
-        <section className="relative h-[65vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
-          {/* Dynamic Organic Background Overlay */}
-          <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity transform scale-105 animate-[pulse_8s_ease-in-out_infinite]">
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop')`,
-              }}
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-6 py-24 text-[#ECE9E2]">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/Images/about_us/about01.png"
+              alt="About Us"
+              className="w-full h-full object-cover object-center"
             />
           </div>
 
-          {/* Gradient Overlay for Typography Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0D231D] via-transparent to-transparent z-10" />
+          {/* Dark Green Gradient Overlay */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0D231D]/70 via-[#0D231D]/55 to-[#0D231D]/65" />
 
-          {/* Custom Interactive Breadcrumb Content */}
+          {/* Additional Dark Layer */}
+          <div className="absolute inset-0 z-10 bg-black/30" />
+
+          {/* Content */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="relative z-20 text-center max-w-4xl px-4"
+            className="relative z-20 mx-auto max-w-5xl text-center"
           >
-            {/* Custom Stylized Breadcrumb */}
+            {/* Breadcrumb */}
             <motion.nav
               variants={fadeIn}
-              className="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 mb-8 text-sm tracking-widest text-[#D4AF37] uppercase"
+              className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md text-sm uppercase tracking-[3px] text-[#D4AF37]"
             >
               <span className="text-[#00CCAA]">Home</span>
-              <span className="text-white/30">•</span>
-              <Leaf className="w-3.5 h-3.5 animate-spin-slow text-[#00CCAA]" />
-              <span className="text-white/30">•</span>
+              <span className="text-white/40">•</span>
+              <Leaf className="h-4 w-4 text-[#00CCAA]" />
+              <span className="text-white/40">•</span>
               <span className="text-white">About Elemensis</span>
             </motion.nav>
 
+            {/* Heading */}
             <motion.h1
               variants={fadeIn}
-              className="text-5xl md:text-7xl font-light tracking-tight text-[#ECE9E2] leading-tight"
+              className="mt-8 text-5xl font-light leading-tight tracking-tight md:text-7xl"
             >
               About{" "}
-              <span className=" bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
                 Elemensis
               </span>
             </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              variants={fadeIn}
+              className="mx-auto mt-8 max-w-4xl text-base leading-[2] text-gray-200 md:text-lg"
+            >
+              ELEMENSIS distributes premium, naturally derived products that are
+              carefully cultivated, sourced, and processed to meet the highest
+              standards of health, quality, and reliability. Through our trusted
+              brands, we bring the benefits of healthy, high-quality, and
+              premium products to homes and businesses worldwide.
+            </motion.p>
           </motion.div>
         </section>
-
         {/* 2. ASYMMETRICAL EDITORIAL NARRATIVE (The Core Concept) */}
         <section className="max-w-7xl mx-auto px-6 py-20 md:pt-9 md:pb-7">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
@@ -157,40 +171,64 @@ export default function AboutPage() {
               </motion.div>
 
               {/* Vision Block */}
-           <motion.div
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, margin: "-100px" }}
-  variants={fadeIn}
-  className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-neutral-100 bg-white shadow-sm group
-             px-4 py-5
-             sm:px-6 sm:py-6
-             md:px-8 md:pt-5 md:pb-8
-             lg:px-10 lg:py-9
-             space-y-4 sm:space-y-5 md:space-y-6"
->
-  <div className="absolute top-0 right-0 translate-x-8 -translate-y-8 text-neutral-50 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-    <Compass className="h-32 w-32 sm:h-44 sm:w-44 md:h-56 md:w-56 lg:h-64 lg:w-64" />
-  </div>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeIn}
+                whileHover={{ y: -6 }}
+                className="relative overflow-hidden rounded-3xl border border-[#00cba9]/20 bg-gradient-to-br from-white via-[#F9F6F0] to-[#00cba9]/10 p-6 sm:p-8 lg:p-10 shadow-sm transition-all duration-500 hover:border-[#00cba9]/40 hover:shadow-2xl hover:shadow-[#00cba9]/10 group"
+              >
+                {/* Decorative icon */}
+                <div className="absolute -right-10 -top-10 text-[#00cba9]/5 transition-all duration-500 group-hover:text-[#00cba9]/10">
+                  <Compass className="h-40 w-40 sm:h-56 sm:w-56 lg:h-64 lg:w-64" />
+                </div>
 
-  <div className="inline-flex rounded-xl bg-[#00cba9]/10 p-2.5 sm:p-3 text-[#00cba9]">
-    <Compass className="h-5 w-5 sm:h-6 sm:w-6 text-[#00cba9]" />
-  </div>
+                {/* Glow effects */}
+                <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-[#00B9CC]/10 blur-3xl" />
+                <div className="absolute -right-16 top-10 h-48 w-48 rounded-full bg-[#00cba9]/10 blur-3xl" />
 
-<h2 className="font-sans text-2xl sm:text-3xl lg:text-[32px] xl:text-[34px] font-bold text-[#111827]">
-    Our Vision
-  </h2>
+                <div className="relative z-10 space-y-6">
+                  <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-[#00cba9]/10">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-teal-200/60">
+                      <Compass className="h-5 w-5 text-white" />
+                    </div>
 
-  <p className="text-sm sm:text-base lg:text-[15px] xl:text-base leading-7 sm:leading-8 text-neutral-600 font-light">
-    ElEMENSIS is dedicated to delivering superior-quality products
-    that consistently exceed the expectations of our esteemed
-    customers. Our unwavering vision is to be the foremost leader
-    in every endeavor we undertake. Guided by this vision, we make
-    deliberate and informed choices, ensuring that we remain
-    steadfast in achieving our objectives and providing
-    unparalleled service to our valued clientele
-  </p>
-</motion.div>
+                    <span className="text-s font-bold uppercase tracking-[0.25em] text-[#00B9CC]">
+                      People & Culture
+                    </span>
+                  </div>
+
+                  <h2 className="text-3xl font-bold text-[#111827] sm:text-4xl">
+                    Our Team
+                  </h2>
+
+                  <p className="max-w-3xl text-base font-light leading-8 text-neutral-600">
+                    Our team consists of experienced multinational and
+                    multicultural professionals who are passionate about
+                    delivering excellence. Every member plays a vital role in
+                    our success, sharing a strong belief in our values,
+                    processes, and commitment to continuous improvement. We
+                    constantly learn, adapt, and grow to better serve our
+                    customers and respond to changing market demands.
+                  </p>
+
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    {[
+                      "Multicultural Team",
+                      "Continuous Growth",
+                      "Customer Focus",
+                    ].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#0D231D] shadow-sm ring-1 ring-neutral-200"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -217,62 +255,126 @@ export default function AboutPage() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={staggerContainer}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
             >
               {/* Card 1: Mission */}
+
               <motion.div
                 variants={fadeIn}
-                whileHover={{ y: -6 }}
-                className="md:col-span-2 bg-[#F9F6F0] p-8 md:p-12 rounded-3xl flex flex-col justify-between border border-transparent hover:border-[#00cba9]/30 transition-all duration-300 group"
+                whileHover={{ y: -8 }}
+                className="relative overflow-hidden rounded-3xl border border-[#00cba9]/20 bg-gradient-to-br from-white via-[#F9F6F0] to-[#00cba9]/10 p-8 md:p-12 shadow-sm transition-all duration-500 hover:border-[#00cba9]/40 hover:shadow-2xl hover:shadow-[#00cba9]/10 group"
               >
-                <div className="space-y-6">
-                  <div className="inline-flex p-3 bg-[#0D231D] text-[#00cba9] rounded-xl">
-                    <Globe className="w-6 h-6" />
+                {/* Decorative background */}
+                <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#00cba9]/15 blur-3xl transition-all duration-500 group-hover:bg-[#00cba9]/25" />
+                <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#00B9CC]/10 blur-3xl" />
+
+                <div className="relative z-10 flex h-full flex-col justify-between">
+                  <div className="space-y-6">
+                    <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-[#00cba9]/10">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-teal-200/60">
+                        <Globe className="h-5 w-5 text-white" />
+                      </div>
+
+                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#00B9CC]">
+                        Worldwide Network
+                      </span>
+                    </div>
+
+                    <h3 className="text-3xl font-bold text-[#111827] md:text-4xl">
+                      Global Expertise
+                    </h3>
+
+                    <p className="max-w-3xl text-base font-light leading-8 text-neutral-600">
+                      With years of industry experience and a strong
+                      international network, ELEMENSIS has built trusted
+                      relationships with suppliers and partners across the
+                      globe. This allows us to source and deliver premium
+                      products efficiently while maintaining the highest
+                      standards of quality, reliability, and service.
+                    </p>
+
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      {[
+                        "Trusted Partners",
+                        "Premium Sourcing",
+                        "Reliable Delivery",
+                      ].map((item) => (
+                        <div
+                          key={item}
+                          className="rounded-2xl bg-white/80 px-4 py-3 text-sm font-semibold text-[#0D231D] shadow-sm ring-1 ring-neutral-200"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-sans font-bold text-[#111827]">
-                    Our Mission
-                  </h3>
-                  <p className="text-neutral-600 font-light leading-relaxed">
-                    Our mission is to enable companies all around the world with
-                    our superior goods, outstanding services, and steadfast
-                    support. Our vision is to establish ourselves as the
-                    preferred B2B partner for companies across the globe,
-                    promoting expansion and success.
-                  </p>
-                </div>
-                <div className="mt-8 flex items-center space-x-2 text-sm font-semibold text-[#0D231D] group-hover:text-[#00cba9] transition-colors">
-                  <span>Global B2B Framework</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+
+                  <div className="mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-[#0D231D] transition-colors group-hover:text-[#00B9CC]">
+                    <span>Global B2B Framework</span>
+                    {/* <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" /> */}
+                  </div>
                 </div>
               </motion.div>
 
-              {/* Card 2: Core Values */}
               <motion.div
                 variants={fadeIn}
-                whileHover={{ y: -6 }}
-                className="bg-[#0D231D] text-[#ECE9E2] p-8 rounded-3xl flex flex-col justify-between border border-transparent hover:border-[#00cba9]/50 transition-all duration-300"
+                whileHover={{ y: -8 }}
+                className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0D231D] via-[#112D26] to-[#0D231D] p-8 md:p-10 text-white border border-[#00cba9]/20 hover:border-[#00cba9]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#00cba9]/10"
               >
-                <div className="space-y-6">
-                  <div className="inline-flex p-3 bg-white/10 text-[#00cba9] rounded-xl">
-                    <Star className="w-6 h-6" />
+                {/* Decorative Glow */}
+                <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[#00cba9]/15 blur-3xl" />
+                <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-[#00B9CC]/10 blur-3xl" />
+
+                <div className="relative z-10 flex h-full flex-col justify-between">
+                  <div>
+                    <div className="inline-flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 backdrop-blur-sm border border-white/10">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-[#00cba9]/20">
+                        <Star className="h-5 w-5 text-white" />
+                      </div>
+
+                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#00cba9]">
+                        Our Foundation
+                      </span>
+                    </div>
+
+                    <h3 className="mt-6 text-3xl font-bold text-white">
+                      Core Values
+                    </h3>
+
+                    <p className="mt-5 text-[15px] leading-8 text-white/75 font-light">
+                      At ELEMENSIS, excellence is more than a promise—it is a
+                      way of life. We are committed to authenticity,
+                      reliability, integrity, and quality in every product and
+                      service we provide. Through strong partnerships, global
+                      sourcing expertise, and customer-focused solutions, we
+                      continue to build trust and deliver exceptional value
+                      worldwide.
+                    </p>
+
+                    {/* Value Tags */}
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      {[
+                        "Integrity",
+                        "Quality",
+                        "Reliability",
+                        "Trust",
+                        "Excellence",
+                      ].map((value) => (
+                        <span
+                          key={value}
+                          className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white/90 backdrop-blur-sm"
+                        >
+                          {value}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-sans font-bold text-[#ECE9E2]">
-                    Core Values
-                  </h3>
-                  <p className="text-white/70 text-sm font-light leading-relaxed">
-                    At Elemensis, excellence is a way of life rather than just a
-                    promise. We guarantee the genuineness, dependability, and
-                    excellence of every product and service we offer. Our path
-                    and our clients' trust in us serve as examples of this
-                    commitment.Elemensis is a community rather than just a
-                    company. With years of experience in the field, we have
-                    developed solid relationships with partners and suppliers
-                    around the world, allowing us to provide the best products
-                    right to your door.
-                  </p>
-                </div>
-                <div className="pt-6 border-t border-white/10 text-xs tracking-wider text-[#00cba9] uppercase font-mono">
-                  No Compromise Ecosystem
+
+                  <div className="mt-8 border-t border-white/10 pt-6">
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#00cba9]">
+                      No Compromise Ecosystem
+                    </span>
+                  </div>
                 </div>
               </motion.div>
 
@@ -280,27 +382,62 @@ export default function AboutPage() {
               <motion.div
                 variants={fadeIn}
                 whileHover={{ y: -6 }}
-                className="md:col-span-3 bg-gradient-to-br from-[#0D231D]/5 to-[#00cba9]/10 p-8 md:p-12 rounded-3xl border border-neutral-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+                className="relative md:col-span-3 overflow-hidden rounded-3xl border border-[#00cba9]/20 bg-gradient-to-br from-white via-[#F9F6F0] to-[#00cba9]/10 p-8 md:p-12 shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-[#00cba9]/10"
               >
-                <div className="max-w-2xl space-y-4">
-                  <div className="inline-flex p-2.5 bg-white shadow-sm text-[#0D231D] rounded-xl">
-                    <ShieldCheck className="w-5 h-5 text-[#00cba9]" />
+                {/* Decorative blur */}
+                <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#00cba9]/20 blur-3xl" />
+                <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-[#00B9CC]/10 blur-3xl" />
+
+                <div className="relative z-10 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+                  <div className="max-w-3xl space-y-5">
+                    <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-[#00cba9]/10">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white shadow-lg shadow-teal-200/60">
+                        <ShieldCheck className="h-5 w-5" />
+                      </div>
+                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#00B9CC]">
+                        People Behind Elemensis
+                      </span>
+                    </div>
+
+                    <h3 className="text-3xl font-bold text-[#111827] md:text-4xl">
+                      Our Team
+                    </h3>
+
+                    <p className="max-w-3xl text-base font-semibold leading-8 text-neutral-600">
+                      Our team is made up of knowledgeable, multinational, and
+                      multicultural professionals who are committed to
+                      delivering excellence. Every team member plays an
+                      important role in our growth and strongly believes in our
+                      values, processes, and principles. We continuously learn,
+                      adapt, and improve to serve our customers better in every
+                      market situation.
+                    </p>
+
+                    <div className="flex flex-wrap gap-3 pt-2">
+                      {[
+                        "Global Mindset",
+                        "Trusted Process",
+                        "Continuous Growth",
+                      ].map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#0D231D] shadow-sm ring-1 ring-neutral-200"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-sans font-bold text-[#111827]">
-                    Our Team
-                  </h3>
-                  <p className="text-neutral-600 text-sm font-light leading-relaxed">
-                    Multinational and multicultural individuals that are
-                    knowledgeable and willing to help make up our team. Each
-                    team member is crucial to our business and firmly believes
-                    in the system, procedure, and fundamental principles. In
-                    order to serve you best, we are always learning, developing,
-                    and growing in all facets of our business and market
-                    situations.
-                  </p>
-                </div>
-                <div className="bg-[#0D231D] text-white px-6 py-3 rounded-xl font-medium text-sm whitespace-nowrap self-stretch md:self-auto text-center cursor-pointer hover:bg-[#00cba9] hover:text-[#0D231D] transition-colors duration-300">
-                  Explore Network
+
+                  <div className="flex md:justify-end">
+                    <a
+                      href="/contact"
+                      className="group inline-flex items-center justify-center rounded-2xl bg-[#0D231D] px-7 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:bg-gradient-to-r hover:from-[#00CCAA] hover:to-[#00B9CC] hover:text-white hover:shadow-xl hover:shadow-[#00cba9]/20"
+                    >
+                      Explore Network
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

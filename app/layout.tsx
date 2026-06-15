@@ -11,13 +11,12 @@ import BackgroundAura from "./components/BackgroundBlobs";
 import BackgroundCircuit from "./components/BackgroundBlobs";
 import BackgroundPrism from "./components/BackgroundBlobs";
 import BackgroundSpotlight from "./components/BackgroundBlobs";
-
+import WebsiteLoaderProps from "./loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -26,7 +25,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Elemensis",
- description:
+  description:
     "Elemensis is a UAE-based global B2B & B2C trading, import, and premium product distribution company delivering high-quality, sustainable, and trusted solutions for businesses and consumers worldwide.",
   icons: {
     icon: "/Images/logo/elem.png",
@@ -46,11 +45,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col relative">
         {/* 1. Background layer (Global) */}
         <BackgroundSpotlight />
-        
+
         {/* 2. Page Content */}
-        <main className="flex-grow">
-          {children}
-        </main>
+
+          <main className="flex-grow">{children}</main>
+   
       </body>
     </html>
   );

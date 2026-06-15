@@ -1,180 +1,179 @@
+// app/page.tsx
 "use client";
-
 import React, { useState } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { Leaf } from "lucide-react";
-
+import { ArrowRight, Paintbrush } from "lucide-react";
 import Footer from "../../layouts/footer";
 import Navbar from "../../layouts/navbar";
-import { productItems } from "../../data/productData";
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
+const tabs = [
+  {
+    title: "Confectionery",
+    subtitle: "Quality and Quantity",
+    image: "/Images/Coatings-and-Ink/Coatings-and-Ink-1-scaled-1.webp",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ratione provident rerum amet molestiae ex.",
   },
-};
+  {
+    title: "Meat Polutary & Sea Food",
+    subtitle: "High Safety Solutions",
+    image: "/Images/Coatings-and-Ink/Coatings-and-Ink-1-scaled-1.webp",
+    desc: "Fire retardants improve resistance and safety for industrial materials.",
+  },
+  {
+    title: "Bakery",
+    subtitle: "Performance Protection",
+    image: "/Images/Coatings-and-Ink/Coatings-and-Ink-1-scaled-1.webp",
+    desc: "Antioxidants help improve product stability and long-term performance.",
+  },
+  {
+    title: "Juice and Beveragres",
+    subtitle: "Industrial Grade Materials",
+    image: "/Images/Coatings-and-Ink/Coatings-and-Ink-1-scaled-1.webp",
+    desc: "Oxides are used across multiple chemical and industrial applications.",
+  },
+  {
+    title: "Dairy",
+    subtitle: "Fast Processing Support",
+    image: "/Images/Coatings-and-Ink/Coatings-and-Ink-1-scaled-1.webp",
+    desc: "Accelerators help improve processing speed and efficiency.",
+  },
+  {
+    title: "Finished Exotic Herbs",
+    subtitle: "Durable Rubber Solutions",
+    image: "/Images/Coatings-and-Ink/Coatings-and-Ink-1-scaled-1.webp",
+    desc: "Synthetic rubber provides strength, flexibility, and durability.",
+  },
+  {
+    title: "Retails Finished Food Goods",
+    subtitle: "Durable Rubber Solutions",
+    image: "/Images/Coatings-and-Ink/Coatings-and-Ink-1-scaled-1.webp",
+    desc: "Synthetic rubber provides strength, flexibility, and durability.",
+  },
+];
 
-export default function Foodpage() {
-  const [activeItem, setActiveItem] = useState(productItems[0]);
+export default function Home() {
+  const [active, setActive] = useState(0);
+  const current = tabs[active];
 
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       <Navbar />
+      {/* Hero Section with Gradient Background */}
+      <section className="relative min-h-[500px] overflow-hidden bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF]">
+        {/* Background / Overlay should stay behind */}
+        <div className="absolute inset-0 bg-black/30 z-0" />
 
-      <div className="min-h-screen bg-[#F9F6F0] text-[#1E1E1E] font-sans antialiased selection:bg-[#4A8F3C] selection:text-white">
-        <section className="relative h-[80vh] flex flex-col justify-center items-center overflow-hidden bg-[#0D231D] text-[#ECE9E2] px-6">
-          <div className="absolute inset-0 z-0">
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  "url('/Images/food/main-food-header-image.jpg')",
-              }}
-            />
-          </div>
-
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0D231D] via-transparent to-transparent z-10" />
-
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="relative z-20 text-center max-w-4xl px-4"
-          >
-            <motion.nav className="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 mb-8 text-sm tracking-widest text-[#D4AF37] uppercase">
-              <span className="text-[#00CCAA]">Home</span>
-              <span className="text-white/30">•</span>
-              <Leaf className="w-3.5 h-3.5 text-[#00cba9] " />
-              <span className="text-white/30">•</span>
-              <span className="text-white">Food</span>
-            </motion.nav>
-
-            <motion.h1 className="text-5xl md:text-7xl font-light tracking-tight text-[#ECE9E2] leading-tight">
-              <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
-                Food
-              </span>{" "}
-              Division
-            </motion.h1>
-
-            <p className="text-[18px] leading-[1.9] text-gray-200 font-normal tracking-[0.5px] max-w-[850px] mx-auto mt-5 text-center">
-              Discover culinary perfection with our Food Division. From rare
-              saffron to exquisite pink salt, elevate your dishes with our
-              exceptional ingredients.
-            </p>
-          </motion.div>
-        </section>
-
-        <div className="text-center mb-10 mt-9 px-6">
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#0D231D]">
-            Our{" "}
-            <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
-              Products
-            </span>
-          </h2>
-          <div className="mx-auto mt-4 h-[3px] w-36 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC]" />
-          <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-gray-600">
-            Elemensis is dedicated to delivering premium-quality food
-            ingredients and innovative culinary solutions for businesses
-            worldwide. From dairy, confectionery, meat, poultry & seafood to
-            baking, savoury products, margarines, fats & oils, and health &
-            functional ingredients, we provide trusted solutions that enhance
-            taste, quality, and performance across the food industry.
-          </p>
-        </div>
-
-    <section className="grid grid-cols-1 md:grid-cols-[300px_1fr] xl:grid-cols-[375px_1fr] gap-6 items-start px-4 md:px-6 xl:px-10">
-  <aside className="md:min-h-[230px] py-4 md:py-7 xl:py-12">
-    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-1 gap-3 xl:gap-0">
-      {productItems.map((item) => {
-        const Icon = item.icon;
-        const isActive = activeItem.id === item.id;
-
-        return (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => setActiveItem(item)}
-            className={`w-full flex items-center gap-3 px-4 py-4 xl:py-6 text-left text-sm sm:text-base xl:text-lg border border-gray-200 xl:border-x-0 xl:border-t-0 rounded-xl xl:rounded-none transition-all duration-300 ${
-              isActive
-                ? "text-[#00B9CC] bg-white"
-                : "text-[#263238] hover:text-[#00B9CC] bg-transparent"
-            }`}
-          >
-            <Icon
-              size={28}
-              strokeWidth={1.6}
-              className={isActive ? "text-[#00B9CC]" : "text-black"}
-            />
-            <span className="leading-snug">{item.name}</span>
-          </button>
-        );
-      })}
-    </div>
-  </aside>
-
-  <div className="py-6 xl:py-10">
-    <div className="h-[5px] w-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] mb-8" />
-
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-8 items-start">
-      <div className="min-w-0">
-        <h2 className="text-3xl sm:text-4xl font-normal uppercase mb-6">
-          {activeItem.name}
-        </h2>
-
-        <div className="h-[5px] w-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] mb-5" />
-
-        {activeItem.content.length > 0 && (
-          <div className="pb-6 mb-8">
-            <h3 className="text-xl sm:text-2xl font-semibold text-[#0D231D] mb-4">
-              {activeItem.content[0].title}
-            </h3>
-
-            <ul className="space-y-2 pl-5 list-disc">
-              {activeItem.content[0].items.map((item, idx) => (
-                <li key={idx} className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,300px)_minmax(0,300px)] gap-y-8 gap-x-10">
-          {activeItem.content.slice(1).map((section) => (
-            <div key={section.title} className="border-b border-gray-200 pb-6">
-              <h3 className="text-lg sm:text-xl font-semibold text-[#0D231D] mb-4">
-                {section.title}
-              </h3>
-
-              <ul className="space-y-2 pl-5 list-disc">
-                {section.items.map((item, idx) => (
-                  <li key={idx} className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        {/* Content */}
+        <div className="relative z-10 container mx-auto max-w-7xl px-4 top-16">
+          <div className="max-w-4xl mx-auto pt-30 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 transition-all duration-700">
+              <Paintbrush className="w-4 h-4 text-white" />
+              <span className="text-white font-semibold tracking-wide">
+                Industry Solutions
+              </span>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="relative w-full h-[220px] sm:h-[280px] 2xl:h-[270px]">
-        <Image
-          src={activeItem.image}
-          alt={activeItem.name}
-          fill
-          className="object-cover rounded-2xl"
-        />
-      </div>
-    </div>
-  </div>
-</section>
-      </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all delay-200 duration-700">
+              Food{" "}
+            </h1>
+
+            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed transition-all delay-300 duration-700">
+              Comprehensive range of high-performance coatings, inks, adhesives,
+              and specialty chemicals for diverse industrial applications
+              worldwide
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <main className="container mx-auto px-6 py-16 md:py-10 ">
+        {/* Products Section */}
+
+        <section className=" bg-white md:px-20">
+          <div className="container mx-auto px-4">
+            {/* Hexagon Tabs */}
+            <div className="relative mb-7">
+              {/* Decorative Connecting Line */}
+              <div className="absolute bottom-[50px] left-0 w-full h-[4px] bg-gradient-to-r from-[#00CCAA] via-[#00B9CC] to-[#0099FF] rounded-full" />
+
+              {/* Tabs */}
+              <div className="relative z-10 flex flex-wrap justify-center gap-2 md:gap-3">
+                {tabs.map((tab, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActive(index)}
+                    className={`relative h-[50px] min-w-[160px] cursor-pointer px-6 text-sm md:text-balance font-bold uppercase text-white transition-all duration-300 hover:scale-105 ${
+                      active === index
+                        ? "bg-gradient-to-br from-[#02296b] via-[#03368e] to-[#0a56d8] shadow-xl"
+                        : "bg-gradient-to-br from-[#00CCAA]/70 via-[#00B9CC]/70 to-[#0099FF]/70 hover:from-[#00CCAA] hover:via-[#00B9CC] hover:to-[#0099FF]"
+                    }`}
+                    style={{
+                      clipPath:
+                        "polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)",
+                    }}
+                  >
+                    {/* {tab.title} */}
+                     <span className="whitespace-pre-line text-center">
+  {tab.title.length > 16
+    ? `${tab.title.slice(0, 16)}\n${tab.title.slice(16)}`
+    : tab.title}
+</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Content Box */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg md:p-7 md:px-20">
+              <div className="mb-8 border-b-4 border-[#00B9CC] pb-4">
+                <h3 className="text-3xl font-bold text-[#00B9CC]">
+                  {current.title}
+                </h3>
+                <p className="mt-2 text-lg font-medium text-[#00B9CC]">
+                  {current.subtitle}
+                </p>
+              </div>
+
+              <div className="grid items-center gap-8 md:grid-cols-2">
+                <div>
+                  <p className="text-lg leading-8 text-gray-700">
+                    {current.desc}
+                  </p>
+                </div>
+
+                <div className="overflow-hidden rounded-xl">
+                  <img
+                    src={current.image}
+                    alt={current.title}
+                    className="h-[280px] w-full object-cover transition duration-500 hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* CTA Banner */}
+        <div className="my-10 lg:mb-1 md:px-20">
+          <div className="bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF] rounded-3xl p-12 text-center text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                Ready to Elevate Your Formulations?
+              </h3>
+              <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
+                Partner with us for cutting-edge material science solutions
+                tailored to your exact specifications.
+              </p>
+              <button className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#0099FF] rounded-full font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                Contact Our Experts
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
 
       <Footer />
-    </>
+    </div>
   );
 }

@@ -152,7 +152,7 @@ export default function ContactPage() {
             <div
               className="w-full h-full bg-cover bg-center"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop')`,
+                backgroundImage: `url('/Images/contact.jpeg')`,
               }}
             />
           </div>

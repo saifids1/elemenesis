@@ -1,20 +1,17 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import React, { useEffect, useRef, useState } from 'react';
+// Note: For the icons, you would need to install react-icons: npm install react-icons
 import {
-  Shield,
-  Globe,
-  Heart,
-  Leaf,
-  Truck,
-  ChevronRight,
-  CheckCircle,
+  FaGem,
+  FaGlobeAmericas,
+  FaUserFriends,
+  FaLeaf,
+  FaClock,
+  FaCheckCircle
+} from 'react-icons/fa';
 
-} from "lucide-react";
-
-export default function WhyChooseElemensis() {
+const WhyChooseElemensis = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -22,9 +19,10 @@ export default function WhyChooseElemensis() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -40,281 +38,171 @@ export default function WhyChooseElemensis() {
 
   const features = [
     {
-      id: 0,
-      icon: Shield,
-      title: "Authenticity & Quality",
-      subtitle: "Uncompromising Excellence",
-      color: "#FF6B35",
-      gradient: "from-orange-500 to-red-500",
-      bgGradient: "from-orange-50 to-red-50",
-      description:
-        "Elemensis represents authenticity, trust, and excellence. We carefully source and develop every product to ensure the highest quality standards. Every product reflects our commitment to delivering exceptional value and reliability.",
-      image: "/Images/chemical.webp",
-      
-      stats: "100% Quality Guarantee",
-    },
-    {
       id: 1,
-      icon: Globe,
-      title: "Worldwide Reach",
-      subtitle: "Global Network",
-      color: "#4ECDC4",
-      gradient: "from-teal-400 to-cyan-400",
-      bgGradient: "from-teal-50 to-cyan-50",
-      description:
-        "Our extensive global network enables seamless trade and distribution across international markets. With customized logistics and distribution solutions, we make global business operations simple, efficient, and reliable.",
-      image: "/Images/GlobalNetwork.webp",
-      
-      stats: "50+ Countries Served",
+      icon: <FaGem className="w-8 h-8 text-white" />,
+      title: "Authenticity and quality",
+      description: "Elemensis is a representation of sincerity and unflinching greatness. We meticulously source and develop our products, so you will only get the best. Elemensis is the epitome of sincerity and unflinching greatness. You select the best when you go with Elemensis.",
+      image: "/Images/whycomponent/why01.png",
+      alt: "Premium quality products"
     },
     {
       id: 2,
-      icon: Heart,
-      title: "Customer-Centric",
-      subtitle: "Your Success is Our Priority",
-      color: "#FF6B6B",
-      gradient: "from-rose-400 to-pink-500",
-      bgGradient: "from-rose-50 to-pink-50",
-      description:
-        "Customers are at the heart of everything we do. We understand that every client has unique requirements and deliver tailored solutions designed to meet their specific business needs and expectations.",
-    image: "/Images/slider/Customer-4.png",
-      stats: "24/7 Support",
+      icon: <FaGlobeAmericas className="w-8 h-8 text-white" />,
+      title: "Worldwide Reach",
+      description: "Our global network allows us to facilitate smooth trade & distribution. We have systems for distribution and logistics that are tailored to your requirements. Elemensis has perfected the art of seamless trading, which is crucial for global businesses.",
+      image: "/Images/whycomponent/why02.png",
+      alt: "Global distribution network"
     },
     {
       id: 3,
-      icon: Leaf,
-      title: "Sustainability",
-      subtitle: "Eco-Friendly Practices",
-      color: "#6BCB77",
-      gradient: "from-green-400 to-emerald-500",
-      bgGradient: "from-green-50 to-emerald-50",
-      description:
-        "We are committed to building a sustainable future through environmentally responsible products and practices. Our focus on sustainability helps create a positive impact for businesses, communities, and future generations.",
-    image: "/Images/slider/Globe-1.jpg",
-
-      stats: "Carbon Neutral",
+      icon: <FaUserFriends className="w-8 h-8 text-white" />,
+      title: "Customer-Centric Approach",
+      description: "Our consumers are our top priority at Elemensis. We are aware of your particular needs and take great care in delivering solutions that are suited to them. Elemensis is aware of the individual requirements and preferences of every client.",
+      image: "/Images/whycomponent/why03.png",
+      alt: "Customer support and service"
     },
     {
       id: 4,
-      icon: Truck,
-      title: "On-Time Delivery",
-      subtitle: "Reliable Logistics",
-      color: "#FFD93D",
-      gradient: "from-yellow-400 to-orange-500",
-      bgGradient: "from-yellow-50 to-orange-50",
-      description:
-        "We understand the importance of punctuality in business. Our efficient delivery system ensures orders arrive on time, allowing customers to rely on Elemensis for smooth, dependable, and uninterrupted operations.",
-      image: "/Images/home page card/Ecommerce.jpg",
-
-      stats: "99.9% On-Time",
+      icon: <FaLeaf className="w-8 h-8 text-white" />,
+      title: "Sustainability",
+      description: "Our goal for the future is sustainability. We guarantee that we have a positive environmental impact by using eco-friendly products and procedures. Elemensis is dedicated to sustainability in a time when environmental awareness is crucial.",
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop",
+      alt: "Eco-friendly sustainable practices"
     },
+    {
+      id: 5,
+      icon: <FaClock className="w-8 h-8 text-white" />,
+      title: "On-time Delivery",
+      description: "We recognize the value of punctuality in business. Our efficient delivery system ensures that your orders will always arrive on time. Elemensis understands how important timeliness is in the corporate world.",
+      image: "/Images/home page card/Ecommerce.jpg",
+      alt: "Fast and reliable delivery"
+    }
   ];
-
-  const activeFeature = features[activeIndex];
 
   return (
     <>
-      {/* <TrendyDivider /> */}
-      <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 from-[#00CCAA] to-[#00B9CC] overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl">
-          {/* Header Section */}
-          <div className="text-center mb-16">
-            <div
-              className={`inline-block mb-4 transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
-              <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white text-sm font-semibold shadow-lg">
-                Why Choose Us
-              </span>
-            </div>
-
-            <h2
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 transition-all duration-700 delay-200 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
-              Why Choose{" "}
-              <span className="bg-gradient-to-r from-[#00CCAA] via-[#00B9CC] to-[#00A3CC] bg-clip-text text-transparent">
-                Elemensis?
-              </span>
-            </h2>
-
-            <div
-              className={`w-24 h-1 bg-gradient-to-r from-[#00CCAA] via-[#00B9CC] to-[#00A3CC] mx-auto rounded-full mb-6 transition-all duration-1000 delay-300 ${
-                isVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
-              }`}
-            />
-
-            <p
-              className={`max-w-2xl mx-auto text-gray-600 text-lg transition-all duration-700 delay-400 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
-              Building trust through excellence, reliability, and global expertise
-            </p>
+      <div className='bg-[#10b2b5]'>
+        <section
+          ref={sectionRef}
+          className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-0"
+        >
+          <div className=" inset-0 overflow-hidden">
+            {["-top-40 -right-40", "-bottom-40 -left-40 delay-1000"].map((pos) => (
+              <div
+                key={pos}
+                className={`absolute ${pos} h-80 w-80 animate-pulse rounded-full bg-white opacity-20 mix-blend-overlay blur-3xl`}
+              />
+            ))}
           </div>
 
-          {/* Main Content - Split Layout with Images */}
-          <div className="mb-20">
-            {/* Desktop View - Carousel Style */}
-            <div className="hidden lg:block">
-              {/* Feature Navigation Pills */}
-              <div className="flex flex-wrap justify-center gap-3 mb-12">
-                {features.map((feature, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveIndex(idx)}
-                    className={`group px-6 py-3 rounded-full transition-all duration-300 ${
-                      activeIndex === idx
-                        ? `bg-gradient-to-r ${feature.gradient} text-white shadow-lg scale-105`
-                        : "bg-white text-gray-600 hover:shadow-md border border-gray-200"
-                    }`}
+          <div className="relative z-10 mx-auto max-w-7xl">
+            <div className="mb-16 text-center">
+
+
+              <h2 className="mb-4 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
+                Why Choose{" "}
+                <span className="relative inline-block text-white">
+                  Elemensis?
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full"
+                    height="8"
+                    viewBox="0 0 200 8"
                   >
-                    <div className="flex items-center gap-2">
-                      <feature.icon className={`w-4 h-4 ${
-                        activeIndex === idx ? "text-white" : "text-gray-400"
-                      }`} />
-                      <span className="text-sm font-medium whitespace-nowrap">
-                        {feature.title}
-                      </span>
-                    </div>
-                  </button>
-                ))}
-              </div>
+                    <path
+                      d="M0 4 Q 50 8 100 4 Q 150 0 200 4"
+                      stroke="white"
+                      strokeWidth="3"
+                      fill="none"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </h2>
 
-              {/* Active Feature Display */}
-              <div className={`bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-500 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}>
-                <div className="grid lg:grid-cols-2 gap-0">
-                  {/* Image Section */}
-             
-<div className="relative h-full min-h-[400px] overflow-hidden">
-  <Image
-    src={activeFeature.image}
-    alt={activeFeature.title}
-    fill
-    className="object-cover"
-  />
-
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-black/40 z-10" />
-
-  {/* Content */}
-  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-12 text-white">
-    <h3 className="text-4xl font-bold mb-3">
-      {activeFeature.title}
-    </h3>
-
-    <p className="text-xl text-white/90 mb-6">
-      {activeFeature.subtitle}
-    </p>
-
-    <div className="px-6 py-3 rounded-full bg-white/20 backdrop-blur-md">
-      <span className="font-semibold">
-        {activeFeature.stats}
-      </span>
-    </div>
-  </div>
-</div>
-
-                  {/* Content Section */}
-                  <div className="p-12">
-                    <div className="mb-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-r ${activeFeature.gradient} flex items-center justify-center`}>
-                          <activeFeature.icon className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                          Why Choose Us
-                        </span>
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        {activeFeature.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed mb-6">
-                        {activeFeature.description}
-                      </p>
-                    </div>
-
-                    {/* Key Benefits */}
-                    <div className="space-y-3 mb-8">
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#00CCAA]" />
-                        <span className="text-gray-700">Industry-leading quality standards</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#00CCAA]" />
-                        <span className="text-gray-700">Global expertise and local support</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#00CCAA]" />
-                        <span className="text-gray-700">Sustainable and ethical practices</span>
-                      </div>
-                    </div>
-
-                    {/* <button className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 group">
-                      <span>Learn More</span>
-                      <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button> */}
-                  </div>
-                </div>
-              </div>
+              <p className="mx-auto max-w-2xl text-lg text-white/90">
+                Discover what makes us the preferred choice for businesses worldwide
+              </p>
             </div>
 
-            {/* Mobile/Tablet View - Stacked Cards */}
-            <div className="lg:hidden space-y-6">
-              {features.map((feature, idx) => (
-                <div
-                  key={idx}
-                  className={`bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                  }`}
-                  style={{ transitionDelay: `${idx * 100}ms` }}
-                >
-                  <div className={`h-2 bg-gradient-to-r ${feature.gradient}`} />
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center`}>
-                        <feature.icon className="w-7 h-7 text-white" />
+            <div className="space-y-20">
+              {features.map((feature, index) => {
+                const Icon = React.cloneElement(feature.icon, {
+                  className: "w-8 h-8 text-[#00CCAA]",
+                });
+
+                return (
+                  <div
+                    key={feature.id}
+                    style={{ transitionDelay: `${index * 150}ms` }}
+                    className={`group transform transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                      }`}
+                  >
+                    <div
+                      className={`flex flex-col items-center gap-8 lg:gap-12 ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                        }`}
+                    >
+                      <div className="relative w-full lg:w-1/2">
+                        <div className="relative overflow-hidden rounded-2xl shadow-2xl transition-all duration-500 group-hover:scale-105">
+                          <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/50 to-transparent" />
+                          <img
+                            src={feature.image}
+                            alt={feature.alt}
+                            className="h-64 w-full object-cover transition-transform duration-700 group-hover:scale-110 sm:h-80 lg:h-96"
+                          />
+                          <div className="absolute bottom-4 right-4 z-20 rounded-full bg-white/95 p-3 shadow-lg backdrop-blur-sm">
+                            {Icon}
+                          </div>
+                        </div>
+                        <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-2xl bg-white/20 transition-all duration-300 group-hover:-bottom-4 group-hover:-right-4" />
                       </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900">{feature.title}</h3>
-                        <p className="text-sm text-gray-500">{feature.subtitle}</p>
+
+                      <div className="w-full space-y-4 rounded-2xl bg-white/10 p-6 backdrop-blur-sm lg:w-1/2 lg:p-8">
+                        <div className="flex items-center gap-3">
+                          <div className="rounded-xl bg-white p-3 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                            {Icon}
+                          </div>
+                          <h3 className="text-2xl font-bold text-white sm:text-3xl">
+                            {feature.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-base leading-relaxed text-white/90 sm:text-lg">
+                          {feature.description}
+                        </p>
+
+                        <div className="flex items-center gap-2 pt-2">
+                          <FaCheckCircle className="h-5 w-5 text-white" />
+                          <span className="font-medium text-white/90">
+                            Trusted by industry leaders
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <p className="text-gray-600 leading-relaxed mb-4">
-                      {feature.description}
-                    </p>
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <span className="text-sm font-semibold text-[#00CCAA]">{feature.stats}</span>
-                      <button className="text-gray-400 hover:text-[#00CCAA] transition-colors">
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
+            </div>
+
+            <div className="mt-20 text-center">
+              <div className="rounded-3xl border border-white/30 bg-white/15 p-8 shadow-xl backdrop-blur-sm sm:p-12">
+                <h3 className="mb-3 text-2xl font-bold text-white sm:text-3xl">
+                  Ready to experience the <span className="font-bold">Elemensis</span>{" "}
+                  difference?
+                </h3>
+                <p className="mx-auto mb-6 max-w-2xl text-white/90">
+                  Join thousands of satisfied customers who trust us for their business
+                  needs
+                </p>
+            <a href="/contact">
+                <button className="rounded-lg bg-white px-8 py-3 cursor-pointer font-semibold text-[#00CCAA] transition-all duration-300 hover:scale-105 hover:bg-white/90 hover:shadow-xl">
+                  Get Started Today
+                </button>
+            </a>
+              </div>
             </div>
           </div>
-
-   
-        </div>
-      </section>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-    </>
+        </section></div> </>
   );
-}
+};
+
+export default WhyChooseElemensis;
