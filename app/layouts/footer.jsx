@@ -121,22 +121,23 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="flex flex-col items-start">
-            <div className="flex items-center mb-6 group cursor-pointer">
-              <Image
-                src="/Images/logo/elem.png"
-                alt="Elemensis Logo"
-                width={50}
-                height={47}
-                className="w-[10px] h-[35px] md:w-[15px] md:h-[47px] object-contain transform transition-transform duration-300 group-hover:scale-110"
-              />
+         <div className="flex items-center gap-2 mb-6 group cursor-pointer">
+  <Image
+    src="/Images/logo/elem.png"
+    alt="Elemensis Logo"
+    width={50}
+    height={47}
+    priority
+    className="w-[35px] h-[35px] md:w-[45px] md:h-[45px] object-contain transition-transform duration-300 group-hover:scale-110"
+  />
 
-              <span
-                className="-ml-1 text-[18px] font-black tracking-[3px] drop-shadow-sm select-none"
-                style={gradientTextStyle}
-              >
-                ELEMENSIS
-              </span>
-            </div>
+  <span
+    className="text-[22px] md:text-[30px] font-black tracking-[4px] leading-none whitespace-nowrap"
+    style={gradientTextStyle}
+  >
+    ELEMENSIS
+  </span>
+</div>
 
             <p
               className="text-sm leading-relaxed mb-6 font-medium bg-clip-text text-transparent opacity-85"
