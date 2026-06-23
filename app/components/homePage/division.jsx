@@ -61,10 +61,13 @@ export default function DivisionsPage() {
 
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:pt-8">
         <div className="mx-auto mb-10 max-w-2xl text-center">
-          <h2 className="mt-4 text-3xl font-bold text-[#10b2b5] md:text-5xl">
+          <h2 className="mt-4 text-3xl font-bold text-[#096F72] md:text-5xl">
             Exploring Our{" "}
+            <span>
+              
+            </span>
             <span className="relative inline-block">
-              <span className="bg-[#00CCAA] bg-clip-text text-transparent">
+              <span className="bg-[#096F72] bg-clip-text text-transparent">
                 Core Divisions
               </span>
 
@@ -76,7 +79,7 @@ export default function DivisionsPage() {
               >
                 <path
                   d="M0 5 Q 50 10 100 5 Q 150 0 200 5"
-                  stroke="#00B9CC"
+                  stroke="#064D50"
                   strokeWidth="3"
                   strokeLinecap="round"
                 />
@@ -114,14 +117,14 @@ export default function DivisionsPage() {
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
 
-                    <span className="absolute left-5 top-5 rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold text-[#00CCAA] backdrop-blur-md">
+                    <span className="absolute left-5 top-5 rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold text-[#096F72]/70 backdrop-blur-md">
                       {division.badge}
                     </span>
                   </div>
 
                   {/* Details */}
                   <div
-                    className={`flex min-h-[260px] flex-col justify-center p-6 md:h-[320px] md:p-8 ${isReverse ? "md:order-1" : "md:order-2"
+                    className={`flex min-h-[260px] bg-[#064D50]  flex-col justify-center p-6 md:h-[320px] md:p-8 ${isReverse ? "md:order-1" : "md:order-2"
                       }`}
                   >
                     <div
@@ -130,11 +133,11 @@ export default function DivisionsPage() {
                       <Icon className={`h-6 w-6 ${division.iconColor}`} />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-[#00CCAA] md:text-3xl">
+                    <h3 className="text-2xl font-bold text-white md:text-3xl">
                       {division.title}
                     </h3>
 
-                    <p className="mt-3 max-w-xl text-sm leading-7 text-[#00CCAA]/70">
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-white/70">
                       {division.description}
                     </p>
 
@@ -142,23 +145,22 @@ export default function DivisionsPage() {
                       {division.features.map((feature) => (
                         <span
                           key={feature}
-                          className="rounded-full bg-[#00B9CC]/10 px-3 py-1 text-xs font-semibold text-[#00A6B8]"
+                          className="rounded-full bg-[#00B9CC]/10 px-3 py-1 text-xs font-semibold text-white/80"
                         >
                           {feature}
                         </span>
                       ))}
                     </div>
+<button
+  onClick={() => (window.location.href = division.link)}
+  className="group mt-6 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border border-[#00CCAA]/20 bg-[#064D50] px-6 py-3 text-sm font-semibold text-white shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#096F72] hover:shadow-lg"
+>
+  <span className="transition-colors duration-300 group-hover:text-[#096F72]">
+    Click Here
+  </span>
 
-                    <button
-                      onClick={() => (window.location.href = division.link)}
-                      className="group mt-6 inline-flex w-fit cursor-pointer items-center gap-2 rounded-full border border-[#00CCAA]/20 bg-white px-6 py-3 text-sm font-semibold text-[#00CCAA] shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00CCAA] hover:text-white hover:shadow-lg"
-                    >
-                      <span className="transition-colors duration-300 group-hover:text-white">
-                        Click Here
-                      </span>
-
-                      <ArrowRight className="h-4 w-4 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white" />
-                    </button>
+  <ArrowRight className="h-4 w-4 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#096F72]" />
+</button>
                   </div>
                 </div>
               </div>

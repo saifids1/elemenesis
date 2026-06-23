@@ -81,7 +81,7 @@ const WhyChooseElemensis = () => {
 
   return (
     <>
-      <div className='bg-[#10b2b5]'>
+      <div className='bg-[#064D50]'>
         <section
           ref={sectionRef}
           className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-0"
@@ -95,8 +95,8 @@ const WhyChooseElemensis = () => {
             ))}
           </div>
 
-          <div className="relative z-10 mx-auto max-w-7xl">
-            <div className="mb-16 text-center">
+          <div className="relative z-10 mx-auto max-w-7xl ">
+            <div className="mb-16 text-center ">
 
 
               <h2 className="mb-4 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
@@ -134,7 +134,7 @@ const WhyChooseElemensis = () => {
                   <div
                     key={feature.id}
                     style={{ transitionDelay: `${index * 150}ms` }}
-                    className={`group transform transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                    className={`group transform transition-all duration-700  ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                       }`}
                   >
                     <div
@@ -149,29 +149,29 @@ const WhyChooseElemensis = () => {
                             alt={feature.alt}
                             className="h-64 w-full object-cover transition-transform duration-700 group-hover:scale-110 sm:h-80 lg:h-96"
                           />
-                          <div className="absolute bottom-4 right-4 z-20 rounded-full bg-white/95 p-3 shadow-lg backdrop-blur-sm">
+                          {/* <div className="absolute bottom-4 right-4 z-20 rounded-full bg-white/95 p-3 shadow-lg backdrop-blur-sm">
                             {Icon}
-                          </div>
+                          </div> */}
                         </div>
                         <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-2xl bg-white/20 transition-all duration-300 group-hover:-bottom-4 group-hover:-right-4" />
                       </div>
 
-                      <div className="w-full space-y-4 rounded-2xl bg-white/10 p-6 backdrop-blur-sm lg:w-1/2 lg:p-8">
+                      <div className="w-full space-y-4 rounded-2xl bg-white lg:w-1/2 lg:p-8">
                         <div className="flex items-center gap-3">
-                          <div className="rounded-xl bg-white p-3 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                          <div className="rounded-xl bg-[#096F72] p-3 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
                             {Icon}
                           </div>
-                          <h3 className="text-2xl font-bold text-white sm:text-3xl">
+                          <h3 className="text-2xl font-bold text-[#096F72] sm:text-3xl">
                             {feature.title}
                           </h3>
                         </div>
 
-                        <p className="text-base leading-relaxed text-white/90 sm:text-lg">
+                        <p className="text-base leading-relaxed text-[#096F72]/90 sm:text-lg">
                           {feature.description}
                         </p>
 
                         <div className="flex items-center gap-2 pt-2">
-                          <FaCheckCircle className="h-5 w-5 text-white" />
+                          <FaCheckCircle className="h-5 w-5 text-[#096F72]" />
                           <span className="font-medium text-white/90">
                             Trusted by industry leaders
                           </span>
@@ -184,17 +184,19 @@ const WhyChooseElemensis = () => {
             </div>
 
             <div className="mt-20 text-center">
-              <div className="rounded-3xl border border-white/30 bg-white/15 p-8 shadow-xl backdrop-blur-sm sm:p-12">
-                <h3 className="mb-3 text-2xl font-bold text-white sm:text-3xl">
+              <div className="rounded-3xl border border-white/30 bg-white p-8 shadow-xl backdrop-blur-sm sm:p-12">
+                <h3 className="mb-3 text-2xl font-bold text-[#096F72] sm:text-3xl">
                   Ready to experience the <span className="font-bold">Elemensis</span>{" "}
                   difference?
                 </h3>
-                <p className="mx-auto mb-6 max-w-2xl text-white/90">
+                <p className="mx-auto mb-6 max-w-2xl text-[#096F72]/90">
                   Join thousands of satisfied customers who trust us for their business
                   needs
                 </p>
             <a href="/contact">
-                <button className="rounded-lg bg-white px-8 py-3 cursor-pointer font-semibold text-[#00CCAA] transition-all duration-300 hover:scale-105 hover:bg-white/90 hover:shadow-xl">
+                <button 
+  className="cursor-pointer rounded-lg bg-[#064D50] px-8 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#096F72] hover:shadow-2xl"
+>
                   Get Started Today
                 </button>
             </a>

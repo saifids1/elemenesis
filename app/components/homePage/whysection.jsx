@@ -23,7 +23,7 @@ export default function Whysection() {
 
   return (
     <>
-    <div className="bg-gradient-to-b from-[#F3F7F7] to-white">
+    <div className="">
       
     <section
       ref={sectionRef}
@@ -45,7 +45,7 @@ export default function Whysection() {
         {/* Main Grid Layout */}
         <div className="grid overflow-hidden rounded-3xl shadow-2xl lg:grid-cols-2 ">
           {/* Left Side - Gradient Background with Content */}
-          <div className="relative overflow-hidden bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF] p-10 md:p-14 lg:p-16">
+          <div className="relative overflow-hidden bg-[#064D50] p-10 md:p-14 lg:p-16">
             {/* Animated Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 left-0 w-72 h-72 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -140,7 +140,7 @@ export default function Whysection() {
             className="flex items-center bg-white p-10 md:p-14 lg:p-16"
           >
             <div className="relative">
-              <div className="absolute -top-6 -left-6 w-12 h-12 mb-5 text-[#00CCAA] opacity-20">
+              <div className="absolute -top-6 -left-6 w-12 h-12 mb-5 text-[#064D50] opacity-70">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>

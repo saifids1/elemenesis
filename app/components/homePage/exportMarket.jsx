@@ -42,10 +42,10 @@ export default function ExportMarkets() {
           Global Trade
         </span> */}
 
-        <h2 className="mt-5 text-4xl font-bold text-[#10b2b5] md:text-5xl">
+        <h2 className="mt-5 text-4xl font-bold text-[#096F72] md:text-5xl">
           Our{" "}
           <span className="relative inline-block pb-2">
-            <span className="bg-[#00CCAA] bg-clip-text text-transparent">
+            <span className="bg-[#096F72] bg-clip-text text-transparent">
               Export Markets
             </span>
 
@@ -57,7 +57,7 @@ export default function ExportMarkets() {
             >
               <path
                 d="M0 4 Q 50 8 100 4 Q 150 0 200 4"
-                stroke="#00B9CC"
+                stroke="#064D50"
                 strokeWidth="2.5"
                 strokeLinecap="round"
               />
@@ -65,7 +65,7 @@ export default function ExportMarkets() {
           </span>
         </h2>
 
-        <p className="mx-auto mt-5 max-w-2xl text-[#00CCAA]/60 font-bold line-clamp-4">
+        <p className="mx-auto mt-5 max-w-2xl text-[#096F72]/80 font-bold line-clamp-4">
           Our extensive international network connects trusted suppliers,
           distributors, and business partners across key global markets.
           With a strong presence in the GCC, Asia, Europe, and emerging
@@ -123,11 +123,11 @@ export default function ExportMarkets() {
             key={item.label}
             className="bg-white rounded-2xl p-6 text-center border border-slate-100 shadow-md"
           >
-            <h3 className="text-3xl font-bold bg-[#00CCAA] bg-clip-text text-transparent">
+            <h3 className="text-3xl font-bold bg-[#064D50] bg-clip-text text-transparent">
               {item.value}
             </h3>
 
-            <p className="text-[#00CCAA]/70 mt-2 text-sm">{item.label}</p>
+            <p className="text-[#096F72]/70 mt-2 text-sm font-semibold">{item.label}</p>
           </div>
         ))}
       </div>

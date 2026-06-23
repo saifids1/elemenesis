@@ -4,15 +4,15 @@ import Image from "next/image";
 export const Flag = () => {
   const flags = [
     { name: "India", image: "/Images/country/India.webp" },
-    { name: "Pakistan", image: "/Images/country/Pakistan.webp" },
+    // { name: "Pakistan", image: "/Images/country/Pakistan.webp" },
     { name: "UAE", image: "/Images/country/United_Arab_Emirates.png" },
     { name: "Egypt", image: "/Images/country/Egypt.png" },
   ];
 
   return (
-    <section className="bg-[#10b2b5] px-4 py-10">
+    <section className="bg-[#064D50] px-4 py-10">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-14 text-center">
+        <div className="mb-14 text-center ">
           {/* <span className="rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold text-white shadow-md backdrop-blur-sm">
             Global Connections
           </span> */}
@@ -45,13 +45,13 @@ export const Flag = () => {
           </p>
         </div>
 
-        <div className="mb-16 grid grid-cols-2 gap-6 md:grid-cols-4">
+        <div className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3 ">
           {flags.map((flag) => (
             <div
               key={flag.name}
               className="group overflow-hidden rounded-2xl border border-white/20 bg-white/95 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
-              <div className="relative h-40 overflow-hidden">
+              <div className="relative h-40 overflow-hidden ">
                 <Image
                   src={flag.image}
                   alt={flag.name}

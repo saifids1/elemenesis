@@ -88,7 +88,7 @@ export default function Whysection01() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="relative flex items-center overflow-hidden bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF] p-10 md:p-14 lg:p-10"
+                className="relative flex items-center overflow-hidden bg-[#064D50] p-10 md:p-14 lg:p-10"
               >
                 {/* Abstract Background Pattern */}
                 <div className="absolute inset-0">
@@ -124,14 +124,14 @@ export default function Whysection01() {
 
                   {/* Trust Indicators */}
                   <div className="mt-8 flex items-center gap-4 pt-6 border-t border-white/20">
-                    <div className="flex -space-x-2">
+                    {/* <div className="flex -space-x-2">
                       {[1, 2, 3, 4].map((i) => (
                         <div
                           key={i}
                           className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-[#00CCAA] to-[#0099FF]"
                         />
                       ))}
-                    </div>
+                    </div> */}
                     <span className="text-white/90 text-sm font-medium">
                       Trusted by 200+ clients worldwide
                     </span>

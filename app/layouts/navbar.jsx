@@ -73,7 +73,7 @@ export default function TopNavigation() {
 
   const [hoveredMenu, setHoveredMenu] = useState(null);
 
-  const gradient = "linear-gradient(135deg, #00CCAA 0%, #00B9CC 100%)";
+  const gradient = "#064D50";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-700 py-0 ">
@@ -89,7 +89,7 @@ export default function TopNavigation() {
                 alt="Logo"
                 className="object-contain"
               />
-              <span className="text-sm md:text-base font-black tracking-[0.2em] text-slate-900 ml-2">
+              <span className="text-xl md:text-xl font-black tracking-[0.2em] text-[#064D50] ml-2">
                 ELEMENSIS
               </span>
             </div>
@@ -252,7 +252,7 @@ export default function TopNavigation() {
                   <div key={item.id} className="border-b border-gray-100 py-2">
                     <Link
                       href={item.link}
-                      className="block  font-semibold uppercase tracking-wider text-slate-800 transition hover:text-[#00B9CC]"
+                      className="block  font-semibold uppercase tracking-wider text-slate-800 transition hover:text-[#096F72]"
                     >
                       {item.label}
                     </Link>
@@ -263,7 +263,7 @@ export default function TopNavigation() {
                           <Link
                             key={subItem.label}
                             href={subItem.link}
-                            className="text-sm text-slate-600 transition hover:text-[#00B9CC]"
+                            className="text-sm text-slate-600 transition hover:text-[#096F72]"
                           >
                             {subItem.label}
                           </Link>
@@ -276,7 +276,7 @@ export default function TopNavigation() {
                 {/* BUTTON */}
                 <Link
                   href="/contact"
-                  className="mt-6 rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] px-5 py-3 text-center text-sm font-bold uppercase tracking-wider text-white transition hover:scale-[1.02]"
+                  className="mt-6 rounded-xl bg-[#064D50] px-5 py-3 text-center text-sm font-bold uppercase tracking-wider text-white transition hover:scale-[1.02]"
                 >
                   Get In Touch
                 </Link>

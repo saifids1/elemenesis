@@ -7,7 +7,7 @@ export default function ExportSections() {
     <>
        <TrendyDivider/>
     <section className="bg-white px-4 py-20">
-      <div className="mx-auto max-w-6xl overflow-hidden rounded-[32px] bg-[#10b2b5] p-10 text-center text-white shadow-2xl md:p-16">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-[32px] bg-[#064D50] p-10 text-center text-white shadow-2xl md:p-16">
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
           <Send size={28} />
         </div>
@@ -24,14 +24,14 @@ export default function ExportSections() {
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <a
             href="mailto:info@elemensisllc.com"
-            className="rounded-full bg-white px-8 py-4 font-semibold text-[#00B9CC] transition-colors duration-300  hover:bg-[#00CCAA] hover:text-white"
+            className="rounded-full bg-white px-8 py-4 font-semibold text-[#096F72] transition-colors duration-300  hover:bg-[#064D50] hover:text-white hover:shadow-2xl hover:border"
           >
             info@elemensisllc.com
           </a>
 
           <a
             href="tel:+971543471546"
-            className="rounded-full border border-white/40 px-8 py-4 font-semibold text-white transition hover:bg-[#00CCAA]"
+            className="rounded-full border border-white/40 px-8 py-4 font-semibold text-white transition hover:bg-white hover:text-[#096F72]" 
           >
             +971 54 347 1546
           </a>

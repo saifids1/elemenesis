@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 import Footer from "../../layouts/footer";
+import { motion } from "framer-motion";
 import Navbar from "../../layouts/navbar";
 
 const MissionVision = () => {
@@ -102,37 +103,84 @@ const MissionVision = () => {
       description: "Serving 50+ countries worldwide",
     },
   ];
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+  // Animation Variants
+  const cubicBezierEase = [0.16, 1, 0.3, 1] as any;
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: cubicBezierEase },
+    },
+  };
 
   return (
     <>
       <Navbar />
       <main ref={sectionRef} className="bg-white overflow-x-hidden">
         {/* Section 1: Hero - Gradient */}
-       <section className="relative min-h-[500px] overflow-hidden bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF]">
-          {/* Background / Overlay should stay behind */}
-          <div className="absolute inset-0 bg-black/30 z-0" />
+
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-6 py-24 text-[#ECE9E2]">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#096F72] to-[#096F72]">
+            {/* <img
+              src="/Images/about_us/about01.png"
+              alt="About Us"
+              className="w-full h-full object-cover object-center"
+            /> */}
+          </div>
+
+          {/* Dark Green Gradient Overlay */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0D231D]/70 via-[#0D231D]/55 to-[#0D231D]/65" />
+
+          {/* Additional Dark Layer */}
+          <div className="absolute inset-0 z-10 bg-black/30" />
 
           {/* Content */}
-          <div className="relative z-10 container mx-auto max-w-7xl px-4 top-16">
-            <div className="max-w-4xl mx-auto pt-30 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 transition-all duration-700">
-             <Target   className="w-4 h-4 text-white" />
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="relative z-20 mx-auto max-w-5xl text-center"
+          >
+            {/* Breadcrumb */}
+            <motion.nav
+              variants={fadeIn}
+              className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md text-sm uppercase tracking-[3px] text-[#D4AF37]"
+            >
+              <Target className="w-4 h-4 text-white" />
               <span className="text-white font-semibold tracking-wide">
-                  Our Shared Purpose
+                Our Shared Purpose
               </span>
-            </div>
+            </motion.nav>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all delay-200 duration-700">
-                 Vision & Mission 
-              </h1>
+            {/* Heading */}
+            <motion.h1
+              variants={fadeIn}
+              className="mt-8 text-5xl font-light leading-tight tracking-tight md:text-7xl"
+            >
+              <span className=" text-white"> Vision & Mission </span>
+            </motion.h1>
 
-              <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed transition-all delay-300 duration-700">
-                 To shape the future of global trade through uncompromised integrity. 
-            We connect worldwide markets by guiding every supply chain choice with a steadfast 
-            commitment to transparency, accountability, and the global communities we serve.
-              </p>
-            </div>
-          </div>
+            {/* Description */}
+            <motion.p
+              variants={fadeIn}
+              className="mx-auto mt-8 max-w-4xl text-base leading-[2] text-gray-200 md:text-lg"
+            >
+              To shape the future of global trade through uncompromised
+              integrity. We connect worldwide markets by guiding every supply
+              chain choice with a steadfast commitment to transparency,
+              accountability, and the global communities we serve.
+            </motion.p>
+          </motion.div>
         </section>
 
         {/* Section 2: Mission Statement - White */}
@@ -147,48 +195,48 @@ const MissionVision = () => {
             >
               {/* Decorative corner accents */}
               <div className="relative">
-                <div className="absolute -top-6 -left-6 w-24 h-24 border-t-4 border-l-4 border-[#00CCAA] rounded-tl-2xl opacity-30" />
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 border-b-4 border-r-4 border-[#00B9CC] rounded-br-2xl opacity-30" />
+                <div className="absolute -top-6 -left-6 w-24 h-24 border-t-4 border-l-4 border-[#096F72] rounded-tl-2xl opacity-30" />
+                <div className="absolute -bottom-6 -right-6 w-24 h-24 border-b-4 border-r-4 border-[#096F72] rounded-br-2xl opacity-30" />
 
-                <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 md:p-14 shadow-xl border border-gray-100">
+                <div className="bg-[#064D50] rounded-3xl p-10 md:p-14 shadow-xl border border-[#00CCAA]/20">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="p-4 bg-gradient-to-br from-[#00CCAA]/10 to-[#00B9CC]/10 rounded-2xl">
-                      <Rocket className="w-10 h-10 text-[#00B9CC]" />
+                    <div className="p-4 bg-white rounded-2xl">
+                      <Rocket className="w-10 h-10 text-[#096F72]" />
                     </div>
                     <div>
-                      <span className="text-[#00B9CC] font-semibold text-sm uppercase tracking-wider">
+                      <span className="text-white/70 font-semibold text-sm uppercase tracking-wider">
                         Our Mission
                       </span>
-                      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-1">
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mt-1">
                         What Drives Us Every Day
                       </h2>
                     </div>
                   </div>
 
-                  <p className="text-gray-700 text-xl md:text-2xl leading-relaxed mb-8">
+                  <p className="text-white/70 text-xl md:text-2xl leading-relaxed mb-8">
                     Our mission is to provide companies & individuals all around
                     the world with our
-                    <span className="font-semibold text-[#00B9CC]">
+                    <span className="font-semibold text-white">
                       {" "}
-                      superior goods, outstanding services,
+                      superior goods, outstanding services,{" "}
                     </span>
                     and steadfast support.
                   </p>
 
                   <div className="grid md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-200">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 text-[#00CCAA]" />
-                      <span className="text-gray-700">
+                      <CheckCircle className="w-6 h-6 text--[#096F72]/30" />
+                      <span className="text-white">
                         Superior Quality Products
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 text-[#00CCAA]" />
-                      <span className="text-gray-700">Outstanding Service</span>
+                      <CheckCircle className="w-6 h-6 text--[#096F72]/30" />
+                      <span className="text-white">Outstanding Service</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 text-[#00CCAA]" />
-                      <span className="text-gray-700">Steadfast Support</span>
+                      <CheckCircle className="w-6 h-6 text--[#096F72]/30" />
+                      <span className="text-white">Steadfast Support</span>
                     </div>
                   </div>
                 </div>
@@ -198,7 +246,7 @@ const MissionVision = () => {
         </section>
 
         {/* Section 3: Vision Statement - Gradient */}
-        <section className="relative py-12 bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF] overflow-hidden">
+        <section className="relative py-12 bg-[#064D50] overflow-hidden">
           <div className="absolute inset-0">
             {[...Array(30)].map((_, i) => (
               <div
@@ -226,20 +274,20 @@ const MissionVision = () => {
             >
               <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-10 md:p-14 border border-white/20">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="p-4 bg-[#00B9CC] rounded-2xl">
+                  <div className="p-4 bg-[#064D50] rounded-2xl">
                     <Eye className="w-10 h-10 text-white" />
                   </div>
                   <div>
-                    <span className="text-[#00B9CC] font-semibold text-sm uppercase tracking-wider">
+                    <span className="text-[#096F72] font-semibold text-sm uppercase tracking-wider">
                       Our Vision
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#00B9CC] mt-1">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#096F72] mt-1">
                       Where We're Heading
                     </h2>
                   </div>
                 </div>
 
-                <p className="text-[#00B9CC] text-xl md:text-2xl leading-relaxed mb-8">
+                <p className="text-[#096F72] text-xl md:text-2xl leading-relaxed mb-8">
                   Our vision is to establish ourselves as the
                   <span className="font-bold">
                     {" "}
@@ -249,46 +297,48 @@ const MissionVision = () => {
                   expansion and success.
                 </p>
 
-                <div className="grid md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-[#00B9CC]">
+                <div className="grid md:grid-cols-3 gap-6 mt-8 pt-8 border-t text-[#096F72]">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-[#00B9CC]">B2B</div>
-                    <div className="text-[#00B9CC]/80 text-sm">
+                    <div className="text-3xl font-bold text-[#096F72]">B2B</div>
+                    <div className="text-[#096F72]/80 text-sm">
                       Business Solutions
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-[#00B9CC]">B2C</div>
-                    <div className="text-[#00B9CC]/80 text-sm">
+                    <div className="text-3xl font-bold text-[#096F72]">B2C</div>
+                    <div className="text-[#096F72]/80 text-sm">
                       Consumer Excellence
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-[#00B9CC]">Global</div>
-                    <div className="text-[#00B9CC]/80 text-sm">Worldwide Reach</div>
+                    <div className="text-3xl font-bold text-[#096F72]">
+                      Global
+                    </div>
+                    <div className="text-[#096F72]/80 text-sm">
+                      Worldwide Reach
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-        
         </section>
 
         {/* Section 4: Core Values - White */}
-        <section className="py-24 bg-white relative">
+        <section className="py-24 lg:pt-8 bg-white relative">
           <div className="container mx-auto max-w-7xl px-4">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00CCAA]/10 to-[#00B9CC]/10 rounded-full mb-4">
-                <Star className="w-4 h-4 text-[#00B9CC]" />
-                <span className="text-[#00B9CC] font-semibold text-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#064D50] rounded-full mb-4">
+                <Star className="w-4 h-4 text-white" />
+                <span className="text-white font-semibold text-sm">
                   Core Values
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#096F72] mb-4">
                 The Values That Guide Us
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-[#00CCAA] to-[#0099FF] mx-auto rounded-full" />
-              <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
+              <div className="w-24 h-1 bg-gradient-to-r from-[#096F72] to-[#096F72] mx-auto rounded-full" />
+              <p className="text-[#096F72]/70 mt-6 max-w-2xl mx-auto text-lg">
                 These principles shape every decision we make and every
                 relationship we build
               </p>
@@ -330,7 +380,7 @@ const MissionVision = () => {
         </section>
 
         {/* Section 5: Journey Timeline - Gradient */}
-        {/* <section className="relative py-24 bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF] overflow-hidden">
+        {/* <section className="relative py-24 bg-gradient-to-br from-[#00CCAA] via-[#096F72] to-[#0099FF] overflow-hidden">
           <div className="absolute inset-0">
             {[...Array(40)].map((_, i) => (
               <div
@@ -408,7 +458,7 @@ const MissionVision = () => {
         </section> */}
 
         {/* Section 6: Global Impact Stats - White */}
-        <section className="py-20 bg-white">
+        <section className="py-20 lg:pt-1 bg-white">
           <div className="container mx-auto max-w-7xl px-4">
             <div
               className={`grid md:grid-cols-4 gap-6 transition-all delay-1000 duration-700 ${
@@ -463,7 +513,7 @@ const MissionVision = () => {
         </section>
 
         {/* Section 7: CTA - Gradient */}
-        <section className="relative py-20 bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF] overflow-hidden">
+        <section className="relative py-20 bg-gradient-to-br from-[#00CCAA] via-[#096F72] to-[#0099FF] overflow-hidden">
           <div className="absolute inset-0">
             {[...Array(30)].map((_, i) => (
               <div
@@ -498,7 +548,7 @@ const MissionVision = () => {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#00B9CC] rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#096F72] rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group"
                 >
                   <span>Partner With Us</span>
                   <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
