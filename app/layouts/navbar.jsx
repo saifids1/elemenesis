@@ -29,7 +29,7 @@ export default function TopNavigation() {
         { label: "Rubber/Adhesive", link: "/divisions/rubber_adhesive" },
         { label: "Petrochemical", link: "/divisions/petrochemical" },
         { label: "Food", link: "/divisions/food" },
-        { label: "Pharma", link: "/divisions/animalfeed" },
+        { label: "Pharma", link: "/divisions/chemicals" },
         { label: "Animal Feed", link: "/divisions/animalfeed" },
         { label: "Construction", link: "/divisions/construction" },
         // { label: "Ecommerce", link: "/divisions/ecommerce" },
@@ -71,16 +71,17 @@ export default function TopNavigation() {
     return current ? current.id : "home";
   });
 
-  const [hoveredMenu, setHoveredMenu] = useState(null);
+  
+  const [hoveredMenu, setHoveredMenu] = useState("");
 
   const gradient = "#064D50";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-700 py-0 ">
       <div className="w-full">
-        <div className="flex items-center px-18 lg:pe-24 transition-all duration-500 justify-between w-full py-2 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <div className="flex items-center px-4 md:px-8 lg:px-24 lg:pe-28 transition-all duration-500 justify-between w-full py-2 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
           {/* Logo - Always visible now */}
-          <div className="flex items-center gap-3 group cursor-pointer">
+          <div className="flex items-center gap-3 cursor-pointer">
             <div className="flex items-center ml-10">
               <Image
                 src="/Images/logo/elem.png"
@@ -107,9 +108,9 @@ export default function TopNavigation() {
                 <Link
                   href={item.link}
                   onClick={() => setActiveMenu(item.id)}
-                  className={`relative flex items-center px-5 py-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-md ${activeMenu === item.id
+                  className={`relative flex items-center px-4 py-2 text-sm font-bold uppercase tracking-wide transition-all duration-300 rounded-md ${activeMenu === item.id
                       ? "text-white"
-                      : "text-slate-600 hover:text-slate-900"
+                      : "text-slate-600 hover:text-slate-900 "
                     }`}
                 >
                   {activeMenu === item.id && (
@@ -133,6 +134,8 @@ export default function TopNavigation() {
                   </span>
                 </Link>
 
+                
+
                 {/* DROPDOWN */}
                 <AnimatePresence>
                   {item.dropdown && hoveredMenu === item.id && (
@@ -147,29 +150,7 @@ export default function TopNavigation() {
                         <Link
                           key={subItem.label}
                           href={subItem.link}
-                          className="block px-5 py-3 text-sm text-slate-700 hover:bg-gray-100 transition"
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                {/* DROPDOWN */}
-                <AnimatePresence>
-                  {item.dropdown && hoveredMenu === item.id && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50"
-                    >
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.label}
-                          href={subItem.link}
-                          className="block px-5 py-3 text-sm text-slate-700 hover:bg-gray-100 transition"
+                          className="block px-5 py-3 text-sm font-bold text-slate-700 hover:bg-gray-100 transition"
                         >
                           {subItem.label}
                         </Link>

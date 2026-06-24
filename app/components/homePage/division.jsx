@@ -34,7 +34,7 @@ export default function DivisionsPage() {
       icon: FlaskConical,
       gradient: "from-[#00B9CC] to-[#0099FF]",
       iconBg: "bg-[#00B9CC]/10",
-      iconColor: "text-[#00B9CC]",
+      iconColor: "text-[#064D50]",
       image: "/Images/chemical/chemical.jpeg",
       features: ["Industrial Chemicals", "Bulk Supply", "Custom Solutions"],
       link: "/divisions/chemicals",

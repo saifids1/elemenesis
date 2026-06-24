@@ -372,7 +372,7 @@ const MissionVision = () => {
                     {value.description}
                   </p>
 
-                  <div className="mt-6 w-12 h-1 bg-gradient-to-r from-[#00CCAA] to-transparent rounded-full group-hover:w-24 transition-all duration-500" />
+                  <div className="mt-6 w-12 h-1 bg-gradient-to-r from-[#096F72] to-transparent rounded-full group-hover:w-24 transition-all duration-500" />
                 </div>
               ))}
             </div>
@@ -513,7 +513,7 @@ const MissionVision = () => {
         </section>
 
         {/* Section 7: CTA - Gradient */}
-        <section className="relative py-20 bg-gradient-to-br from-[#00CCAA] via-[#096F72] to-[#0099FF] overflow-hidden">
+        <section className="relative py-20 bg-[#064D50] overflow-hidden">
           <div className="absolute inset-0">
             {[...Array(30)].map((_, i) => (
               <div

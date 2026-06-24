@@ -33,7 +33,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
                   className={`flex h-8 w-8 items-center justify-center rounded-lg ${
                     isActive
                       ? "bg-white/20 text-white"
-                      : "bg-[#00CCAA]/10 text-[#00B9CC] group-hover:bg-white/20 group-hover:text-white"
+                      : "bg-[#00CCAA]/10 text-[#064D50] group-hover:bg-white/20 group-hover:text-white"
                   }`}
                 >
                   <Icon size={17} />
@@ -55,7 +55,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
                 className={
                   isActive
                     ? "text-white"
-                    : "text-[#00B9CC] group-hover:text-white"
+                    : "text-[#064D50] group-hover:text-white"
                 }
               />
             </button>

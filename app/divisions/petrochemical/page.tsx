@@ -1,9 +1,10 @@
 // app/page.tsx
 "use client";
 import React, { useState } from "react";
-import { ArrowRight, Paintbrush } from "lucide-react";
+import { ArrowRight, Fuel, Paintbrush } from "lucide-react";
 import Footer from "../../layouts/footer";
 import Navbar from "../../layouts/navbar";
+import { motion } from "framer-motion";
 
 const tabs = [
   {
@@ -36,42 +37,87 @@ const tabs = [
     image: "/Images/Coatings-and-Ink/Coatings-and-Ink-1-scaled-1.webp",
     desc: "Accelerators help improve processing speed and efficiency.",
   },
-  
 ];
 
 export default function Home() {
   const [active, setActive] = useState(0);
   const current = tabs[active];
 
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+  // Animation Variants
+  const cubicBezierEase = [0.16, 1, 0.3, 1] as any;
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: cubicBezierEase },
+    },
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       <Navbar />
       {/* Hero Section with Gradient Background */}
-      <section className="relative min-h-[500px] overflow-hidden bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF]">
-        {/* Background / Overlay should stay behind */}
-        <div className="absolute inset-0 bg-black/30 z-0" />
+   
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-6 py-24 text-[#ECE9E2]">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#096F72] to-[#096F72]">
+          {/* <img
+              src="/Images/about_us/about01.png"
+              alt="About Us"
+              className="w-full h-full object-cover object-center"
+            /> */}
+        </div>
+
+        {/* Dark Green Gradient Overlay */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0D231D]/70 via-[#0D231D]/55 to-[#0D231D]/65" />
+
+        {/* Additional Dark Layer */}
+        <div className="absolute inset-0 z-10 bg-black/30" />
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto max-w-7xl px-4 top-16">
-          <div className="max-w-4xl mx-auto pt-30 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 transition-all duration-700">
-              <Paintbrush className="w-4 h-4 text-white" />
-              <span className="text-white font-semibold tracking-wide">
-                Industry Solutions
-              </span>
-            </div>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+          className="relative z-20 mx-auto max-w-5xl text-center"
+        >
+          {/* Breadcrumb */}
+          <motion.nav
+            variants={fadeIn}
+            className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md text-sm uppercase tracking-[3px] text-[#D4AF37]"
+          >
+            <Fuel className="w-4 h-4 text-white" />
+            <span className="text-white font-semibold tracking-wide">
+              Advanced Chemical Building Blocks
+            </span>
+          </motion.nav>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all delay-200 duration-700">
-              Petrochemicals
-            </h1>
+          {/* Heading */}
+          <motion.h1
+            variants={fadeIn}
+            className="mt-8 text-5xl font-light leading-tight tracking-tight md:text-7xl"
+          >
+            <span className=" text-white"> Petrochemicals</span>
+          </motion.h1>
 
-            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed transition-all delay-300 duration-700">
-              Comprehensive range of high-performance coatings, inks, adhesives,
-              and specialty chemicals for diverse industrial applications
-              worldwide
-            </p>
-          </div>
-        </div>
+          {/* Description */}
+          <motion.p
+            variants={fadeIn}
+            className="mx-auto mt-8 max-w-4xl text-base leading-[2] text-gray-200 md:text-lg"
+          >
+            Providing a comprehensive portfolio of petrochemical products and
+            intermediates that serve as the foundation for countless industrial
+            applications.
+          </motion.p>
+        </motion.div>
       </section>
 
       <main className="container mx-auto px-6 py-16 md:py-10 ">
@@ -82,7 +128,8 @@ export default function Home() {
             {/* Hexagon Tabs */}
             <div className="relative mb-7">
               {/* Decorative Connecting Line */}
-              <div className="absolute bottom-[50px] left-0 w-full h-[4px] bg-gradient-to-r from-[#00CCAA] via-[#00B9CC] to-[#0099FF] rounded-full" />
+              {/* Decorative Line */}
+              <div className="absolute bottom-[50px] left-0 w-full h-[4px] bg-[#096F72] rounded-full" />
 
               {/* Tabs */}
               <div className="relative z-10 flex flex-wrap justify-center gap-2 md:gap-11">
@@ -92,8 +139,8 @@ export default function Home() {
                     onClick={() => setActive(index)}
                     className={`relative h-[50px] min-w-[160px] cursor-pointer px-6 text-sm md:text-base font-bold uppercase text-white transition-all duration-300 hover:scale-105 ${
                       active === index
-                        ? "bg-gradient-to-br from-[#02296b] via-[#03368e] to-[#0a56d8] shadow-xl"
-                        : "bg-gradient-to-br from-[#00CCAA]/70 via-[#00B9CC]/70 to-[#0099FF]/70 hover:from-[#00CCAA] hover:via-[#00B9CC] hover:to-[#0099FF]"
+                        ? "bg-[#064D50] shadow-xl"
+                        : "bg-[#096F72]/80 hover:bg-[#096F72]"
                     }`}
                     style={{
                       clipPath:
@@ -107,19 +154,19 @@ export default function Home() {
             </div>
 
             {/* Content Box */}
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg md:p-7 md:px-20">
-              <div className="mb-8 border-b-4 border-[#00B9CC] pb-4">
-                <h3 className="text-3xl font-bold text-[#00B9CC]">
+            <div className="rounded-2xl border border-[#096F72]/20 bg-white p-6 shadow-lg md:p-7 md:px-20">
+              <div className="mb-8 border-b-4 border-[#096F72]  pb-4">
+                <h3 className="text-3xl font-bold text-[#064D50]">
                   {current.title}
                 </h3>
-                <p className="mt-2 text-lg font-medium text-[#00B9CC]">
+                <p className="mt-2 text-lg font-medium text-[#064D50]">
                   {current.subtitle}
                 </p>
               </div>
 
               <div className="grid items-center gap-8 md:grid-cols-2">
                 <div>
-                  <p className="text-lg leading-8 text-gray-700">
+                  <p className="text-lg leading-8 text-[#096F72]/70">
                     {current.desc}
                   </p>
                 </div>
@@ -137,7 +184,7 @@ export default function Home() {
         </section>
         {/* CTA Banner */}
         <div className="my-10 lg:mb-1 md:px-20">
-          <div className="bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF] rounded-3xl p-12 text-center text-white relative overflow-hidden">
+          <div className="bg-[#064D50] rounded-3xl p-12 text-center text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
             <div className="relative z-10">
@@ -148,10 +195,12 @@ export default function Home() {
                 Partner with us for cutting-edge material science solutions
                 tailored to your exact specifications.
               </p>
-              <button className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#0099FF] rounded-full font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105">
-                Contact Our Experts
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <a href="/contact">
+                <button className="inline-flex cursor-pointer items-center gap-2 px-8 py-3 bg-white text-[#064D50] rounded-full font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                  Contact Our Experts
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </a>
             </div>
           </div>
         </div>
