@@ -53,10 +53,13 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
-
+   const senderName = 'Elemensis';
+    const senderEmail = process.env.HOSTINGER_EMAIL || 'm.yaqoob@i-diligence.com';
+    const formattedSender = `${senderName} <${senderEmail}>`;
     // Email to admin
     const adminMailOptions = {
-      from: process.env.HOSTINGER_EMAIL,
+      from:formattedSender ,
+      
       to: process.env.CONTACT_EMAIL || process.env.HOSTINGER_EMAIL,
       subject: `New Contact: ${subject}`,
       html: `
@@ -77,7 +80,7 @@ export async function POST(request: Request) {
             <div class="container">
               <div class="header">
                 <h2>New Contact Form Submission</h2>
-                <p style="color: #00cba9; margin: 0;">Elemensis</p>
+            
               </div>
               <div class="content">
                 <div class="field">
@@ -138,7 +141,7 @@ export async function POST(request: Request) {
               <div class="content">
                 <p>Dear ${name},</p>
                 <p>Thank you for reaching out to Elemensis. We have received your message and will get back to you within 24 hours.</p>
-                // <p><strong>Your Message Summary:</strong></p>
+                
                 <p><strong>Subject:</strong> ${subject}</p>
                 <p><strong>Message:</strong></p>
                 <p>${message}</p>
