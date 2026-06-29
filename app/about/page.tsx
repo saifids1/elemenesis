@@ -7,8 +7,7 @@ import {
   Globe,
   ShieldCheck,
   Star,
-  Users,
-  Leaf,
+CircleUser,  Building2,
   ArrowRight,
 } from "lucide-react";
 import Footer from "../layouts/footer";
@@ -66,24 +65,33 @@ export default function AboutPage() {
             className="relative z-20 mx-auto max-w-5xl text-center"
           >
             {/* Breadcrumb */}
-            <motion.nav
+            {/* <motion.nav
               variants={fadeIn}
               className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md text-sm uppercase tracking-[3px] text-[#D4AF37]"
             >
-              <span className="text-[#00CCAA]">Home</span>
+              <span className="text-[#096F72]">Home</span>
               <span className="text-white/40">•</span>
-              <Leaf className="h-4 w-4 text-[#00CCAA]" />
+              <Leaf className="h-4 w-4 text-[#096F72]" />
               <span className="text-white/40">•</span>
               <span className="text-white">About Elemensis</span>
+            </motion.nav> */}
+              <motion.nav
+              variants={fadeIn}
+              className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md text-sm uppercase tracking-[3px] text-[#D4AF37]"
+            >
+              <  Building2 className="w-4 h-4 text-white" />
+              <span className="text-white font-semibold tracking-wide">
+               About
+              </span>
             </motion.nav>
 
             {/* Heading */}
             <motion.h1
               variants={fadeIn}
-              className="mt-8 text-5xl font-light leading-tight tracking-tight md:text-7xl"
+              className="mt-2 text-5xl font-light leading-tight tracking-tight md:text-7xl"
             >
-              About{" "}
-              <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+          
+              <span className=" text-white">
                 Elemensis
               </span>
             </motion.h1>
@@ -123,7 +131,7 @@ export default function AboutPage() {
                   </video>
                 </div>
                 <div className="mt-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <p className="text-xs tracking-wider uppercase text-[#0D231D] font-extrabold mb-1">
+                  <p className="text-xs tracking-wider uppercase text-[#096F72] font-extrabold mb-1">
                     Food • Chemicals • E-Commerce
                   </p>
                   <p className="text-xs text-slate-500 leading-relaxed font-medium">
@@ -144,19 +152,19 @@ export default function AboutPage() {
                 variants={fadeIn}
                 className="space-y-6"
               >
-                <div className="flex items-center space-x-2 text-[#00cba9]">
+                <div className="flex items-center space-x-2 text-[#096F72]">
                   {/* <span className="h-[1px] w-8 bg-[#00cba9]"></span> */}
-                  <span className="px-5 py-2 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white text-sm font-bold shadow-lg shadow-teal-200/50">
+                  <span className="px-5 py-2 rounded-full bg-[#064D50]  text-white text-sm font-bold shadow-lg shadow-teal-200/50">
                     The Core Concept
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 transition-all duration-700 delay-200">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-[#096F72] transition-all duration-700 delay-200">
                   Premium Brands For{" "}
-                  <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+                  <span className="bg-[#064D50] bg-clip-text text-transparent">
                     Homes
                   </span>{" "}
                   &{" "}
-                  <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+                  <span className="bg-[#064D50] bg-clip-text text-transparent">
                     Businesses
                   </span>
                 </h2>
@@ -177,10 +185,10 @@ export default function AboutPage() {
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeIn}
                 whileHover={{ y: -6 }}
-                className="relative overflow-hidden rounded-3xl border border-[#00cba9]/20 bg-gradient-to-br from-white via-[#F9F6F0] to-[#00cba9]/10 p-6 sm:p-8 lg:p-10 shadow-sm transition-all duration-500 hover:border-[#00cba9]/40 hover:shadow-2xl hover:shadow-[#00cba9]/10 group"
+                className="relative overflow-hidden rounded-3xl border border-[#00cba9]/20 bg-[#064D50] p-6 sm:p-8 lg:p-10 shadow-sm transition-all duration-500 hover:border-[#00cba9]/40 hover:shadow-2xl hover:shadow-[#00cba9]/10 group"
               >
                 {/* Decorative icon */}
-                <div className="absolute -right-10 -top-10 text-[#00cba9]/5 transition-all duration-500 group-hover:text-[#00cba9]/10">
+                <div className="absolute -right-10 -top-10 text-white/5 transition-all duration-500 group-hover:text-white/10">
                   <Compass className="h-40 w-40 sm:h-56 sm:w-56 lg:h-64 lg:w-64" />
                 </div>
 
@@ -190,20 +198,20 @@ export default function AboutPage() {
 
                 <div className="relative z-10 space-y-6">
                   <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-[#00cba9]/10">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-teal-200/60">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#064D50] shadow-lg shadow-teal-200/60">
                       <Compass className="h-5 w-5 text-white" />
                     </div>
 
-                    <span className="text-s font-bold uppercase tracking-[0.25em] text-[#00B9CC]">
+                    <span className="text-s font-bold uppercase tracking-[0.25em] text-[#096F72]">
                       People & Culture
                     </span>
                   </div>
 
-                  <h2 className="text-3xl font-bold text-[#111827] sm:text-4xl">
+                  <h2 className="text-3xl font-bold text-white sm:text-4xl">
                     Our Team
                   </h2>
 
-                  <p className="max-w-3xl text-base font-light leading-8 text-neutral-600">
+                  <p className="max-w-3xl text-base font-light leading-8 text-white/70">
                     Our team consists of experienced multinational and
                     multicultural professionals who are passionate about
                     delivering excellence. Every member plays a vital role in
@@ -221,7 +229,7 @@ export default function AboutPage() {
                     ].map((item) => (
                       <span
                         key={item}
-                        className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#0D231D] shadow-sm ring-1 ring-neutral-200"
+                        className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#096F72] shadow-sm ring-1 ring-neutral-200"
                       >
                         {item}
                       </span>
@@ -237,17 +245,17 @@ export default function AboutPage() {
         <section className="bg-white border-y border-neutral-100 pt-7 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white text-sm font-bold shadow-lg shadow-teal-200/50">
+              <span className="px-5 py-2 rounded-full bg-[#064D50] text-white text-sm font-bold shadow-lg shadow-teal-200/50">
                 Strategic Roadmap
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 mt-5 text-gray-900 transition-all duration-700 delay-200">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 mt-5 text-[#096F72] transition-all duration-700 delay-200">
                 Our Operational{" "}
-                <span className="bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] bg-clip-text text-transparent">
+                <span className="bg-[#064D50] bg-clip-text text-transparent">
                   Matrix
                 </span>
               </h2>
 
-              {/* <h2 className="text-4xl font-sans font-bold text-[#111827] mt-3">Our Operational Matrix</h2> */}
+              {/* <h2 className="text-4xl font-sans font-bold text-[#096F72] mt-3">Our Operational Matrix</h2> */}
             </div>
 
             <motion.div
@@ -270,17 +278,17 @@ export default function AboutPage() {
 
                 <div className="relative z-10 flex h-full flex-col justify-between">
                   <div className="space-y-6">
-                    <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-[#00cba9]/10">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-teal-200/60">
-                        <Globe className="h-5 w-5 text-white" />
+                    <div className="inline-flex items-center gap-3 rounded-2xl bg-[#064D50] px-4 py-3 shadow-sm ">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl  bg-white shadow-lg shadow-teal-200/60">
+                        <Globe className="h-5 w-5 text-[#096F72]" />
                       </div>
 
-                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#00B9CC]">
+                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-white">
                         Worldwide Network
                       </span>
                     </div>
 
-                    <h3 className="text-3xl font-bold text-[#111827] md:text-4xl">
+                    <h3 className="text-3xl font-bold text-[#096F72] md:text-4xl">
                       Global Expertise
                     </h3>
 
@@ -301,7 +309,7 @@ export default function AboutPage() {
                       ].map((item) => (
                         <div
                           key={item}
-                          className="rounded-2xl bg-white/80 px-4 py-3 text-sm font-semibold text-[#0D231D] shadow-sm ring-1 ring-neutral-200"
+                          className="rounded-2xl bg-[#064D50] px-4 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-neutral-200"
                         >
                           {item}
                         </div>
@@ -309,7 +317,7 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  <div className="mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-[#0D231D] transition-colors group-hover:text-[#00B9CC]">
+                  <div className="mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-[#096F72] transition-colors group-hover:text-[#096F72]">
                     <span>Global B2B Framework</span>
                     {/* <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" /> */}
                   </div>
@@ -319,7 +327,7 @@ export default function AboutPage() {
               <motion.div
                 variants={fadeIn}
                 whileHover={{ y: -8 }}
-                className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0D231D] via-[#112D26] to-[#0D231D] p-8 md:p-10 text-white border border-[#00cba9]/20 hover:border-[#00cba9]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#00cba9]/10"
+                className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#064D50] via-[#07595C] to-[#064D50] p-8 md:p-10 text-white border border-[#00cba9]/20 hover:border-[#00cba9]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#00cba9]/10"
               >
                 {/* Decorative Glow */}
                 <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[#00cba9]/15 blur-3xl" />
@@ -327,12 +335,12 @@ export default function AboutPage() {
 
                 <div className="relative z-10 flex h-full flex-col justify-between">
                   <div>
-                    <div className="inline-flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 backdrop-blur-sm border border-white/10">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] shadow-lg shadow-[#00cba9]/20">
+                    <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 backdrop-blur-sm border border-white/10">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#096F72] to-[#064D50] shadow-lg shadow-[#00cba9]/20">
                         <Star className="h-5 w-5 text-white" />
                       </div>
 
-                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#00cba9]">
+                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#096F72]">
                         Our Foundation
                       </span>
                     </div>
@@ -362,7 +370,7 @@ export default function AboutPage() {
                       ].map((value) => (
                         <span
                           key={value}
-                          className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white/90 backdrop-blur-sm"
+                          className="rounded-full border border-white/10 bg-white px-4 py-2 text-xs font-semibold text-[#096F72] backdrop-blur-sm"
                         >
                           {value}
                         </span>
@@ -371,7 +379,7 @@ export default function AboutPage() {
                   </div>
 
                   <div className="mt-8 border-t border-white/10 pt-6">
-                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#00cba9]">
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-white">
                       No Compromise Ecosystem
                     </span>
                   </div>
@@ -382,7 +390,7 @@ export default function AboutPage() {
               <motion.div
                 variants={fadeIn}
                 whileHover={{ y: -6 }}
-                className="relative md:col-span-3 overflow-hidden rounded-3xl border border-[#00cba9]/20 bg-gradient-to-br from-white via-[#F9F6F0] to-[#00cba9]/10 p-8 md:p-12 shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-[#00cba9]/10"
+                className="relative md:col-span-3 overflow-hidden rounded-3xl border border-[#00cba9]/20 bg-[#064D50] p-8 md:p-12 shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-[#00cba9]/10"
               >
                 {/* Decorative blur */}
                 <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#00cba9]/20 blur-3xl" />
@@ -394,16 +402,16 @@ export default function AboutPage() {
                       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white shadow-lg shadow-teal-200/60">
                         <ShieldCheck className="h-5 w-5" />
                       </div>
-                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#00B9CC]">
+                      <span className="text-sm font-bold uppercase tracking-[0.25em] text-[#096F72]">
                         People Behind Elemensis
                       </span>
                     </div>
 
-                    <h3 className="text-3xl font-bold text-[#111827] md:text-4xl">
+                    <h3 className="text-3xl font-bold text-white md:text-4xl">
                       Our Team
                     </h3>
 
-                    <p className="max-w-3xl text-base font-semibold leading-8 text-neutral-600">
+                    <p className="max-w-3xl text-base font-semibold leading-8 text-white/80">
                       Our team is made up of knowledgeable, multinational, and
                       multicultural professionals who are committed to
                       delivering excellence. Every team member plays an
@@ -421,7 +429,7 @@ export default function AboutPage() {
                       ].map((item) => (
                         <span
                           key={item}
-                          className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#0D231D] shadow-sm ring-1 ring-neutral-200"
+                          className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#096F72] shadow-sm ring-1 ring-neutral-200"
                         >
                           {item}
                         </span>
@@ -432,7 +440,7 @@ export default function AboutPage() {
                   <div className="flex md:justify-end">
                     <a
                       href="/contact"
-                      className="group inline-flex items-center justify-center rounded-2xl bg-[#0D231D] px-7 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:bg-gradient-to-r hover:from-[#00CCAA] hover:to-[#00B9CC] hover:text-white hover:shadow-xl hover:shadow-[#00cba9]/20"
+                      className="group inline-flex items-center justify-center rounded-2xl bg-[#064D50] px-7 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:bg-white hover:text-[#096F72] hover:shadow-xl hover:border hover:border-[#00CCAA]/30"
                     >
                       Explore Network
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

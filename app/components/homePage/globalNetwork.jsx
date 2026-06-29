@@ -85,7 +85,7 @@ export default function GlobalNetworkPage() {
   return (
     <div
       ref={sectionRef}
-      className="overflow-hidden bg-[#10b2b5]"
+      className="overflow-hidden bg-[#064D50]"
     >
       <TrendyDivider />
 
@@ -197,19 +197,19 @@ export default function GlobalNetworkPage() {
     return (
       <div
         key={idx}
-        className="group rounded-2xl border border-gray-100/70 bg-white p-5 text-center shadow-md transform transition-all duration-300 hover:-translate-y-2.5 hover:bg-[#00CCAA] hover:shadow-2xl" 
+        className="group rounded-2xl border border-gray-100/70 bg-white p-5 text-center shadow-md transform transition-all duration-300 hover:-translate-y-2.5 hover:bg-[#096F72] hover:shadow-2xl" 
        
        
       >
         <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-gray-50/80 bg-white shadow-md transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
-          <Icon className="h-7 w-7 text-[#00CCAA] transition-colors duration-300 group-hover:text-[#10b2b5]" />
+          <Icon className="h-7 w-7 text-[#096F72] transition-colors duration-300 group-hover:text-[#096F72]" />
         </div>
 
-        <h4 className="mb-2.5 text-xl font-bold tracking-tight text-[#00CCAA] transition-colors duration-300 group-hover:text-white">
+        <h4 className="mb-2.5 text-xl font-bold tracking-tight text-[#096F72] transition-colors duration-300 group-hover:text-white">
           {feature.title}
         </h4>
 
-        <p className="px-2 text-sm leading-relaxed text-[#00CCAA]/80 transition-colors duration-300 group-hover:text-white">
+        <p className="px-2 text-sm leading-relaxed text-[#096F72]/80 transition-colors duration-300 group-hover:text-white">
           {feature.desc}
         </p>
       </div>
@@ -237,7 +237,7 @@ export default function GlobalNetworkPage() {
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-2xl font-bold border border-[#00CCAA]/20 bg-white px-6 py-3 text-sm font-semibold text-[#00CCAA] shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00CCAA] hover:text-white hover:shadow-lg"
+                className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-2xl font-bold border border-[#00CCAA]/20 bg-white px-6 py-3 text-sm font-semibold text-[#096F72] shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#064D50] hover:text-white hover:shadow-lg"
               >
                 <span className="text-lg">Connect With Us</span>
                 <ChevronRight className="h-6 w-6  transition-transform duration-300 group-hover:translate-x-1.5" />

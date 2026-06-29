@@ -19,8 +19,10 @@ const MissionVision = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExcellenceVisible, setIsExcellenceVisible] = useState(false);
   const [activeTab, setActiveTab] = useState('mission');
+  const [isChanging, setIsChanging] = useState(false);
   const sectionRef = useRef(null);
   const excellenceRef = useRef(null);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,6 +67,21 @@ const MissionVision = () => {
       }
     };
   }, []);
+
+ useEffect(() => {
+  const interval = setInterval(() => {
+    setIsChanging(true); // Start fade out
+
+    setTimeout(() => {
+      setActiveTab((prev) =>
+        prev === "mission" ? "vision" : "mission"
+      );
+      setIsChanging(false); // Fade in new content
+    }, 500); // Fade-out duration
+  }, 7000);
+
+  return () => clearInterval(interval);
+}, []);
 
   const content = {
     mission: {
@@ -129,8 +146,8 @@ const MissionVision = () => {
       >
         <div className="absolute inset-0 overflow-hidden">
           {[
-            "left-10 top-20 h-72 w-72 bg-[#00CCAA]/10 animate-pulse",
-            "bottom-20 right-10 h-96 w-96 bg-[#00B9CC]/10 animate-pulse delay-1000",
+            "left-10 top-20 h-72 w-72 bg-[#096F72]/10 animate-pulse",
+            "bottom-20 right-10 h-96 w-96 bg-[#07595C]/10 animate-pulse delay-1000",
             "left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 bg-[#0099FF]/5",
           ].map((cls) => (
             <div
@@ -155,9 +172,9 @@ const MissionVision = () => {
           ))}
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <h2 className="relative mb-4 text-4xl font-bold text-[#10b2b5] sm:text-5xl lg:text-6xl">
+        <div className="relative z-10 mx-auto max-w-7xl ">
+          <div className="mb-16 text-center ">
+            <h2 className="relative mb-4 text-4xl font-bold  text-[#096F72] sm:text-5xl lg:text-6xl">
               Mission & Vision
               <svg
                 className="absolute -bottom-2 left-0 w-full"
@@ -166,7 +183,7 @@ const MissionVision = () => {
               >
                 <path
                   d="M0 4 Q 50 8 100 4 Q 150 0 200 4"
-                  stroke="#00B9CC"
+                  stroke="#064D50"
                   strokeWidth="3"
                   fill="none"
                   strokeLinecap="round"
@@ -179,8 +196,8 @@ const MissionVision = () => {
             </p>
           </div>
 
-          <div className="mb-12 flex justify-center">
-            <div className="flex gap-2 rounded-full border border-[#00B9CC]/20 bg-[#00CCAA]/10 p-1 backdrop-blur-sm">
+          <div className="mb-12 flex justify-center ">
+            <div className="flex gap-2 rounded-full border border-[#096F72]/20 bg-[#096F72]/10 p-1 backdrop-blur-sm">
               {[
                 ["mission", "Mission", FaRocket],
                 ["vision", "Vision", FaGlobe],
@@ -189,8 +206,8 @@ const MissionVision = () => {
                   key={key}
                   onClick={() => setActiveTab(key)}
                   className={`rounded-full px-8 py-3 font-semibold transition-all duration-300 ${activeTab === key
-                    ? "scale-100 bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] text-white shadow-lg"
-                    : "text-gray-700 hover:bg-[#00CCAA]/10"
+                    ? "scale-100 bg-gradient-to-r from-[#096F72] to-[#07595C] text-white shadow-lg"
+                    : "text-[#07595C] hover:bg-[#096F72]/10"
                     }`}
                 >
                   <div className="flex items-center gap-2">
@@ -202,31 +219,36 @@ const MissionVision = () => {
             </div>
           </div>
 
-          <div
-            className={`transform transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
-          >
-            <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
+        <div
+  className={`transform transition-all duration-500 ease-in-out ${
+    isVisible
+      ? "translate-y-0"
+      : "translate-y-10"
+  } ${
+    isChanging ? "opacity-0 scale-95" : "opacity-100 scale-100"
+  }`}
+>
+            <div className="animate-fade flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <div className="w-full space-y-6 lg:w-1/2">
-                <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xl lg:p-10">
+                <div className="rounded-3xl border border-gray-100 bg-[#064D50] p-8 shadow-xl lg:p-10">
                   <div className="mb-4 flex items-center gap-3">
-                    <div className="animate-bounce rounded-2xl bg-gradient-to-br from-[#00CCAA] to-[#00B9CC] p-3 text-white shadow-lg">
+                    <div className="animate-bounce rounded-2xl  bg-white p-3 text-[#07595C] shadow-lg">
                       {React.cloneElement(content[activeTab].icon, {
                         className: "w-8 h-8",
                       })}
                     </div>
 
                     <div>
-                      <h3 className="text-3xl font-bold text-[#10b2b5] lg:text-4xl">
+                      <h3 className="text-3xl font-bold text-white lg:text-4xl">
                         {content[activeTab].title}
                       </h3>
-                      <p className="mt-1 text-sm text-[#10b2b5]/50">
+                      <p className="mt-1 text-sm text-white/70">
                         {content[activeTab].subtitle}
                       </p>
                     </div>
                   </div>
 
-                  <p className="mb-6 text-lg leading-relaxed text-gray-600">
+                  <p className="mb-6 text-lg leading-relaxed text-white/80">
                     {content[activeTab].description}
                   </p>
 
@@ -240,10 +262,10 @@ const MissionVision = () => {
                         }}
                       >
                         <div className="h-2 w-2 rounded-full bg-[#00CCAA] transition-transform duration-300 group-hover:scale-150" />
-                        <span className="text-gray-700 transition-colors duration-300 group-hover:text-[#00B9CC]">
+                        <span className="text-white/70 transition-colors duration-300 group-hover:text-[#00CCAA]">
                           {point}
                         </span>
-                        <FaArrowRight className="h-4 w-4 text-[#00B9CC]/60 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+                        <FaArrowRight className="h-4 w-4 text-[#00CCAA]/60 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
                       </div>
                     ))}
                   </div>
@@ -256,10 +278,10 @@ const MissionVision = () => {
                         ["1000+", "Partners"],
                       ].map(([number, label]) => (
                         <div key={label} className="text-center">
-                          <div className="text-2xl font-bold text-[#00B9CC]">
+                          <div className="text-2xl font-bold text-white">
                             {number}
                           </div>
-                          <div className="text-sm text-gray-500">{label}</div>
+                          <div className="text-sm text-white/50">{label}</div>
                         </div>
                       ))}
                     </div>
@@ -291,15 +313,15 @@ const MissionVision = () => {
                       </div>
                     </div>
 
-                    <div className="absolute bottom-6 right-6 z-20 animate-pulse rounded-full bg-white/95 p-3 text-[#00B9CC] shadow-lg backdrop-blur-sm">
+                    <div className="absolute bottom-6 right-6 z-20 animate-pulse rounded-full bg-white/95 p-3 text-[#07595C] shadow-lg backdrop-blur-sm">
                       {React.cloneElement(content[activeTab].icon, {
                         className: "w-6 h-6",
                       })}
                     </div>
                   </div>
 
-                  <div className="absolute -left-4 -top-4 h-24 w-24 rounded-tl-3xl border-l-4 border-t-4 border-[#00B9CC]/40" />
-                  <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-br-3xl border-b-4 border-r-4 border-[#00B9CC]/40" />
+                  <div className="absolute -left-4 -top-4 h-24 w-24 rounded-tl-3xl border-l-4 border-t-4 border-[#096F72]/40" />
+                  <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-br-3xl border-b-4 border-r-4 border-[#096F72]/40" />
                 </div>
 
                 {[
@@ -308,7 +330,7 @@ const MissionVision = () => {
                 ].map(([pos, Icon, anim]) => (
                   <div key={pos} className={`absolute hidden lg:block ${pos}`}>
                     <div
-                      className={`${anim} rounded-xl border border-gray-100 bg-white p-3 text-[#00B9CC] shadow-xl backdrop-blur-sm`}
+                      className={`${anim} rounded-xl border border-gray-100 bg-white p-3 text-[#07595C] shadow-xl backdrop-blur-sm`}
                     >
                       <Icon className="h-8 w-8" />
                     </div>
@@ -318,8 +340,8 @@ const MissionVision = () => {
             </div>
           </div>
 
-          <div className="mt-20 text-center">
-            <div className="inline-flex items-center gap-4 rounded-full border border-[#00B9CC]/20 bg-gradient-to-r from-[#00CCAA]/10 to-[#00B9CC]/10 px-6 py-3 backdrop-blur-xl">
+          {/* <div className="mt-20 text-center">
+            <div className="inline-flex items-center gap-4 rounded-full border border-[#096F72]/20 bg-gradient-to-r from-[#00CCAA]/10 to-[#00B9CC]/10 px-6 py-3 backdrop-blur-xl">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
                   <div
@@ -332,16 +354,16 @@ const MissionVision = () => {
               </div>
 
               <span className="text-sm text-gray-700">Join us in our journey</span>
-              <FaArrowRight className="h-4 w-4 text-[#00B9CC]" />
+              <FaArrowRight className="h-4 w-4 text-[#07595C]" />
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Commitment to Excellence Section */}
       <section
         ref={excellenceRef}
-        className="relative overflow-hidden bg-[#10b2b5] px-4 py-20 sm:px-6 lg:px-8 lg:pt-10"
+        className="relative overflow-hidden bg-[#064D50] px-4 py-20 sm:px-6 lg:px-8 lg:pt-10"
       >
         {/* Animated background */}
         <div className="absolute inset-0 overflow-hidden">
@@ -409,32 +431,31 @@ const MissionVision = () => {
           >
             {/* Left Side - Text Content */}
             <div className="space-y-6">
-              <div className="rounded-2xl border border-white/20  p-6 shadow-xl bg-white lg:p-8">
+              <div className="rounded-2xl border border-white/20 bg-white p-6 shadow-xl lg:p-8">
                 <div className="mb-4 flex items-center gap-3">
-                  <div className="animate-pulse rounded-xl bg-white p-2.5 text-[#00CCAA] shadow-lg">
+                  <div className="animate-pulse rounded-xl bg-white p-2.5 text-[#096F72] shadow-lg">
                     <FaGem className="h-6 w-6" />
                   </div>
 
-                  <h3 className="text-2xl font-bold text-[#00CCAA]">
+                  <h3 className="text-2xl font-bold text-[#096F72]">
                     Excellence in Everything
                   </h3>
                 </div>
 
-                <p className="mb-4 text-base leading-relaxed text-[#00CCAA]/90">
+                <p className="mb-4 text-base leading-relaxed text-[#096F72]/90">
                   At Elemensis, excellence is a way of life rather than just a
                   promise. We guarantee the genuineness, dependability, and excellence
                   of every product and service we offer. Our path and our clients'
                   trust in us serve as examples of this commitment.
                 </p>
 
-                <p className="my-4 border-l-4 border-cyan-100/50 pl-4 text-base italic leading-relaxed text-[#00CCAA]/85">
+                <p className="my-4 border-l-4 border-[#096F72]/30 pl-4 text-base italic leading-relaxed text-[#096F72]/85">
                   "Elemensis is a community rather than just a company. With years of
                   experience in the field, we have developed solid relationships with
                   partners and suppliers around the world, allowing us to provide the
                   best products right to your door."
                 </p>
 
-                {/* Features Grid */}
                 <div className="mt-6 grid grid-cols-2 gap-3">
                   {excellenceFeatures.map((feature, idx) => (
                     <div
@@ -445,15 +466,15 @@ const MissionVision = () => {
                           }s both`,
                       }}
                     >
-                      <div className="mt-0.5 text-[#00CCAA] transition-colors duration-300 group-hover:text-[#10b2b5]/70">
+                      <div className="mt-0.5 text-[#096F72] transition-colors duration-300 group-hover:text-[#07595C]">
                         {feature.icon}
                       </div>
 
                       <div>
-                        <h4 className="text-sm font-semibold text-[#00CCAA] transition-colors group-hover:text-[#10b2b5]/70">
+                        <h4 className="text-sm font-semibold text-[#096F72] transition-colors group-hover:text-[#07595C]">
                           {feature.title}
                         </h4>
-                        <p className="text-xs text-[#00CCAA]/70">
+                        <p className="text-xs text-[#096F72]/70">
                           {feature.description}
                         </p>
                       </div>
@@ -462,7 +483,6 @@ const MissionVision = () => {
                 </div>
               </div>
 
-              {/* Trust Indicators */}
               <div className="flex flex-wrap justify-around gap-4 rounded-xl border border-white bg-white p-4 shadow-lg backdrop-blur-md">
                 {[
                   ["10+", "Years Experience"],
@@ -471,8 +491,8 @@ const MissionVision = () => {
                   ["24/7", "Support"],
                 ].map(([number, label]) => (
                   <div key={label} className="text-center">
-                    <div className="text-2xl font-bold text-[#00CCAA]">{number}</div>
-                    <div className="text-xs text-[#00CCAA]/70">{label}</div>
+                    <div className="text-2xl font-bold text-[#096F72]">{number}</div>
+                    <div className="text-xs text-[#096F72]/70">{label}</div>
                   </div>
                 ))}
               </div>
@@ -494,14 +514,14 @@ const MissionVision = () => {
                 />
 
                 {/* Overlay badges */}
-                <div className="absolute left-6 top-6 z-20 animate-bounce rounded-full bg-white/95 px-4 py-2 shadow-lg backdrop-blur-sm">
+                {/* <div className="absolute left-6 top-6 z-20 animate-bounce rounded-full bg-white/95 px-4 py-2 shadow-lg backdrop-blur-sm">
                   <div className="flex items-center gap-2">
                     <FaHeart className="h-4 w-4 text-red-500" />
                     <span className="text-sm font-semibold text-gray-800">
                       With ❤️ from Elemensis
                     </span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="absolute bottom-6 right-6 z-20 rounded-full bg-white/95 p-3 shadow-lg backdrop-blur-sm">
                   <FaUsers className="h-6 w-6 text-[#00CCAA]" />
@@ -528,12 +548,12 @@ const MissionVision = () => {
               : "translate-y-10 opacity-0"
               }`}
           >
-            <div className="group inline-flex cursor-pointer items-center gap-3 rounded-full border border-white/20 bg-white px-6 py-3 backdrop-blur-md transition-all duration-300 hover:bg-[#00CCAA]/30 transition-colors group-hover:text-white/50">
-              <FaHandshake className="h-4 w-4 text-[#00CCAA] transition-colors duration-300 group-hover:text-white" />
-              <span className="text-sm font-medium text-[#00CCAA]/70 transition-colors duration-300 group-hover:text-white">
+            <div className="group inline-flex cursor-pointer items-center gap-3 rounded-full border border-white/20 bg-white px-6 py-3 backdrop-blur-md transition-all duration-300 hover:bg-[#096F72]/30 transition-colors group-hover:text-white/50">
+              <FaHandshake className="h-4 w-4 text-[#096F72] transition-colors duration-300 group-hover:text-white" />
+              <span className="text-sm font-bold text-[#096F72] transition-colors duration-300 group-hover:text-white">
                 Experience excellence with Elemensis
               </span>
-              <FaArrowRight className="h-3 w-3 text-[#00CCAA]/80 transition-all duration-300 group-hover:text-white group-hover:translate-x-1" />
+              <FaArrowRight className="h-3 w-3 text-[#096F72]/80 transition-all duration-300 group-hover:text-white group-hover:translate-x-1" />
             </div>
           </div>
         </div>
@@ -567,6 +587,8 @@ const MissionVision = () => {
         .animate-float-delayed {
           animation: float 3.5s ease-in-out infinite 1s;
         }
+       
+}
       `}</style>
     </>
   );

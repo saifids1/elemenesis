@@ -175,7 +175,7 @@ export default function PlasticCablesPage() {
  
 <div className="relative mx-auto max-w-7xl px-6 py-20">
   <div className="text-center">
-    <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full bg-[#00CCAA]/10 px-5 py-2 text-sm font-semibold text-[#00B9CC]">
+    <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full bg-[#00CCAA]/10 px-5 py-2 text-sm font-semibold text-[#064D50]">
       <Sparkles size={18} />
       Products
     </div>

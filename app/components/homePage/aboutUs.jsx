@@ -48,7 +48,7 @@ export default function AboutSectionHomepage() {
 
         <a
           href="/about"
-          className="mt-8 inline-flex rounded-xl bg-gradient-to-r from-[#00CCAA] to-[#00B9CC]  text-center px-14 py-4 text-base font-semibold uppercase tracking-wide text-white"
+          className="mt-8 inline-flex rounded-xl bg-[#064D50]  text-center px-14 py-4 text-base font-semibold uppercase tracking-wide  text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#096F72] hover:shadow-xl"
         >
           Click Here
         </a>

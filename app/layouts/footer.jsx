@@ -9,7 +9,10 @@ import {
   Award, Leaf, ArrowUp, Camera
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import TrendyDivider from "../components/MagneticDivider";
+import { FaFacebookF,} from "react-icons/fa";
+import { FaLinkedinIn  } from "react-icons/fa6";
+import { BsTwitterX } from "react-icons/bs";
+
 
 export default function Footer() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -34,17 +37,22 @@ export default function Footer() {
 
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Our Divisions", href: "/divisions" },
-    { name: "Export Market", href: "/export-market" },
-    { name: "Global Network", href: "/global-network" },
+    { name: "About Elemensis", href: "/about" },
+    { name: "Ethics", href: "/about/ethics" },
+    { name: "Vision / Mission", href: "/about/vision-mission" },
+    { name: "Career", href: "/career/career_form" },
+    { name: "Global Map", href: "/our_network/globalmap" },
     { name: "Contact", href: "/contact" },
   ];
 
   const ourDivisions = [
-    { name: "Food Division", href: "/food-division" },
-    { name: "Chemicals Division", href: "/chemical-products" },
-    { name: "Ecommerce Division", href: "/zayb-syrup" },
+    { name: "Coating / Ink", href: "/divisions/coating_in" },
+    { name: "Rubber / Adhesive", href: "/divisions/rubber_adhesive" },
+    { name: "Petrochemical", href: "/divisions/petrochemical" },
+    { name: "Food", href: "/divisions/food" },
+    { name: "Pharma", href: "/divisions/animalfeed" },
+    { name: "Animal Feed", href: "/divisions/animalfeed" },
+    { name: "Construction", href: "/divisions/construction" },
   ];
 
   const contactInfo = [
@@ -55,10 +63,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Users, href: "#", label: "Facebook" },
-    { icon: X, href: "#", label: "Twitter" },
-    { icon: UserPlus, href: "#", label: "LinkedIn" },
-    { icon: Camera, href: "#", label: "Instagram" },
+    { icon: FaFacebookF , href: "#", label: "Facebook" },
+    { icon: BsTwitterX , href: "#", label: "Twitter" },
+    { icon: FaLinkedinIn , href: "#", label: "LinkedIn" },
+    // { icon: Camera, href: "#", label: "Instagram" },
   ];
 
   const certifications = [
@@ -113,23 +121,25 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="flex flex-col items-start">
-            <div className="flex items-center gap-2 mb-6 group cursor-pointer">
-              <Image
-                src="/Images/logo/elem.png"
-                alt="Elemensis Logo"
-                width={80}
-                height={47}
-                className="w-[60px] h-[35px] md:w-[80px] md:h-[47px] object-contain transform transition-transform duration-300 group-hover:scale-110"
-              />
-             <span
-  className="text-[18px] font-black tracking-[3px] drop-shadow-sm select-none"
-  style={gradientTextStyle}
->
-  ELEMENSIS
-</span>
-            </div>
+         <div className="flex items-center gap-2 mb-6 group cursor-pointer">
+  <Image
+    src="/Images/logo/elem.png"
+    alt="Elemensis Logo"
+    width={50}
+    height={47}
+    priority
+    className="w-[35px] h-[35px] md:w-[45px] md:h-[45px] object-contain transition-transform duration-300 group-hover:scale-110"
+  />
 
-            <p 
+  <span
+    className="text-[22px] md:text-[30px] font-black tracking-[4px] leading-none whitespace-nowrap"
+    style={gradientTextStyle}
+  >
+    ELEMENSIS
+  </span>
+</div>
+
+            <p
               className="text-sm leading-relaxed mb-6 font-medium bg-clip-text text-transparent opacity-85"
               style={gradientTextStyle}
             >
@@ -142,7 +152,7 @@ export default function Footer() {
                   <div className="p-1.5 rounded-lg bg-white/5 border border-white/15 group-hover:bg-white/10 transition-all">
                     <cert.icon className="w-4 h-4 text-teal-400 group-hover:text-white transition-colors" />
                   </div>
-                  <span 
+                  <span
                     className="text-xs font-bold uppercase tracking-widest bg-clip-text text-transparent opacity-80 group-hover:opacity-100 transition-opacity"
                     style={gradientTextStyle}
                   >
@@ -178,7 +188,7 @@ export default function Footer() {
                       className={`w-4 h-4 transition-all duration-300 transform ${hoveredLink === link.name ? "translate-x-1 scale-110 opacity-100" : "opacity-40"}`}
                       style={{ color: 'rgb(0, 204, 170)' }}
                     />
-                    <span 
+                    <span
                       className="relative bg-clip-text text-transparent opacity-85 group-hover:opacity-100 transition-opacity"
                       style={gradientTextStyle}
                     >
@@ -214,7 +224,7 @@ export default function Footer() {
                     className="group flex items-center gap-2 transition-all duration-300 text-sm font-semibold w-fit"
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-teal-400 group-hover:scale-150 transition-all duration-300 field-dot" />
-                    <span 
+                    <span
                       className="group-hover:translate-x-1 transition-transform duration-300 bg-clip-text text-transparent opacity-85 group-hover:opacity-100"
                       style={gradientTextStyle}
                     >
@@ -248,7 +258,7 @@ export default function Footer() {
                     <div className="p-2 rounded-xl bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-sm flex-shrink-0">
                       <info.icon className="w-4 h-4 text-teal-400 transition-transform group-hover:scale-110" />
                     </div>
-                    <span 
+                    <span
                       className="text-sm font-semibold bg-clip-text text-transparent opacity-85 group-hover:opacity-100"
                       style={gradientTextStyle}
                     >
@@ -276,56 +286,67 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar Segment */}
-        <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-            <div className="flex items-center gap-2">
-              <Heart className="w-4 h-4 animate-pulse text-teal-400" fill="currentColor" />
-              <p 
-                className="text-xs font-bold uppercase tracking-wider bg-clip-text text-transparent"
-                style={gradientTextStyle}
-              >
-                © {currentYear} Elemensis. All rights reserved.
-              </p>
-            </div>
+    {/* Bottom Bar Segment */}
+<div className="mt-8 pt-6 border-t border-white/10">
+  <div className="flex flex-nowrap items-center justify-between gap-8">
 
-            <div className="flex flex-wrap justify-center items-center gap-6 text-[11px] font-extrabold uppercase tracking-widest">
-              <Link href="/privacy" className="relative group">
-                <span style={gradientTextStyle}>Privacy</span>
-                <span
-                  className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
-                  style={{ background: brandGradient }}
-                />
-              </Link>
-              <Link href="/terms" className="relative group">
-                <span style={gradientTextStyle}>Terms</span>
-                <span
-                  className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
-                  style={{ background: brandGradient }}
-                />
-              </Link>
-              <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1 rounded-full border border-white/10 shadow-xs">
-                <Globe className="w-3 h-3 text-teal-400" />
-                <span 
-                  className="text-[10px] font-bold tracking-widest uppercase bg-clip-text text-transparent"
-                  style={gradientTextStyle}
-                >
-                  Global Network
-                </span>
-              </div>
-            </div>
+    {/* Copyright */}
+    <div className="flex items-center gap-2 whitespace-nowrap">
+      {/* <Heart
+        className="w-4 h-4 animate-pulse text-teal-400"
+        fill="currentColor"
+      /> */}
+      <p
+        className="text-xs font-bold uppercase tracking-wider bg-clip-text text-transparent"
+        style={gradientTextStyle}
+      >
+        © {currentYear} Elemensis. All rights reserved.
+      </p>
+    </div>
 
-            <div className="flex items-center gap-2 opacity-90 bg-white/5 px-3 py-1.5 rounded-xl border border-white/5">
-              <Truck className="w-4 h-4 text-teal-400" />
-              <span 
-                className="text-[10px] font-black uppercase tracking-wider bg-clip-text text-transparent"
-                style={gradientTextStyle}
-              >
-                Worldwide Shipping
-              </span>
-            </div>
-          </div>
-        </div>
+    {/* Developer Info */}
+    <div className="flex items-center gap-2 whitespace-nowrap text-sm text-teal-400">
+      <span>Design & Developed by</span>
+
+      <a
+        href="https://i-diligence.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-bold uppercase tracking-wider hover:text-white transition-colors"
+      >
+        iDiligence Solution Pvt. Ltd.
+      </a>
+
+      <span className="text-gray-500">|</span>
+
+      <span>Version 1.0.0</span>
+
+      <span className="text-gray-500">|</span>
+
+      <span>Updated June 2026</span>
+    </div>
+
+    {/* Footer Links */}
+    <div className="flex items-center gap-6 whitespace-nowrap text-[11px] font-extrabold uppercase tracking-widest">
+      <Link href="/privacy" className="relative group">
+        <span style={gradientTextStyle}>Privacy</span>
+        <span
+          className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
+          style={{ background: brandGradient }}
+        />
+      </Link>
+
+      <Link href="/terms" className="relative group">
+        <span style={gradientTextStyle}>Terms</span>
+        <span
+          className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
+          style={{ background: brandGradient }}
+        />
+      </Link>
+    </div>
+
+  </div>
+</div>
       </div>
 
       {/* Floating Back to Top Trigger Button */}

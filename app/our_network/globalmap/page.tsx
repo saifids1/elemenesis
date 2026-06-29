@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo, memo } from "react";
 import Footer from "../../layouts/footer";
 import Navbar from "../../layouts/navbar";
 import { 
@@ -13,7 +13,9 @@ import {
   TrendingUp,
   Ship,
   Building2,
-  Truck
+  Truck,
+  ChevronDown,
+  ExternalLink
 } from "lucide-react";
 
 // Google Maps API
@@ -48,7 +50,7 @@ const mapContainerStyle = {
   height: "600px",
 };
 
-// Map options
+// Map options with refined styling
 const mapOptions = {
   disableDefaultUI: false,
   zoomControl: true,
@@ -95,11 +97,187 @@ const defaultCenter = {
   lng: 40,
 };
 
+// Memoized Marker component for performance
+const OfficeMarker = memo(({ 
+  office, 
+  isHovered, 
+  onSelect, 
+  onHover 
+}: { 
+  office: OfficeLocation; 
+  isHovered: boolean; 
+  onSelect: (office: OfficeLocation) => void; 
+  onHover: (id: number | null) => void;
+}) => {
+  const markerIcon = useMemo(() => ({
+    url: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 35' fill='none'%3E%3Cpath d='M12 0C5.373 0 0 5.373 0 12c0 6.627 12 23 12 23s12-16.373 12-23c0-6.627-5.373-12-12-12z' fill='${isHovered ? '%2310b2b5' : '%2300CCAA'}' stroke='white' stroke-width='2'/%3E%3Ccircle cx='12' cy='12' r='4' fill='white'/%3E%3C/svg%3E`,
+    scaledSize: new google.maps.Size(30, 40),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(15, 40),
+  }), [isHovered]);
+
+  return (
+    <Marker
+      position={office.position}
+      onClick={() => onSelect(office)}
+      onMouseOver={() => onHover(office.id)}
+      onMouseOut={() => onHover(null)}
+      icon={markerIcon}
+      animation={isHovered ? google.maps.Animation.BOUNCE : undefined}
+    />
+  );
+});
+
+OfficeMarker.displayName = 'OfficeMarker';
+
+// Memoized InfoWindow component
+const OfficeInfoWindow = memo(({ 
+  office, 
+  onClose 
+}: { 
+  office: OfficeLocation; 
+  onClose: () => void;
+}) => (
+  <InfoWindow
+    position={office.position}
+    onCloseClick={onClose}
+    options={{
+      pixelOffset: new google.maps.Size(0, -40),
+    }}
+  >
+    <div className="max-w-sm p-3">
+      <div className="mb-3 flex items-start justify-between">
+        <div>
+          <h3 className="text-lg font-bold text-[#064D50]">
+            {office.name}
+          </h3>
+          <p className="text-xs text-[#096F72]/70">{office.region} | {office.country}</p>
+        </div>
+        <button
+          onClick={onClose}
+          className="text-[#096F72]/70 hover:text-[#096F72] transition-colors"
+          aria-label="Close info window"
+        >
+          <X className="h-4 w-4" />
+        </button>
+      </div>
+      
+      <div className="mb-3 space-y-2 text-sm">
+        <div className="flex items-start gap-2">
+          <MapPin className="mt-0.5 h-3 w-3 flex-shrink-0 text-[#096F72]/70" />
+          <span className="text-[#096F72]">{office.address}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Phone className="h-3 w-3 text-[#096F72]/70" />
+          <a href={`tel:${office.phone}`} className="text-[#096F72] hover:text-[#064D50] transition-colors">
+            {office.phone}
+          </a>
+        </div>
+        <div className="flex items-center gap-2">
+          <Mail className="h-3 w-3 text-[#096F72]/70" />
+          <a href={`mailto:${office.email}`} className="text-[#096F72] hover:text-[#064D50] transition-colors">
+            {office.email}
+          </a>
+        </div>
+      </div>
+      
+      <p className="mb-3 text-xs text-[#096F72]/70 leading-relaxed">
+        {office.description}
+      </p>
+
+      <div className="mb-3">
+        <p className="text-xs font-semibold text-[#064D50] mb-2">Trade Specialties:</p>
+        <div className="flex flex-wrap gap-1.5">
+          {office.tradeSpecialties.map((specialty, idx) => (
+            <span 
+              key={idx} 
+              className="rounded-full bg-[#00CCAA]/10 px-2.5 py-1 text-xs text-[#064D50] font-medium"
+            >
+              {specialty}
+            </span>
+          ))}
+        </div>
+      </div>
+      
+      <a
+        href={`https://www.google.com/maps/dir//${office.position.lat},${office.position.lng}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-[#096F72] hover:text-[#064D50] transition-colors group"
+      >
+        Get Directions 
+        <ExternalLink className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+      </a>
+    </div>
+  </InfoWindow>
+));
+
+OfficeInfoWindow.displayName = 'OfficeInfoWindow';
+
+// Memoized Office Card component
+const OfficeCard = memo(({ 
+  office, 
+  onSelect, 
+  map 
+}: { 
+  office: OfficeLocation; 
+  onSelect: (office: OfficeLocation) => void;
+  map: google.maps.Map | null;
+}) => {
+  const handleClick = useCallback(() => {
+    onSelect(office);
+    if (map) {
+      map.panTo(office.position);
+      map.setZoom(10);
+    }
+  }, [office, onSelect, map]);
+
+  return (
+    <div
+      className="group cursor-pointer rounded-lg border border-[#096F72]/10 bg-white p-4 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg hover:-translate-y-0.5"
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && handleClick()}
+    >
+      <div className="flex items-start justify-between">
+        <div>
+          <h3 className="font-semibold text-[#064D50] group-hover:text-[#096F72] transition-colors">
+            {office.name}
+          </h3>
+          <p className="text-xs text-[#096F72]/70">{office.region} | {office.country}</p>
+        </div>
+        <MapPin className="h-4 w-4 text-[#096F72]" />
+      </div>
+      <p className="mt-2 text-sm text-[#096F72]/70 line-clamp-1">{office.address}</p>
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        {office.tradeSpecialties.slice(0, 2).map((specialty, idx) => (
+          <span key={idx} className="rounded-full bg-[#096F72]/5 px-2.5 py-0.5 text-xs text-[#096F72]/70">
+            {specialty}
+          </span>
+        ))}
+        {office.tradeSpecialties.length > 2 && (
+          <span className="rounded-full bg-[#096F72]/5 px-2.5 py-0.5 text-xs text-[#096F72]/70">
+            +{office.tradeSpecialties.length - 2}
+          </span>
+        )}
+      </div>
+      <div className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#096F72] opacity-0 group-hover:opacity-100 transition-all duration-300">
+        View on Map 
+        <ChevronDown className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+      </div>
+    </div>
+  );
+});
+
+OfficeCard.displayName = 'OfficeCard';
+
 export default function NetworkPage() {
   const [selectedOffice, setSelectedOffice] = useState<OfficeLocation | null>(null);
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [hoveredOffice, setHoveredOffice] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   // Load Google Maps
   const { isLoaded, loadError } = useLoadScript({
@@ -107,8 +285,8 @@ export default function NetworkPage() {
     libraries: ["places"],
   });
 
-  // Office locations data - Updated for GCC, Europe, Asia, UAE, Egypt, India, Pakistan
-  const officeLocations: OfficeLocation[] = [
+  // Office locations data
+  const officeLocations: OfficeLocation[] = useMemo(() => [
     {
       id: 1,
       name: "GCC Regional Headquarters",
@@ -253,47 +431,65 @@ export default function NetworkPage() {
       description: "Regional headquarters for Southeast Asian operations and trade.",
       tradeSpecialties: ["Regional Distribution", "Logistics Hub", "International Trade"],
     },
-  ];
+  ], []);
 
   // Filter offices based on selected region
-  const filteredOffices = activeFilter === "all" 
-    ? officeLocations 
-    : officeLocations.filter(office => office.region === activeFilter);
+  const filteredOffices = useMemo(() => 
+    activeFilter === "all" 
+      ? officeLocations 
+      : officeLocations.filter(office => office.region === activeFilter),
+    [activeFilter, officeLocations]
+  );
 
   // Get unique regions for filter buttons
-  const regions = ["all", ...new Set(officeLocations.map(office => office.region))];
+  const regions = useMemo(() => 
+    ["all", ...new Set(officeLocations.map(office => office.region))],
+    [officeLocations]
+  );
 
   // Fit bounds to show all markers
   const fitBounds = useCallback(() => {
-    if (map && filteredOffices.length > 0) {
+    if (map && filteredOffices.length > 0 && isMapLoaded) {
       const bounds = new google.maps.LatLngBounds();
       filteredOffices.forEach((office) => {
         bounds.extend(office.position);
       });
       map.fitBounds(bounds);
     }
-  }, [map, filteredOffices]);
+  }, [map, filteredOffices, isMapLoaded]);
 
   // Fit bounds when map loads or filter changes
   useEffect(() => {
     if (map && isLoaded) {
-      fitBounds();
+      const timer = setTimeout(() => {
+        fitBounds();
+      }, 300);
+      return () => clearTimeout(timer);
     }
   }, [map, isLoaded, fitBounds, activeFilter]);
 
   // Handle map load
   const onMapLoad = useCallback((map: google.maps.Map) => {
     setMap(map);
+    setIsMapLoaded(true);
   }, []);
 
-  // Custom marker icon
-  const createCustomMarker = (isHovered: boolean) => ({
-    url: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 35' fill='none'%3E%3Cpath d='M12 0C5.373 0 0 5.373 0 12c0 6.627 12 23 12 23s12-16.373 12-23c0-6.627-5.373-12-12-12z' fill='${isHovered ? '%2310b2b5' : '%2300CCAA'}' stroke='white' stroke-width='2'/%3E%3Ccircle cx='12' cy='12' r='4' fill='white'/%3E%3C/svg%3E`,
-    scaledSize: new google.maps.Size(30, 40),
-    origin: new google.maps.Point(0, 0),
-    anchor: new google.maps.Point(15, 40),
-  });
+  // Handle office selection
+  const handleOfficeSelect = useCallback((office: OfficeLocation) => {
+    setSelectedOffice(office);
+  }, []);
 
+  // Handle info window close
+  const handleInfoClose = useCallback(() => {
+    setSelectedOffice(null);
+  }, []);
+
+  // Handle marker hover
+  const handleMarkerHover = useCallback((id: number | null) => {
+    setHoveredOffice(id);
+  }, []);
+
+  // Loading and error states
   if (loadError) {
     return (
       <>
@@ -301,8 +497,8 @@ export default function NetworkPage() {
         <div className="min-h-screen bg-white">
           <div className="flex h-[600px] items-center justify-center">
             <div className="text-center">
-              <div className="text-red-500 text-xl mb-4">Error loading maps</div>
-              <p className="text-gray-600">Please check your API key and try again.</p>
+              <div className="text-red-500 text-xl mb-4 font-semibold">Error loading maps</div>
+              <p className="text-[#096F72]/70">Please check your API key and try again.</p>
             </div>
           </div>
         </div>
@@ -319,7 +515,7 @@ export default function NetworkPage() {
           <div className="flex h-[600px] items-center justify-center">
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#00CCAA] mx-auto mb-4"></div>
-              <p className="text-gray-600">Loading map...</p>
+              <p className="text-[#096F72]/70">Loading map...</p>
             </div>
           </div>
         </div>
@@ -333,7 +529,7 @@ export default function NetworkPage() {
       <Navbar />
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative h-[400px] overflow-hidden bg-gradient-to-r from-[#10b2b5] to-[#08244A]">
+        <section className="relative h-[400px] overflow-hidden bg-[#064D50]">
           <div className="absolute inset-0 bg-black/20" />
           <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-center px-6">
             <div className="animate-fadeIn">
@@ -344,7 +540,7 @@ export default function NetworkPage() {
               <h1 className="mt-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
                 Connecting Global<br />Trade Markets
               </h1>
-              <p className="mt-4 max-w-2xl text-lg text-white/90">
+              <p className="mt-4 max-w-2xl text-lg text-white/90 leading-relaxed">
                 Strategically positioned across GCC, Europe, and Asia to facilitate seamless international trade
               </p>
             </div>
@@ -354,10 +550,10 @@ export default function NetworkPage() {
         {/* Content Section */}
         <section className="mx-auto max-w-7xl px-6 py-12">
           <div className="mb-8">
-            <h2 className="mb-4 text-3xl font-bold text-[#00CCAA]">
+            <h2 className="mb-4 text-3xl font-bold text-[#064D50]">
               Our Global Trade Network
             </h2>
-            <p className="text-base leading-relaxed text-gray-600 max-w-4xl">
+            <p className="text-base leading-relaxed text-[#096F72]/70 max-w-4xl">
               REDA Chemicals operates a comprehensive global trade network spanning across GCC countries, 
               Europe, and Asia. With strategic offices in UAE, Saudi Arabia, Kuwait, Qatar, Egypt, India, 
               Pakistan, Singapore, and France, we facilitate international chemical trade and distribution 
@@ -366,42 +562,39 @@ export default function NetworkPage() {
           </div>
 
           {/* Stats */}
-          <div className="mb-12 grid grid-cols-2 gap-6 md:grid-cols-4">
-            <div className="rounded-xl bg-gradient-to-br from-[#00CCAA]/10 to-transparent p-6 text-center transition-all duration-300 hover:scale-105">
-              <Globe2 className="h-8 w-8 mx-auto mb-3 text-[#00CCAA]" />
-              <div className="text-3xl font-bold text-[#00CCAA]">12+</div>
-              <div className="text-sm text-gray-600 mt-2">Global Offices</div>
-            </div>
-            <div className="rounded-xl bg-gradient-to-br from-[#10b2b5]/10 to-transparent p-6 text-center transition-all duration-300 hover:scale-105">
-              <Ship className="h-8 w-8 mx-auto mb-3 text-[#10b2b5]" />
-              <div className="text-3xl font-bold text-[#10b2b5]">500+</div>
-              <div className="text-sm text-gray-600 mt-2">Trade Routes</div>
-            </div>
-            <div className="rounded-xl bg-gradient-to-br from-[#00CCAA]/10 to-transparent p-6 text-center transition-all duration-300 hover:scale-105">
-              <Building2 className="h-8 w-8 mx-auto mb-3 text-[#00CCAA]" />
-              <div className="text-3xl font-bold text-[#00CCAA]">25+</div>
-              <div className="text-sm text-gray-600 mt-2">Warehouses</div>
-            </div>
-            <div className="rounded-xl bg-gradient-to-br from-[#10b2b5]/10 to-transparent p-6 text-center transition-all duration-300 hover:scale-105">
-              <Truck className="h-8 w-8 mx-auto mb-3 text-[#10b2b5]" />
-              <div className="text-3xl font-bold text-[#10b2b5]">50+</div>
-              <div className="text-sm text-gray-600 mt-2">Countries Served</div>
-            </div>
+          <div className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {[
+              { icon: Globe2, label: "Global Offices", value: "12+" },
+              { icon: Ship, label: "Trade Routes", value: "500+" },
+              { icon: Building2, label: "Warehouses", value: "25+" },
+              { icon: Truck, label: "Countries Served", value: "50+" },
+            ].map((stat, index) => (
+              <div 
+                key={index}
+                className="rounded-xl bg-[#096F72]/5 p-6 text-center transition-all duration-300 hover:scale-105 hover:shadow-md"
+              >
+                <stat.icon className="h-8 w-8 mx-auto mb-3 text-[#064D50]" />
+                <div className="text-3xl font-bold text-[#064D50]">{stat.value}</div>
+                <div className="text-sm text-[#096F72]/70 mt-2">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Interactive Map Section */}
-        <section className="w-full bg-gray-50 py-12">
+        <section className="w-full bg-[#096F72]/5 py-12">
           <div className="mx-auto max-w-7xl px-6">
-            <h2 className="mb-4 text-2xl font-bold text-gray-800">
-              Interactive Global Trade Map
-            </h2>
-            <p className="mb-6 text-gray-600">
-              Explore our strategic office locations across key global trade hubs
-            </p>
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-[#064D50]">
+                Interactive Global Trade Map
+              </h2>
+              <p className="mt-1 text-[#096F72]/70">
+                Explore our strategic office locations across key global trade hubs
+              </p>
+            </div>
 
             {/* Filter Buttons */}
-            <div className="mb-6 flex flex-wrap gap-3">
+            <div className="mb-6 flex flex-wrap gap-2">
               {regions.map((region) => (
                 <button
                   key={region}
@@ -409,8 +602,9 @@ export default function NetworkPage() {
                   className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                     activeFilter === region
                       ? "bg-[#00CCAA] text-white shadow-lg"
-                      : "bg-white text-gray-600 hover:bg-[#00CCAA]/10 hover:text-[#00CCAA]"
+                      : "bg-white text-[#096F72]/70 hover:bg-[#00CCAA]/10 hover:text-[#064D50]"
                   }`}
+                  aria-pressed={activeFilter === region}
                 >
                   {region === "all" ? "All Locations" : region}
                 </button>
@@ -429,239 +623,116 @@ export default function NetworkPage() {
               >
                 {/* Office Markers */}
                 {filteredOffices.map((office) => (
-                  <Marker
+                  <OfficeMarker
                     key={office.id}
-                    position={office.position}
-                    onClick={() => setSelectedOffice(office)}
-                    onMouseOver={() => setHoveredOffice(office.id)}
-                    onMouseOut={() => setHoveredOffice(null)}
-                    icon={createCustomMarker(hoveredOffice === office.id)}
-                    animation={hoveredOffice === office.id ? google.maps.Animation.BOUNCE : undefined}
+                    office={office}
+                    isHovered={hoveredOffice === office.id}
+                    onSelect={handleOfficeSelect}
+                    onHover={handleMarkerHover}
                   />
                 ))}
 
-                {/* Add radius circles for major trade hubs */}
-                <Circle
-                  center={{ lat: 25.276987, lng: 55.296249 }}
-                  radius={800000}
-                  options={{
-                    fillColor: "#00CCAA",
-                    fillOpacity: 0.1,
-                    strokeColor: "#00CCAA",
-                    strokeOpacity: 0.3,
-                    strokeWeight: 1,
-                  }}
-                />
-                <Circle
-                  center={{ lat: 19.07609, lng: 72.877426 }}
-                  radius={600000}
-                  options={{
-                    fillColor: "#10b2b5",
-                    fillOpacity: 0.1,
-                    strokeColor: "#10b2b5",
-                    strokeOpacity: 0.3,
-                    strokeWeight: 1,
-                  }}
-                />
-                <Circle
-                  center={{ lat: 48.856614, lng: 2.352222 }}
-                  radius={500000}
-                  options={{
-                    fillColor: "#00CCAA",
-                    fillOpacity: 0.1,
-                    strokeColor: "#00CCAA",
-                    strokeOpacity: 0.3,
-                    strokeWeight: 1,
-                  }}
-                />
+                {/* Trade Hub Radius Circles */}
+                {[
+                  { center: { lat: 25.276987, lng: 55.296249 }, radius: 800000 },
+                  { center: { lat: 19.07609, lng: 72.877426 }, radius: 600000 },
+                  { center: { lat: 48.856614, lng: 2.352222 }, radius: 500000 },
+                ].map((circle, index) => (
+                  <Circle
+                    key={index}
+                    center={circle.center}
+                    radius={circle.radius}
+                    options={{
+                      fillColor: "#00CCAA",
+                      fillOpacity: 0.08,
+                      strokeColor: "#00CCAA",
+                      strokeOpacity: 0.2,
+                      strokeWeight: 1,
+                    }}
+                  />
+                ))}
 
                 {/* Info Window for selected office */}
                 {selectedOffice && (
-                  <InfoWindow
-                    position={selectedOffice.position}
-                    onCloseClick={() => setSelectedOffice(null)}
-                    options={{
-                      pixelOffset: new google.maps.Size(0, -40),
-                    }}
-                  >
-                    <div className="max-w-sm p-3">
-                      <div className="mb-3 flex items-start justify-between">
-                        <div>
-                          <h3 className="text-lg font-bold text-[#00CCAA]">
-                            {selectedOffice.name}
-                          </h3>
-                          <p className="text-xs text-gray-500">{selectedOffice.region} | {selectedOffice.country}</p>
-                        </div>
-                        <button
-                          onClick={() => setSelectedOffice(null)}
-                          className="text-gray-400 hover:text-gray-600"
-                        >
-                          <X className="h-4 w-4" />
-                        </button>
-                      </div>
-                      
-                      <div className="mb-3 space-y-2 text-sm">
-                        <div className="flex items-start gap-2">
-                          <MapPin className="mt-0.5 h-3 w-3 flex-shrink-0 text-gray-400" />
-                          <span className="text-gray-700">{selectedOffice.address}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Phone className="h-3 w-3 text-gray-400" />
-                          <a href={`tel:${selectedOffice.phone}`} className="text-blue-600 hover:underline">
-                            {selectedOffice.phone}
-                          </a>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Mail className="h-3 w-3 text-gray-400" />
-                          <a href={`mailto:${selectedOffice.email}`} className="text-blue-600 hover:underline">
-                            {selectedOffice.email}
-                          </a>
-                        </div>
-                      </div>
-                      
-                      <p className="mb-3 text-xs text-gray-600">
-                        {selectedOffice.description}
-                      </p>
-
-                      <div className="mb-3">
-                        <p className="text-xs font-semibold text-gray-700 mb-2">Trade Specialties:</p>
-                        <div className="flex flex-wrap gap-1">
-                          {selectedOffice.tradeSpecialties.map((specialty, idx) => (
-                            <span key={idx} className="rounded-full bg-[#00CCAA]/10 px-2 py-1 text-xs text-[#00CCAA]">
-                              {specialty}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <a
-                        href={`https://www.google.com/maps/dir//${selectedOffice.position.lat},${selectedOffice.position.lng}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-medium text-[#00CCAA] hover:underline"
-                      >
-                        Get Directions →
-                      </a>
-                    </div>
-                  </InfoWindow>
+                  <OfficeInfoWindow
+                    office={selectedOffice}
+                    onClose={handleInfoClose}
+                  />
                 )}
               </GoogleMap>
             </div>
 
-            {/* Office List Sidebar */}
+            {/* Office List Grid */}
             <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {filteredOffices.map((office) => (
-                <div
+                <OfficeCard
                   key={office.id}
-                  className="group cursor-pointer rounded-lg border border-gray-200 bg-white p-4 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg"
-                  onClick={() => {
-                    setSelectedOffice(office);
-                    if (map) {
-                      map.panTo(office.position);
-                      map.setZoom(10);
-                    }
-                  }}
-                >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-semibold text-gray-800 group-hover:text-[#00CCAA]">
-                        {office.name}
-                      </h3>
-                      <p className="text-xs text-gray-500">{office.region} | {office.country}</p>
-                    </div>
-                    <MapPin className="h-4 w-4 text-[#00CCAA]" />
-                  </div>
-                  <p className="mt-2 text-sm text-gray-600">{office.address}</p>
-                  <div className="mt-2 flex flex-wrap gap-1">
-                    {office.tradeSpecialties.slice(0, 2).map((specialty, idx) => (
-                      <span key={idx} className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600">
-                        {specialty}
-                      </span>
-                    ))}
-                    {office.tradeSpecialties.length > 2 && (
-                      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600">
-                        +{office.tradeSpecialties.length - 2}
-                      </span>
-                    )}
-                  </div>
-                  <button className="mt-3 text-xs font-medium text-[#00CCAA] opacity-0 transition-all duration-300 group-hover:opacity-100">
-                    View on Map →
-                  </button>
-                </div>
+                  office={office}
+                  onSelect={handleOfficeSelect}
+                  map={map}
+                />
               ))}
             </div>
+
+            {/* No results message */}
+            {filteredOffices.length === 0 && (
+              <div className="mt-8 text-center py-12">
+                <p className="text-[#096F72]/70">No offices found in this region.</p>
+              </div>
+            )}
           </div>
         </section>
 
         {/* Trade Regions Section */}
         <section className="mx-auto max-w-7xl px-6 py-12">
-          <h2 className="mb-6 text-2xl font-bold text-gray-800">Our Key Trade Regions</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg">
-              <div className="mb-3 flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-[#00CCAA]" />
-                <h3 className="font-semibold text-gray-800">GCC Countries</h3>
-              </div>
-              <p className="text-sm text-gray-600">UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, Oman</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg">
-              <div className="mb-3 flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-[#00CCAA]" />
-                <h3 className="font-semibold text-gray-800">Europe</h3>
-              </div>
-              <p className="text-sm text-gray-600">France and strategic European partnerships</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg">
-              <div className="mb-3 flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-[#00CCAA]" />
-                <h3 className="font-semibold text-gray-800">Asia</h3>
-              </div>
-              <p className="text-sm text-gray-600">India, Pakistan, Singapore, and Southeast Asia</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg">
-              <div className="mb-3 flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-[#00CCAA]" />
-                <h3 className="font-semibold text-gray-800">North Africa</h3>
-              </div>
-              <p className="text-sm text-gray-600">Egypt and North African markets</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg">
-              <div className="mb-3 flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-[#00CCAA]" />
-                <h3 className="font-semibold text-gray-800">UAE Trade Hub</h3>
-              </div>
-              <p className="text-sm text-gray-600">Dubai & Abu Dhabi - Major trading gateway</p>
-            </div>
-            <div className="rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg">
-              <div className="mb-3 flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-[#00CCAA]" />
-                <h3 className="font-semibold text-gray-800">Indian Subcontinent</h3>
-              </div>
-              <p className="text-sm text-gray-600">India & Pakistan - Rapidly growing markets</p>
-            </div>
+          <h2 className="mb-6 text-2xl font-bold text-[#064D50]">Our Key Trade Regions</h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              "GCC Countries: UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, Oman",
+              "Europe: France and strategic European partnerships",
+              "Asia: India, Pakistan, Singapore, and Southeast Asia",
+              "North Africa: Egypt and North African markets",
+              "UAE Trade Hub: Dubai & Abu Dhabi - Major trading gateway",
+              "Indian Subcontinent: India & Pakistan - Rapidly growing markets",
+            ].map((region, index) => {
+              const [title, ...descriptionParts] = region.split(": ");
+              const description = descriptionParts.join(": ");
+              return (
+                <div 
+                  key={index}
+                  className="rounded-xl border border-[#096F72]/10 p-5 transition-all duration-300 hover:border-[#00CCAA] hover:shadow-lg hover:-translate-y-0.5"
+                >
+                  <div className="mb-2 flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-[#00CCAA]" />
+                    <h3 className="font-semibold text-[#064D50]">{title}</h3>
+                  </div>
+                  <p className="text-sm text-[#096F72]/70 leading-relaxed">{description}</p>
+                </div>
+              );
+            })}
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="bg-gradient-to-r from-[#10b2b5] to-[#0c8e91] py-12">
+        <section className="bg-[#064D50] py-12">
           <div className="mx-auto max-w-7xl px-6 text-center">
             <h2 className="mb-4 text-2xl font-bold text-white">
               Ready to Expand Your Global Trade?
             </h2>
-            <p className="mb-6 text-white/90">
+            <p className="mb-6 text-white/90 max-w-2xl mx-auto">
               Partner with us to access international markets and streamline your chemical supply chain
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
                 href="/inquiries"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-bold uppercase text-[#10b2b5] transition-all duration-300 hover:bg-[#00CCAA] hover:text-white hover:shadow-lg"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-bold uppercase text-[#064D50] transition-all duration-300 hover:bg-[#00CCAA] hover:text-white hover:shadow-lg hover:-translate-y-0.5"
               >
                 <Info className="h-4 w-4" />
                 Contact Trade Team
               </a>
               <a
                 href="/services"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-3 text-sm font-bold uppercase text-white transition-all duration-300 hover:bg-white hover:text-[#10b2b5]"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-3 text-sm font-bold uppercase text-white transition-all duration-300 hover:bg-white hover:text-[#064D50] hover:-translate-y-0.5"
               >
                 <TrendingUp className="h-4 w-4" />
                 Explore Services
@@ -673,7 +744,7 @@ export default function NetworkPage() {
         <Footer />
       </div>
 
-      {/* Add custom styles for animations */}
+      {/* Custom animations */}
       <style jsx global>{`
         @keyframes fadeIn {
           from {
@@ -688,6 +759,15 @@ export default function NetworkPage() {
         
         .animate-fadeIn {
           animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
         }
       `}</style>
     </>

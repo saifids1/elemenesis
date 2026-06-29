@@ -3,44 +3,90 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Handshake , BriefcaseBusiness } from "lucide-react";
+import { Handshake, BriefcaseBusiness } from "lucide-react";
 
 import Footer from "../../layouts/footer";
 import Navbar from "../../layouts/navbar";
-
+import { motion } from "framer-motion";
 const CarrerForm = () => {
+    const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+  // Animation Variants
+  const cubicBezierEase = [0.16, 1, 0.3, 1] as any;
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: cubicBezierEase },
+    },
+  };
   return (
     <>
       <Navbar />
       <main className="bg-white overflow-x-hidden">
         {/* Section 1: Hero - Gradient */}
-        <section className="relative min-h-[500px] overflow-hidden bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF]">
-          {/* Background / Overlay should stay behind */}
-          <div className="absolute inset-0 bg-black/30 z-0" />
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-6 py-24 text-[#ECE9E2]">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#096F72] to-[#096F72]">
+            {/* <img
+              src="/Images/about_us/about01.png"
+              alt="About Us"
+              className="w-full h-full object-cover object-center"
+            /> */}
+          </div>
+
+          {/* Dark Green Gradient Overlay */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0D231D]/70 via-[#0D231D]/55 to-[#0D231D]/65" />
+
+          {/* Additional Dark Layer */}
+          <div className="absolute inset-0 z-10 bg-black/30" />
 
           {/* Content */}
-          <div className="relative z-10 container mx-auto max-w-7xl px-4 top-16">
-            <div className="max-w-4xl mx-auto pt-30 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 transition-all duration-700">
-                <Handshake  className="w-4 h-4 text-white" />
-                <span className="text-white font-semibold tracking-wide">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="relative z-20 mx-auto max-w-5xl text-center"
+          >
+            {/* Breadcrumb */}
+            <motion.nav
+              variants={fadeIn}
+              className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md text-sm uppercase tracking-[3px] text-[#D4AF37]"
+            >
+              <Handshake className="w-4 h-4 text-white" />
+              <span className="text-white font-semibold tracking-wide">
                   Join Our Team
-                </span>
-              </div>
+              </span>
+            </motion.nav>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all delay-200 duration-700">
-                Career
-              </h1>
+            {/* Heading */}
+            <motion.h1
+              variants={fadeIn}
+              className="mt-8 text-5xl font-light leading-tight tracking-tight md:text-7xl"
+            >
+              <span className=" text-white">Career</span>
+            </motion.h1>
 
-              <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed transition-all delay-300 duration-700">
-                Accelerate your professional journey where compliance meets
-                global impact. Discover opportunities to manage complex supply
-                chains, innovate with transparent trade technologies, and work
-                in an environment that rewards accountability and teamwork.
-              </p>
-            </div>
-          </div>
+            {/* Description */}
+            <motion.p
+              variants={fadeIn}
+              className="mx-auto mt-8 max-w-4xl text-base leading-[2] text-gray-200 md:text-lg"
+            >
+              Accelerate your professional journey where compliance meets global
+              impact. Discover opportunities to manage complex supply chains,
+              innovate with transparent trade technologies, and work in an
+              environment that rewards accountability and teamwork.
+            </motion.p>
+          </motion.div>
         </section>
+
         <section className="max-w-7xl mx-auto px-6 py-0 md:py-7">
           <div className="overflow-hidden ">
             <div className="grid md:grid-cols-2 items-center gap-10 p-8 md:p-14">
@@ -52,21 +98,20 @@ const CarrerForm = () => {
                   className="rounded-2xl  h-[520px] w-full object-cover"
                 />
 
-                <div className="absolute inset-0 rounded-2xl bg-linear-to-tr from-[#00CCAA]/20 via-transparent to-[#0099FF]/20"></div>
+                <div className="absolute inset-0 rounded-2xl bg-linear-to-tr from-[#096F72]/20 via-transparent to-[#064D50]/20"></div>
               </div>
 
               {/* Content */}
               <div>
-                <span className="inline-flex items-center rounded-full bg-[#00B9CC]/10 px-4 py-2 text-sm font-semibold text-[#00B9CC]">
+              <span className="inline-flex items-center rounded-full bg-[#096F72]/10 px-4 py-2 text-sm font-semibold text-[#064D50]">
                   Why Join Us
                 </span>
 
-                <h2 className="mt-5 text-4xl font-bold text-slate-900 leading-tight">
-                  Grow Your Future
-                  <span className="block text-[#00B9CC]">With Elemensis</span>
-                </h2>
-
-                <p className="mt-6 text-lg leading-8 text-slate-600">
+               <h2 className="mt-5 text-4xl font-bold text-[#064D50] leading-tight">
+  Grow Your Future
+  <span className="block text-[#096F72]">With Elemensis</span>
+</h2>
+<p className="mt-6 text-lg leading-8 text-[#096F72]/70">
                   Elemensis’ success is driven by passionate people who are
                   committed to excellence, innovation, and customer
                   satisfaction. Join a team where your ideas are valued, your
@@ -75,20 +120,20 @@ const CarrerForm = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <div className="rounded-xl bg-slate-50 px-5 py-4 border border-slate-100">
-                    <h4 className="font-semibold text-slate-900">
+                  <div className="rounded-xl bg-[#096F72]/5 px-5 py-4 border border-[#096F72]/10">
+                <h4 className="font-semibold text-[#064D50]">
                       Career Growth
                     </h4>
-                    <p className="text-sm text-slate-600 mt-1">
+                    <p className="text-sm text-[#096F72]/70 mt-1">
                       Learn, develop, and advance professionally.
                     </p>
                   </div>
 
-                  <div className="rounded-xl bg-slate-50 px-5 py-4 border border-slate-100">
-                    <h4 className="font-semibold text-slate-900">
+                  <div className="rounded-xl bg-[#096F72]/5 px-5 py-4 border border-[#096F72]/10">
+                <h4 className="font-semibold text-[#064D50]">
                       Global Exposure
                     </h4>
-                    <p className="text-sm text-slate-600 mt-1">
+                    <p className="text-sm text-[#096F72]/70 mt-1">
                       Work with international markets and industries.
                     </p>
                   </div>
@@ -103,55 +148,55 @@ const CarrerForm = () => {
             {/* Form Box */}
             <div className="rounded-2xl bg-white p-7 shadow-lg md:p-8 lg:p-10">
               <div className="mb-6 flex items-center gap-2">
-                <BriefcaseBusiness className="h-5 w-5 text-[#00CCAA]" />
-                <h5 className="text-sm font-semibold uppercase tracking-wide text-[#00CCAA]">
+                <BriefcaseBusiness className="h-5 w-5 text-[#096F72]" />
+                <h5 className="text-sm font-semibold uppercase tracking-wide text-[#096F72]">
                   Career Application
                 </h5>
               </div>
 
-              <h2 className="mb-4 text-3xl font-bold leading-tight text-[#00CCAA]/70 md:text-4xl lg:text-5xl">
-                Apply For A <span className="text-[#10b2b5]">Position</span>
-              </h2>
+             <h2 className="mb-4 text-3xl font-bold leading-tight text-[#096F72] md:text-4xl lg:text-5xl">
+  Apply For A <span className="text-[#064D50]">Position</span>
+</h2>
 
-              <p className="mb-8 text-base leading-relaxed text-gray-600">
+           <p className="mb-8 text-base leading-relaxed text-[#096F72]/70">
                 Take the next step in your career and join our mission to build
                 a smarter, cleaner energy future.
               </p>
 
               <form className="space-y-6">
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-[#00CCAA]">
+                  <label className="mb-2 block text-sm font-semibold text-[#096F72]">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="John Doe"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all duration-200"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 placeholder:text-gray-400 focus:border-[#096F72] focus:outline-none focus:ring-2 focus:ring-[#096F72]/20 transition-all duration-200"
                     required
                   />
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-[#00CCAA]">
+                    <label className="mb-2 block text-sm font-semibold text-[#096F72]">
                       Email Address <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
                       placeholder="john@example.com"
-                      className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all duration-200"
+                      className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 placeholder:text-gray-400 focus:border-[#096F72] focus:outline-none focus:ring-2 focus:ring-[#096F72]/20 transition-all duration-200"
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-[#00CCAA]">
+                    <label className="mb-2 block text-sm font-semibold text-[#096F72]">
                       Phone Number <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
                       placeholder="+1 (555) 000-0000"
-                      className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all duration-200"
+                      className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 placeholder:text-gray-400 focus:border-[#096F72] focus:outline-none focus:ring-2 focus:ring-[#096F72]/20 transition-all duration-200"
                       required
                     />
                   </div>
@@ -159,22 +204,22 @@ const CarrerForm = () => {
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-[#00CCAA]">
+                    <label className="mb-2 block text-sm font-semibold text-[#096F72]">
                       Current Location
                     </label>
                     <input
                       type="text"
                       placeholder="City, State/Province"
-                      className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all duration-200"
+                      className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 placeholder:text-gray-400 focus:border-[#096F72] focus:outline-none focus:ring-2 focus:ring-[#096F72]/20 transition-all duration-200"
                     />
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-[#00CCAA]">
+                    <label className="mb-2 block text-sm font-semibold text-[#096F72]">
                       Position Applied For{" "}
                       <span className="text-red-500">*</span>
                     </label>
-                    <select className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all duration-200">
+                    <select className="w-full rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 focus:border-[#096F72] focus:outline-none focus:ring-2 focus:ring-[#096F72]/20 transition-all duration-200">
                       <option value="">Select a position</option>
                       <option value="software-engineer">
                         Software Engineer
@@ -187,7 +232,7 @@ const CarrerForm = () => {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-[#00CCAA]">
+                  <label className="mb-2 block text-sm font-semibold text-[#096F72]">
                     Upload Resume <span className="text-red-500">*</span>
                   </label>
                   <div className="flex items-center justify-center w-full">
@@ -227,26 +272,26 @@ const CarrerForm = () => {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-[#00CCAA]">
+                  <label className="mb-2 block text-sm font-semibold text-[#096F72]">
                     Cover Letter
                   </label>
                   <textarea
                     rows={4}
                     placeholder="Tell us why you're interested in this position and what makes you a great fit..."
-                    className="w-full resize-y rounded-lg border border-gray-300 bg-white px-5 py-4 text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all duration-200"
+                    className="w-full resize-y rounded-lg border border-gray-300 bg-white px-5 py-4 text-gray-900 placeholder:text-gray-400 focus:border-[#096F72] focus:outline-none focus:ring-2 focus:ring-[#096F72]/20 transition-all duration-200"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-[#10b2b5] px-8 py-3.5 font-semibold text-white shadow-md transition-all duration-300 hover:from-teal-700 hover:to-teal-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+                 className="w-full rounded-lg bg-[#064D50] px-8 py-3.5 font-semibold text-white shadow-md transition-all duration-300 hover:bg-[#096F72] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#096F72] focus:ring-offset-2"
                 >
                   Submit Application
                 </button>
 
                 <p className="text-center text-xs text-gray-500">
                   By submitting this application, you agree to our{" "}
-                  <a href="#" className="text-teal-600 hover:underline">
+              <a href="#" className="text-[#096F72] hover:text-[#064D50] hover:underline">
                     Privacy Policy
                   </a>
                   .
@@ -255,14 +300,12 @@ const CarrerForm = () => {
             </div>
 
             {/* Image + Contact Info */}
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-700 to-teal-900 shadow-xl">
+            <div className="relative overflow-hidden rounded-2xl bg-[#064D50] shadow-xl">
               <img
                 src="/Images/career/career02.png"
                 alt="Join our team - Career opportunities"
                 className="absolute inset-0 h-full w-full object-cover "
               />
-
-          
             </div>
           </div>
         </section>

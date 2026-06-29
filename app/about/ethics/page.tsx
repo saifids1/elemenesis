@@ -113,36 +113,76 @@ const EthicalBusinessPractices = () => {
       transition: { staggerChildren: 0.15 },
     },
   };
+  // Animation Variants
+  const cubicBezierEase = [0.16, 1, 0.3, 1] as any;
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: cubicBezierEase },
+    },
+  };
+
   return (
     <>
       <Navbar />
       <main ref={sectionRef} className="bg-white overflow-x-hidden">
         {/* Hero Section with Decorative Elements */}
-        <section className="relative min-h-[500px] overflow-hidden bg-gradient-to-br from-[#00CCAA] via-[#00B9CC] to-[#0099FF]">
-          {/* Background / Overlay should stay behind */}
-          <div className="absolute inset-0 bg-black/30 z-0" />
+     
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-6 py-24 text-[#ECE9E2]">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#096F72] to-[#096F72]">
+            {/* <img
+                      src="/Images/about_us/about01.png"
+                      alt="About Us"
+                      className="w-full h-full object-cover object-center"
+                    /> */}
+          </div>
+
+          {/* Dark Green Gradient Overlay */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0D231D]/70 via-[#0D231D]/55 to-[#0D231D]/65" />
+
+          {/* Additional Dark Layer */}
+          <div className="absolute inset-0 z-10 bg-black/30" />
 
           {/* Content */}
-          <div className="relative z-10 container mx-auto max-w-7xl px-4 top-16">
-            <div className="max-w-4xl mx-auto pt-30 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 transition-all duration-700">
-             <Scale  className="w-4 h-4 text-white" />
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="relative z-20 mx-auto max-w-5xl text-center"
+          >
+            {/* Breadcrumb */}
+            <motion.nav
+              variants={fadeIn}
+              className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md text-sm uppercase tracking-[3px] text-[#D4AF37]"
+            >
+              <Scale className="w-4 h-4 text-white" />
               <span className="text-white font-semibold tracking-wide">
                 Sourcing
               </span>
-            </div>
+            </motion.nav>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all delay-200 duration-700">
-                Ethics{" "}
-              </h1>
+            {/* Heading */}
+            <motion.h1
+              variants={fadeIn}
+              className="mt-8 text-5xl font-light leading-tight tracking-tight md:text-7xl"
+            >
+              <span className=" text-white"> Ethics</span>
+            </motion.h1>
 
-              <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed transition-all delay-300 duration-700">
-                Where transparent practices meet exceptional results. We guide
-                every commercial decision with a steadfast commitment to
-                honesty, accountability, and the people we serve.
-              </p>
-            </div>
-          </div>
+            {/* Description */}
+            <motion.p
+              variants={fadeIn}
+              className="mx-auto mt-8 max-w-4xl text-base leading-[2] text-gray-200 md:text-lg"
+            >
+              Where transparent practices meet exceptional results. We guide
+              every commercial decision with a steadfast commitment to honesty,
+              accountability, and the people we serve.
+            </motion.p>
+          </motion.div>
         </section>
 
         {/* Introduction with Decorative Border */}
@@ -156,20 +196,20 @@ const EthicalBusinessPractices = () => {
               }`}
             >
               {/* Decorative corner accents */}
-              <div className="absolute -top-4 -left-4 w-20 h-20 border-t-4 border-l-4 border-[#00CCAA] rounded-tl-2xl opacity-50" />
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 border-b-4 border-r-4 border-[#00B9CC] rounded-br-2xl opacity-50" />
+              <div className="absolute -top-4 -left-4 w-20 h-20 border-t-4 border-l-4 border-[#096F72] rounded-tl-2xl opacity-50" />
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 border-b-4 border-r-4 border-[#096F72] rounded-br-2xl opacity-50" />
 
-              <div className="bg-gradient-to-r from-gray-50 to-white rounded-2xl p-10 shadow-xl border border-gray-100">
+              <div className="bg-[#064D50] rounded-2xl p-10 shadow-xl border border-[#00CCAA]/20">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-gradient-to-br from-[#00CCAA]/10 to-[#00B9CC]/10 rounded-xl">
-                    <Fingerprint className="w-6 h-6 text-[#00B9CC]" />
+                  <div className="p-3 bg-white rounded-xl">
+                    <Fingerprint className="w-6 h-6 text-[#096F72]" />
                   </div>
-                  <p className="text-gray-600 text-lg">Our Promise</p>
+                  <p className="text-white text-lg">Our Promise</p>
                 </div>
-                <p className="text-gray-700 text-xl leading-relaxed">
+                <p className="text-white/70 text-xl leading-relaxed">
                   As part of our commitment to the industries and regions we
                   serve, we strictly adhere to ethical principles.
-                  <span className="font-semibold text-[#00B9CC]">
+                  <span className="font-semibold text-white">
                     {" "}
                     Employees, suppliers, and customers
                   </span>{" "}
@@ -193,16 +233,16 @@ const EthicalBusinessPractices = () => {
           <div className="container mx-auto max-w-7xl px-4 relative z-10">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00CCAA]/10 to-[#00B9CC]/10 rounded-full mb-4">
-                <Award className="w-4 h-4 text-[#00B9CC]" />
-                <span className="text-[#00B9CC] font-semibold text-sm">
+                <Award className="w-4 h-4 text-[#096F72]" />
+                <span className="text-[#096F72] font-semibold text-sm">
                   Core Values
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#096F72] mb-4">
                 Our Guiding Principles
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-[#00CCAA] to-[#0099FF] mx-auto rounded-full" />
-              <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
+              <div className="w-24 h-1 bg-[#064D50] mx-auto rounded-full" />
+              <p className="text-[#096F72]/70 mt-6 max-w-2xl mx-auto text-lg">
                 Shaping every decision and action across our global operations
               </p>
             </div>
@@ -229,10 +269,10 @@ const EthicalBusinessPractices = () => {
                     <item.icon className="w-8 h-8 text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  <h3 className="text-xl font-bold text-[#096F72] mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-[#096F72]/70 leading-relaxed">
                     {item.description}
                   </p>
 
@@ -245,7 +285,7 @@ const EthicalBusinessPractices = () => {
         </section>
 
         {/* Zero Tolerance Banner with Animation */}
-        <section className="py-16 bg-gradient-to-r from-[#00CCAA] to-[#0099FF] relative overflow-hidden">
+        <section className="py-16 bg-[#064D50] relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(30)].map((_, i) => (
               <div
@@ -298,18 +338,18 @@ const EthicalBusinessPractices = () => {
               >
                 <div className="mb-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00CCAA]/10 rounded-full mb-4">
-                    <FileText className="w-4 h-4 text-[#00B9CC]" />
-                    <span className="text-[#00B9CC] font-semibold text-sm">
+                    <FileText className="w-4 h-4 text-[#096F72]" />
+                    <span className="text-[#096F72] font-semibold text-sm">
                       Legal Framework
                     </span>
                   </div>
-                  <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-4xl md:text-5xl font-bold text-[#096F72] mb-4">
                     Code of Conduct
                   </h2>
-                  <div className="w-20 h-1 bg-gradient-to-r from-[#00CCAA] to-[#0099FF] rounded-full mb-6" />
+                  <div className="w-20 h-1 bg-[#064D50] rounded-full mb-6" />
                 </div>
 
-                <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                <p className="text-lg text-[#096F72]/70 mb-8 leading-relaxed">
                   Elemensis members and all parties involved must conduct their
                   businesses in accordance with all applicable laws, including
                   those related to:
@@ -330,9 +370,9 @@ const EthicalBusinessPractices = () => {
                       className="flex items-center gap-3 group cursor-pointer"
                     >
                       <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#00CCAA]/20 to-[#00B9CC]/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <CheckCircle className="w-4 h-4 text-[#00B9CC]" />
+                        <CheckCircle className="w-4 h-4 text-[#096F72]" />
                       </div>
-                      <span className="text-gray-700 group-hover:text-gray-900 transition-colors">
+                      <span className="text-[#096F72]/70 group-hover:text-[#096F72] transition-colors">
                         {item}
                       </span>
                     </div>
@@ -372,22 +412,22 @@ const EthicalBusinessPractices = () => {
           <div className="container mx-auto max-w-7xl px-4">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00CCAA]/10 to-[#00B9CC]/10 rounded-full mb-4">
-                <ShieldCheck className="w-4 h-4 text-[#00B9CC]" />
-                <span className="text-[#00B9CC] font-semibold text-sm">
+                <ShieldCheck className="w-4 h-4 text-[#096F72]" />
+                <span className="text-[#096F72] font-semibold text-sm">
                   Regulatory Standards
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#096F72] mb-4">
                 Compliance Framework
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-[#00CCAA] to-[#0099FF] mx-auto rounded-full" />
+              <div className="w-24 h-1 bg-[#064D50] mx-auto rounded-full" />
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {complianceAreas.map((area, idx) => (
                 <div
                   key={idx}
-                  className={`group bg-white rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 ${
+                  className={`group bg-white rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-[#00CCAA]/20 ${
                     isVisible
                       ? "translate-y-0 opacity-100"
                       : "translate-y-12 opacity-0"
@@ -397,7 +437,7 @@ const EthicalBusinessPractices = () => {
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className="p-3 bg-gradient-to-br from-[#00CCAA]/10 to-[#00B9CC]/10 rounded-xl group-hover:scale-110 transition-transform">
-                        <area.icon className="w-6 h-6 text-[#00B9CC]" />
+                        <area.icon className="w-6 h-6 text-[#096F72]" />
                       </div>
                       <div>
                         <p className="font-semibold text-gray-800">
@@ -420,7 +460,7 @@ const EthicalBusinessPractices = () => {
         <section className="py-20 bg-white">
           <div className="container mx-auto max-w-7xl px-4">
             <div
-              className={`relative bg-gradient-to-r from-[#00CCAA]/5 via-[#00B9CC]/5 to-[#0099FF]/5 rounded-3xl p-10 overflow-hidden transition-all delay-1100 duration-700 ${
+              className={`relative bg-[#064D50]/5 rounded-3xl p-10 overflow-hidden transition-all delay-1100 duration-700 ${
                 isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-12 opacity-0"
@@ -432,14 +472,14 @@ const EthicalBusinessPractices = () => {
 
               <div className="relative flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="flex items-center gap-6">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#00CCAA] to-[#0099FF] flex items-center justify-center shadow-xl animate-pulse-glow">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#096F72] to-[#064D50] flex items-center justify-center shadow-xl animate-pulse-glow">
                     <Heart className="w-10 h-10 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-3xl font-bold text-[#096F72] mb-2">
                       Diversity & Inclusion
                     </h3>
-                    <p className="text-gray-600 text-lg max-w-xl">
+                    <p className="text-[#096F72]/70 text-lg max-w-xl">
                       Fostering an atmosphere that respects and treats all
                       members, suppliers, and customers fairly.
                     </p>
@@ -447,7 +487,7 @@ const EthicalBusinessPractices = () => {
                 </div>
                 <div className="flex items-center gap-3 px-6 py-3 bg-white rounded-full shadow-lg">
                   <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                  <span className="font-semibold text-gray-700">
+                  <span className="font-semibold text-[#096F72]/70">
                     Equal Opportunity Employer
                   </span>
                 </div>
@@ -457,7 +497,7 @@ const EthicalBusinessPractices = () => {
         </section>
 
         {/* Business Commitments */}
-        <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
+        <section className="py-20 bg-[#064D50] relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#00CCAA]/10 to-transparent rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#0099FF]/10 to-transparent rounded-full blur-3xl" />
@@ -492,25 +532,25 @@ const EthicalBusinessPractices = () => {
                 }`}
               >
                 <div className="mb-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-4">
-                    <TrendingUp className="w-4 h-4 text-[#00CCAA]" />
-                    <span className="text-[#00CCAA] font-semibold text-sm">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full mb-4">
+                    <TrendingUp className="w-4 h-4 text-[#096F72]" />
+                    <span className="text-[#096F72] font-semibold text-sm">
                       Our Promise
                     </span>
                   </div>
                   <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
                     Our Business Commitments
                   </h3>
-                  <div className="w-20 h-1 bg-gradient-to-r from-[#00CCAA] to-[#00B9CC] rounded-full" />
+                  <div className="w-20 h-1 bg-gradient-to-r from-[#096F72] to-[#00B9CC] rounded-full" />
                 </div>
 
                 <div className="space-y-4">
                   {policies.map((policy, idx) => (
                     <div key={idx} className="flex items-start gap-3 group">
-                      <div className="mt-1 w-5 h-5 rounded-full bg-gradient-to-br from-[#00CCAA] to-[#00B9CC] flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <CheckCircle className="w-3 h-3 text-white" />
+                      <div className="mt-1 w-5 h-5 rounded-full bg-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <CheckCircle className="w-3 h-3 text-[#064D50]" />
                       </div>
-                      <span className="text-gray-300 group-hover:text-white transition-colors text-lg">
+                      <span className="text-white/80 group-hover:text-white transition-colors text-lg">
                         {policy}
                       </span>
                     </div>
@@ -522,7 +562,7 @@ const EthicalBusinessPractices = () => {
         </section>
 
         {/* Footer Navigation Links */}
-        <section className="py-12 bg-white border-t border-gray-100">
+        <section className="py-12 bg-white border-t border-[#00CCAA]/20">
           <div className="container mx-auto max-w-7xl px-4">
             <div
               className={`flex flex-wrap justify-center gap-4 transition-all delay-1400 duration-700 ${
@@ -536,32 +576,32 @@ const EthicalBusinessPractices = () => {
                   name: "Our Organization",
                   href: "/organization",
                   icon: Building2,
-                  color: "from-[#00CCAA] to-[#00B9CC]",
+                  color: "from-[#096F72] to-[#064D50]",
                 },
                 {
                   name: "Markets We Serve",
                   href: "/markets",
                   icon: Globe,
-                  color: "from-[#00B9CC] to-[#0099FF]",
+                  color: "from-[#096F72] to-[#064D50]",
                 },
                 {
                   name: "QHSE Policy",
                   href: "/qhse",
                   icon: ShieldCheck,
-                  color: "from-[#00CCAA] to-[#0099FF]",
+                  color: "from-[#096F72] to-[#064D50]",
                 },
               ].map((link, idx) => (
                 <Link
                   key={idx}
                   href={link.href}
-                  className="group relative overflow-hidden px-6 py-3 bg-gradient-to-r from-gray-50 to-white rounded-full shadow-md hover:shadow-xl transition-all duration-300"
+                  className="group relative overflow-hidden px-6 py-3 bg-white rounded-full shadow-md hover:shadow-xl transition-all duration-300"
                 >
                   <div
                     className={`absolute inset-0 bg-gradient-to-r ${link.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                   />
                   <div className="relative flex items-center gap-2">
-                    <link.icon className="w-4 h-4 text-[#00B9CC] group-hover:text-white transition-colors" />
-                    <span className="font-medium text-gray-700 group-hover:text-white transition-colors">
+                    <link.icon className="w-4 h-4 text-[#096F72] group-hover:text-white transition-colors" />
+                    <span className="font-medium text-[#096F72]/70 group-hover:text-white transition-colors">
                       {link.name}
                     </span>
                     <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
