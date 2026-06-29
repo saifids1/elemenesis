@@ -49,70 +49,75 @@ const staggerContainer = {
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setStatus('loading');
-  setStatusMessage('');
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setStatusMessage("");
 
-  try {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      // ✅ Send to PHP endpoint
+      const response = await fetch("/send-mail.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (!response.ok) {
-      // Show more detailed error
-      throw new Error(data.error || data.message || 'Failed to send message');
+      if (!response.ok) {
+        throw new Error(data.error || data.message || "Failed to send message");
+      }
+
+      setStatus("success");
+      setStatusMessage("Your message has been sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setStatus("idle");
+        setStatusMessage("");
+      }, 5000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+
+      setTimeout(() => {
+        setStatus("idle");
+        setStatusMessage("");
+      }, 5000);
     }
+  };
 
-    setStatus('success');
-    setStatusMessage('Your message has been sent successfully!');
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
-
-    setTimeout(() => {
-      setStatus('idle');
-      setStatusMessage('');
-    }, 5000);
-  } catch (error) {
-    console.error('Form submission error:', error);
-    setStatus('error');
-    setStatusMessage(
-      error instanceof Error 
-        ? error.message 
-        : 'Something went wrong. Please try again.'
-    );
-    
-    setTimeout(() => {
-      setStatus('idle');
-      setStatusMessage('');
-    }, 5000);
-  }
-};
   return (
     <>
       <Navbar />
@@ -504,228 +509,114 @@ const handleSubmit = async (e: React.FormEvent) => {
             </motion.div>
 
             {/* Column 2: Minimalist Input Hub Container */}
-            <motion.div
-              variants={fadeIn}
-              className="lg:col-span-7 bg-gradient-to-br from-[#FAF8F5]/90 to-[#F4F1E8]/70 p-6 md:p-10 rounded-2xl border border-neutral-200/50 shadow-[inset_0_1px_3px_rgba(0,0,0,0.02),0_10px_30px_-5px_rgba(0,0,0,0.01)]"
-            >
-              {/* <form
-                className="space-y-6"
-                action="https://formsubmit.co/ce86244a3d339dcba7803e2456a5d099"
-                method="POST"
-              >
-              
-                <input
-                  type="hidden"
-                  name="_subject"
-                  value="New Contact Form Submission"
-                />
-
-    
-                <input type="hidden" name="_captcha" value="false" />
-
-       
-                 <input type="hidden" name="_template" value="table" /> 
-
-        
-                <input type="hidden" name="_autoresponse" value="" />
-      
-                <input type="hidden" name="_cc" value="s.shaker@i-diligence.com"/>
-
-
-          
-                <input type="text" name="_honey" style={{ display: "none" }} />
-
-                <input type="hidden" name="_captcha" value="false" />
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
-                    >
-                      Full Name
-                    </label>
-                    <input
-                      name="Full Name"
-                      type="text"
-                      id="name"
-                      className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
-                      placeholder="Enter your full name"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      name="Email"
-                      id="email"
-                      className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
-                      placeholder="Enter your email address"
-                      required
-                    />
-                  </div>
-                </div>
-
+         <motion.div
+            variants={fadeIn}
+            className="lg:col-span-7 bg-gradient-to-br from-[#FAF8F5]/90 to-[#F4F1E8]/70 p-6 md:p-10 rounded-2xl border border-neutral-200/50 shadow-[inset_0_1px_3px_rgba(0,0,0,0.02),0_10px_30px_-5px_rgba(0,0,0,0.01)]"
+          >
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label
-                    htmlFor="subject"
+                    htmlFor="name"
                     className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
                   >
-                    Subject
+                    Full Name
                   </label>
-         
                   <input
+                    name="name"
                     type="text"
-                    name="Topic"
-                    id="subject"
+                    id="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
-                    placeholder="Enter the subject of your message"
+                    placeholder="Enter your full name"
                     required
                   />
                 </div>
 
                 <div>
                   <label
-                    htmlFor="message"
+                    htmlFor="email"
                     className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
                   >
-                    Message
+                    Email Address
                   </label>
-                  <textarea
-                    id="message"
-                    name="Message"
-                    rows={5}
-                    className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 resize-none shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
-                    placeholder="Write your message here..."
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
+                    placeholder="Enter your email address"
                     required
-                  ></textarea>
+                  />
                 </div>
+              </div>
 
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.015 }}
-                  whileTap={{ scale: 0.985 }}
-                  className="w-full bg-[#0D231D] hover:bg-[#00cba9] text-white hover:text-[#0D231D] font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-[0_12px_24px_rgba(13,35,29,0.12)] hover:shadow-[0_12px_24px_rgba(0,203,169,0.15)] uppercase tracking-widest text-xs flex items-center justify-center space-x-2 group"
+              <div>
+                <label
+                  htmlFor="subject"
+                  className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
                 >
-                  <span>Send Message</span>
-                  <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </motion.button>
-              </form> */}
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  id="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
+                  placeholder="Enter the subject of your message"
+                  required
+                />
+              </div>
 
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 resize-none shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
+                  placeholder="Write your message here..."
+                  required
+                />
+              </div>
 
-                   <form className="space-y-6" onSubmit={handleSubmit}>
-        {/* Remove all hidden formsubmit inputs */}
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
-            >
-              Full Name
-            </label>
-            <input
-              name="name"
-              type="text"
-              id="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
-              placeholder="Enter your full name"
-              required
-            />
-          </div>
+              {/* Status Messages */}
+              {status === 'success' && (
+                <div className="p-4 bg-green-50 text-green-700 rounded-xl border border-green-200">
+                  ✓ {statusMessage}
+                </div>
+              )}
+              
+              {status === 'error' && (
+                <div className="p-4 bg-red-50 text-red-700 rounded-xl border border-red-200">
+                  ✗ {statusMessage}
+                </div>
+              )}
 
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
-              placeholder="Enter your email address"
-              required
-            />
-          </div>
-        </div>
-
-        <div>
-          <label
-            htmlFor="subject"
-            className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
-          >
-            Subject
-          </label>
-          <input
-            type="text"
-            name="subject"
-            id="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
-            placeholder="Enter the subject of your message"
-            required
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="message"
-            className="block text-xs font-bold text-neutral-400 uppercase tracking-wider"
-          >
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
-            className="mt-2 block w-full rounded-xl bg-white border border-neutral-200 text-neutral-800 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#00cba9] focus:border-transparent transition-all duration-300 resize-none shadow-[0_2px_8px_rgba(13,35,29,0.01)] focus:shadow-[0_4px_16px_rgba(0,203,169,0.06)]"
-            placeholder="Write your message here..."
-            required
-          />
-        </div>
-
-        {/* Status Messages */}
-        {status === 'success' && (
-          <div className="p-4 bg-green-50 text-green-700 rounded-xl border border-green-200">
-            ✓ {statusMessage}
-          </div>
-        )}
-        
-        {status === 'error' && (
-          <div className="p-4 bg-red-50 text-red-700 rounded-xl border border-red-200">
-            ✗ {statusMessage}
-          </div>
-        )}
-
-        <motion.button
-          type="submit"
-          disabled={status === 'loading'}
-          whileHover={{ scale: 1.015 }}
-          whileTap={{ scale: 0.985 }}
-          className="w-full bg-[#0D231D] hover:bg-[#00cba9] text-white hover:text-[#0D231D] font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-[0_12px_24px_rgba(13,35,29,0.12)] hover:shadow-[0_12px_24px_rgba(0,203,169,0.15)] uppercase tracking-widest text-xs flex items-center justify-center space-x-2 group disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <span>{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
-          <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </motion.button>
-      </form>
-            </motion.div>
+              <motion.button
+                type="submit"
+                disabled={status === 'loading'}
+                whileHover={{ scale: 1.015 }}
+                whileTap={{ scale: 0.985 }}
+                className="w-full bg-[#0D231D] hover:bg-[#00cba9] text-white hover:text-[#0D231D] font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-[0_12px_24px_rgba(13,35,29,0.12)] hover:shadow-[0_12px_24px_rgba(0,203,169,0.15)] uppercase tracking-widest text-xs flex items-center justify-center space-x-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span>{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
+                <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </motion.button>
+            </form>
+          </motion.div>
           </motion.div>
 
           {/* 3. GEOLOCATION IFRAME COMPONENT */}
