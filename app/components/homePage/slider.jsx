@@ -61,7 +61,10 @@ export default function HeroSlider() {
 
   const reducedMotion = useMemo(() => {
     if (typeof window === "undefined") return false;
-    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return (
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
   }, []);
 
   const SLIDE_DURATION = 7000;
@@ -112,42 +115,41 @@ export default function HeroSlider() {
 
   return (
     <>
-
       <div className="relative w-full h-screen overflow-hidden bg-black">
+        <div className="absolute inset-0 h-full w-full">
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            priority
+            className={`object-cover transition-transform duration-1000 ease-out ${imageAnimation}`}
+          />
 
+          {/* Clean left readability fade */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/45 via-black/15 to-transparent" />
 
-       <div className="absolute inset-0 h-full w-full">
-  <Image
-    src={slide.image}
-    alt={slide.title}
-    fill
-    priority
-    className={`object-cover transition-transform duration-1000 ease-out ${imageAnimation}`}
-  />
+          {/* Soft bottom depth */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+        </div>
 
-  {/* Clean left readability fade */}
-  <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/45 via-black/15 to-transparent" />
+        {/* Content */}
+        <div className="relative z-20 flex h-full items-center px-6 sm:px-10 md:px-16 lg:px-30">
+          <div
+            className={`max-w-[620px] transition-all duration-500 ease-out ${contentAnimation}`}
+          >
+            <h3 className="mb-5 text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl lg:text-[72px]">
+              {slide.title}
+            </h3>
 
-  {/* Soft bottom depth */}
-  <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-</div>
+            <p className="mb-5 text-lg font-medium tracking-wide text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">
+              {slide.subtitle}
+            </p>
 
-{/* Content */}
-<div className="relative z-20 flex h-full items-center px-6 sm:px-10 md:px-16 lg:px-24">
-  <div className={`max-w-[620px] transition-all duration-500 ease-out ${contentAnimation}`}>
-    <h3 className="mb-5 text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl lg:text-[72px]">
-      {slide.title}
-    </h3>
-
-    <p className="mb-5 text-lg font-medium tracking-wide text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">
-      {slide.subtitle}
-    </p>
-
-    <p className="max-w-[560px] text-sm font-normal leading-7 text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] sm:text-base md:text-lg">
-      {slide.description}
-    </p>
-  </div>
-</div>
+            <p className="max-w-[560px] text-sm font-normal leading-7 text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] sm:text-base md:text-lg">
+              {slide.description}
+            </p>
+          </div>
+        </div>
 
         {/* Navigation Dots */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-20">
@@ -163,9 +165,14 @@ export default function HeroSlider() {
               className="group"
             >
               <div
-                className={`h-1 rounded-full transition-all duration-300 ${i === index ? "w-10" : "w-5 bg-white/50 group-hover:bg-white/80"
-                  }`}
-                style={{ backgroundColor: i === index ? slide.color : undefined }}
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  i === index
+                    ? "w-10"
+                    : "w-5 bg-white/50 group-hover:bg-white/80"
+                }`}
+                style={{
+                  backgroundColor: i === index ? slide.color : undefined,
+                }}
               />
             </button>
           ))}
@@ -199,31 +206,31 @@ export default function HeroSlider() {
           <ChevronRight className="w-5 h-5" />
         </button> */}
 
-
         <style jsx>{`
-        @keyframes progress {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 100%;
-    }
-  }
-        @keyframes pulse {
-          0%,
-          100% {
-            transform: scale(1);
-            opacity: 0.6;
+          @keyframes progress {
+            from {
+              width: 0%;
+            }
+            to {
+              width: 100%;
+            }
           }
-          50% {
-            transform: scale(1.15);
-            opacity: 1;
+          @keyframes pulse {
+            0%,
+            100% {
+              transform: scale(1);
+              opacity: 0.6;
+            }
+            50% {
+              transform: scale(1.15);
+              opacity: 1;
+            }
           }
-        }
-        // Add to global CSS:
-        // @keyframes skew { 0% { transform: skew(0deg); } 20% { transform: skew(10deg); } 40% { transform: skew(-10deg); } 100% { transform: skew(0deg); } }
-        // .animate-skew { animation: skew 0.2s infinite; }
-      `}</style>
-      </div></>
+          // Add to global CSS:
+          // @keyframes skew { 0% { transform: skew(0deg); } 20% { transform: skew(10deg); } 40% { transform: skew(-10deg); } 100% { transform: skew(0deg); } }
+          // .animate-skew { animation: skew 0.2s infinite; }
+        `}</style>
+      </div>
+    </>
   );
 }
