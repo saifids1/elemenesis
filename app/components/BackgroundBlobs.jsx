@@ -36,7 +36,7 @@ export default function BackgroundSpotlight() {
         <circle cx="80%" cy="20%" r="150" fill="url(#iceGrad1)" filter="blur(80px)" opacity="0.4" />
       </svg>
       
-      <style jsx>{`
+      <style >{`
         @keyframes wave {
           0% { transform: translateX(0) scaleY(1); }
           50% { transform: translateX(-5%) scaleY(1.05); }

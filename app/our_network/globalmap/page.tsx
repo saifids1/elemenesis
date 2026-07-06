@@ -745,7 +745,7 @@ export default function NetworkPage() {
       </div>
 
       {/* Custom animations */}
-      <style jsx global>{`
+      <style >{`
         @keyframes fadeIn {
           from {
             opacity: 0;

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image"; // Imported for standard Next.js image handling
+import Image from "next/image";
 import {
   MapPin, Phone, Mail, Clock, Globe,
   Users, X, UserPlus,
@@ -9,10 +9,9 @@ import {
   Award, Leaf, ArrowUp, Camera
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaFacebookF,} from "react-icons/fa";
-import { FaLinkedinIn  } from "react-icons/fa6";
+import { FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
-
 
 export default function Footer() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -63,10 +62,9 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: FaFacebookF , href: "#", label: "Facebook" },
-    { icon: BsTwitterX , href: "#", label: "Twitter" },
-    { icon: FaLinkedinIn , href: "#", label: "LinkedIn" },
-    // { icon: Camera, href: "#", label: "Instagram" },
+    { icon: FaFacebookF, href: "#", label: "Facebook" },
+    { icon: BsTwitterX, href: "#", label: "Twitter" },
+    { icon: FaLinkedinIn, href: "#", label: "LinkedIn" },
   ];
 
   const certifications = [
@@ -77,8 +75,6 @@ export default function Footer() {
 
   return (
     <footer className="relative text-gray-300 overflow-hidden bg-[#0a0a0a] border-t border-white/5">
-      {/* <TrendyDivider /> */}
-
       {/* Premium Constellation Grid SVG Background Animation Layer */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.15] overflow-hidden mix-blend-screen">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0 w-full h-full">
@@ -115,32 +111,25 @@ export default function Footer() {
         style={{ background: brandGradient }}
       />
 
-      <div className="relative container mx-auto px-6 max-w-7xl pt-16 pb-8 z-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-0 pt-16 pb-8 z-10">
         {/* Responsive Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16">
 
           {/* Brand Column */}
           <div className="flex flex-col items-start">
-         <div className="flex items-center gap-2 mb-6 group cursor-pointer">
-  <Image
-    src="/Images/logo/elem.png"
-    alt="Elemensis Logo"
-    width={50}
-    height={47}
-    priority
-    className="w-[35px] h-[35px] md:w-[45px] md:h-[45px] object-contain transition-transform duration-300 group-hover:scale-110"
-  />
-
-  <span
-    className="text-[22px] md:text-[30px] font-black tracking-[4px] leading-none whitespace-nowrap"
-    style={gradientTextStyle}
-  >
-    ELEMENSIS
-  </span>
-</div>
+            <div className="flex items-center gap-2 mb-6 group cursor-pointer">
+              <Image
+                src="/Images/logo/Logo_gra.png"
+                alt="Elemensis Logo"
+                width={290}
+                height={290}
+                priority
+                className="w-[120px] h-auto sm:w-[150px] md:w-[180px] lg:w-[200px] object-contain transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
 
             <p
-              className="text-sm leading-relaxed mb-6 font-medium bg-clip-text text-transparent opacity-85"
+              className="text-sm leading-relaxed mb-6 font-medium bg-clip-text text-transparent opacity-85 max-w-xs"
               style={gradientTextStyle}
             >
               Your trusted global partner for premium products and exceptional service across B2B & B2C markets worldwide.
@@ -164,7 +153,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links Column */}
-          <div className="ml-[0px] md:ml-[90px]">
+          <div className="sm:ml-0 md:ml-4 lg:ml-8">
             <h3
               className="font-black text-sm uppercase tracking-widest mb-6 relative inline-block"
               style={gradientTextStyle}
@@ -205,7 +194,7 @@ export default function Footer() {
           </div>
 
           {/* Divisions Column */}
-          <div className="md:ml-8 ml-[0px] md:ml-[50px]">
+          <div className="sm:ml-0 md:ml-4 lg:ml-8">
             <h3
               className="font-black text-sm uppercase tracking-widest mb-6 relative inline-block"
               style={gradientTextStyle}
@@ -286,67 +275,57 @@ export default function Footer() {
           </div>
         </div>
 
-    {/* Bottom Bar Segment */}
-<div className="mt-8 pt-6 border-t border-white/10">
-  <div className="flex flex-nowrap items-center justify-between gap-8">
+        {/* Bottom Bar Segment */}
+        <div className="mt-8 pt-6 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-4 sm:gap-6">
+            
+            {/* Copyright */}
+            <div className="flex items-center gap-2 whitespace-nowrap order-3 sm:order-1">
+              <p
+                className="text-xs font-bold uppercase tracking-wider bg-clip-text text-transparent"
+                style={gradientTextStyle}
+              >
+                © {currentYear} Elemensis. All rights reserved.
+              </p>
+            </div>
 
-    {/* Copyright */}
-    <div className="flex items-center gap-2 whitespace-nowrap">
-      {/* <Heart
-        className="w-4 h-4 animate-pulse text-teal-400"
-        fill="currentColor"
-      /> */}
-      <p
-        className="text-xs font-bold uppercase tracking-wider bg-clip-text text-transparent"
-        style={gradientTextStyle}
-      >
-        © {currentYear} Elemensis. All rights reserved.
-      </p>
-    </div>
+            {/* Developer Info */}
+            <div className="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-teal-400 order-1 sm:order-2">
+              <span>Design & Developed by</span>
+              <a
+                href="https://i-diligence.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold uppercase tracking-wider hover:text-white transition-colors"
+              >
+                iDiligence Solution Pvt. Ltd.
+              </a>
+              <span className="text-gray-500 hidden sm:inline">|</span>
+              <span className="hidden sm:inline">Version 1.0.0</span>
+              <span className="text-gray-500 hidden sm:inline">|</span>
+              <span className="hidden sm:inline">Updated June 2026</span>
+            </div>
 
-    {/* Developer Info */}
-    <div className="flex items-center gap-2 whitespace-nowrap text-sm text-teal-400">
-      <span>Design & Developed by</span>
+            {/* Footer Links */}
+            <div className="flex items-center gap-4 sm:gap-6 whitespace-nowrap text-[11px] font-extrabold uppercase tracking-widest order-2 sm:order-3">
+              <Link href="/privacy" className="relative group">
+                <span style={gradientTextStyle}>Privacy</span>
+                <span
+                  className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
+                  style={{ background: brandGradient }}
+                />
+              </Link>
+              <Link href="/terms" className="relative group">
+                <span style={gradientTextStyle}>Terms</span>
+                <span
+                  className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
+                  style={{ background: brandGradient }}
+                />
+              </Link>
+            </div>
 
-      <a
-        href="https://i-diligence.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-bold uppercase tracking-wider hover:text-white transition-colors"
-      >
-        iDiligence Solution Pvt. Ltd.
-      </a>
-
-      <span className="text-gray-500">|</span>
-
-      <span>Version 1.0.0</span>
-
-      <span className="text-gray-500">|</span>
-
-      <span>Updated June 2026</span>
-    </div>
-
-    {/* Footer Links */}
-    <div className="flex items-center gap-6 whitespace-nowrap text-[11px] font-extrabold uppercase tracking-widest">
-      <Link href="/privacy" className="relative group">
-        <span style={gradientTextStyle}>Privacy</span>
-        <span
-          className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
-          style={{ background: brandGradient }}
-        />
-      </Link>
-
-      <Link href="/terms" className="relative group">
-        <span style={gradientTextStyle}>Terms</span>
-        <span
-          className="absolute bottom-0 left-0 w-full h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
-          style={{ background: brandGradient }}
-        />
-      </Link>
-    </div>
-
-  </div>
-</div>
+          </div>
+        </div>
       </div>
 
       {/* Floating Back to Top Trigger Button */}
@@ -369,7 +348,7 @@ export default function Footer() {
         )}
       </AnimatePresence>
 
-      <style jsx global>{`
+      <style>{`
         @keyframes diagonalMove {
           0% { stroke-dashoffset: 0; }
           100% { stroke-dashoffset: -620; }
