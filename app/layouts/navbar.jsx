@@ -93,7 +93,7 @@ export default function TopNavigation() {
               <Image
                 src="/Images/logo/Logo11.png"
                 height={90} // Optimized height alignment
-                width={190}
+                width={250}
                 alt="Logo"
                 className="object-contain"
               />

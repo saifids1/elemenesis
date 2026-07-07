@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // ✅ For PHP to work, don't use output: 'export'
   // If you have this, comment it out:
-  // output: "export",
+  output: "export",
 
   images: {
     remotePatterns: [
