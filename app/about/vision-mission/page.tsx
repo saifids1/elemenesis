@@ -561,7 +561,7 @@ const MissionVision = () => {
 
       <Footer />
 
-      <style jsx>{`
+      <style >{`
         @keyframes float-particle {
           0%,
           100% {

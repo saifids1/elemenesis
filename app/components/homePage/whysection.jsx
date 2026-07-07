@@ -27,7 +27,7 @@ export default function Whysection() {
       
     <section
       ref={sectionRef}
-      className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-0"
+      className="relative mx-auto max-w-7xl px-0 sm:px-4 lg:px-0 py-20 "
     >
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 rounded-full bg-[#00CCAA]/5 blur-3xl" />
